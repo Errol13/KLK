@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'signup_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -54,7 +55,11 @@ class SplashPage extends StatelessWidget {
               text: 'Sign Up',
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );},
             ),
             SizedBox(height: 20),
             RegButton(

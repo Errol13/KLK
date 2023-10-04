@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/login_page.dart';
+import 'features/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: const ColorScheme.light(background:Color(0xFFE6E7E8)),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }

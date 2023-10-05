@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Mabuhay!Welcome to',
+                    'Mabuhay! Welcome to',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 200),
+            SizedBox(height: 100),
             RegButton(
               width: 400,
               height: 40,
@@ -59,7 +59,8 @@ class SplashPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SignUpPage()),
-                );},
+                );
+              },
             ),
             SizedBox(height: 20),
             RegButton(
@@ -68,7 +69,6 @@ class SplashPage extends StatelessWidget {
               text: 'Login',
               textColor: const Color(0xFF276A7B),
               bgColor: Colors.white,
-              border: Border.all(color: const Color(0xFF276A7B), width: 2.0),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -91,7 +91,6 @@ class RegButton extends StatelessWidget {
   final Color bgColor;
   final VoidCallback onPressed;
   final EdgeInsetsGeometry padding; // Added padding parameter
-  final Border? border;
 
   const RegButton({
     Key? key,
@@ -114,11 +113,13 @@ class RegButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: bgColor,
-            padding: padding, // Apply padding to the button
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-            )),
+          backgroundColor: bgColor,
+          padding: padding, // Apply padding to the button
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            side: const BorderSide(color: Color(0xFF276A7B), width: 2.0),
+          ),
+        ),
         child: Text(
           text,
           style: TextStyle(

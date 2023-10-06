@@ -39,7 +39,11 @@ class SignUpPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
+<<<<<<< HEAD
               height: 200,
+=======
+              height: 100,
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
               width: 100,
               child: Center(
                 child: Image.asset(
@@ -56,7 +60,11 @@ class SignUpPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Full Name',
                   labelStyle: TextStyle(
+<<<<<<< HEAD
                     color: Color(0xff276A7B),
+=======
+                    color: Color(0xFFA7C7E7),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                     fontSize: 16,
                   ),
                   filled: true,
@@ -71,7 +79,11 @@ class SignUpPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
+<<<<<<< HEAD
                       color: Color(0xFFA7C7E7),
+=======
+                      color: Color(0xFF276A7B),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                       width: 1.0,
                     ),
                   ),
@@ -86,7 +98,11 @@ class SignUpPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(
+<<<<<<< HEAD
                     color: Color(0xff276A7B),
+=======
+                    color: Color(0xFFA7C7E7),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                     fontSize: 16,
                   ),
                   filled: true,
@@ -94,14 +110,22 @@ class SignUpPage extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
+<<<<<<< HEAD
                       color: Color(0xff659d66),
+=======
+                      color: Color(0xff688ba8),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                       width: 1.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
+<<<<<<< HEAD
                       color: Color(0xFFA7C7E7),
+=======
+                      color: Color(0xFF276A7B),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                       width: 1.0,
                     ),
                   ),
@@ -117,7 +141,11 @@ class SignUpPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Password',
                   labelStyle: TextStyle(
+<<<<<<< HEAD
                     color: Color(0xff276A7B),
+=======
+                    color: Color(0xFFA7C7E7),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                     fontSize: 16,
                   ),
                   filled: true,
@@ -125,14 +153,22 @@ class SignUpPage extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
+<<<<<<< HEAD
                       color: Color(0xff659d66),
+=======
+                      color: Colors.white,
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                       width: 1.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
+<<<<<<< HEAD
                       color: Color(0xFFA7C7E7),
+=======
+                      color: Color(0xFF276A7B),
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
                       width: 1.0,
                     ),
                   ),
@@ -153,6 +189,7 @@ class SignUpPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const SignUpPage()),
                 );
               },
+<<<<<<< HEAD
             ),
              SizedBox(height: 15),
             Row(
@@ -183,10 +220,16 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
               ],
+=======
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f
             ),
           ],
         ),
       ),
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 33a98709491fd1074646d24caf536204d720de6f

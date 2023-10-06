@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'splash_page.dart';
 
-
-class SignUpPage extends StatelessWidget{
+class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-   return  Scaffold(
-    body: Padding(
-       padding: EdgeInsets.all(16.0),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Align(
+            const Align(
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
@@ -37,8 +36,8 @@ class SignUpPage extends StatelessWidget{
                 ],
               ),
             ),
-            SizedBox(height:20),
-             SizedBox(
+            const SizedBox(height: 20),
+            SizedBox(
               height: 100,
               width: 100,
               child: Center(
@@ -48,31 +47,100 @@ class SignUpPage extends StatelessWidget{
                 ),
               ),
             ),
-            SizedBox(height:100),
-             TextField(
+            const SizedBox(height: 100),
+            Container(
+              height: 50,
+              width: 400,
+              child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'FullName',
-                  border: OutlineInputBorder(),
+                  labelText: 'Full Name',
+                  labelStyle: TextStyle(
+                    color: Color(0xFFA7C7E7),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: Color(0xff659d66),
+                      width: 1.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      color: Color(0xFF276A7B),
+                      width: 1.0,
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(height:10),
-              TextField(
+            ),
+            const SizedBox(height: 10),
+            Container(
+              height: 50,
+              width: 400,
+              child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                    color: Color(0xFFA7C7E7),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xff688ba8),
+                      width: 1.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      color: Color(0xFF276A7B),
+                      width: 1.0,
+                    ),
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
               ),
-              SizedBox(height:10),
-              TextField(
+            ),
+            const SizedBox(height: 10),
+            Container(
+              height: 50,
+              width: 400,
+              child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  labelStyle: TextStyle(
+                    color: Color(0xFFA7C7E7),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(
+                      color: Color(0xFF276A7B),
+                      width: 1.0,
+                    ),
+                  ),
                 ),
                 obscureText: true,
               ),
-              SizedBox(height:40),
-              RegButton(
+            ),
+            const SizedBox(height: 40),
+            RegButton(
               width: 400,
               height: 40,
               text: 'Sign Up',
@@ -81,13 +149,13 @@ class SignUpPage extends StatelessWidget{
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUpPage()),
-                );},
+                  MaterialPageRoute(builder: (context) => const SignUpPage()),
+                );
+              },
             ),
           ],
-    ),
-   ), 
-   )
-   ;
-}
+        ),
+      ),
+    );
+  }
 }

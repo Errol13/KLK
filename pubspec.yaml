@@ -54,6 +54,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/Logo.png
+    - assets/Eye.png
+    - assets/Hideeye.png
 
 
   # The following line ensures that the Material Icons font is

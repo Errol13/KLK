@@ -54,6 +54,10 @@ dev_dependencies:
 flutter:
   assets:
     - assets/Logo.png
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/static/Raleway-Regular.ttf
 
 
   # The following line ensures that the Material Icons font is

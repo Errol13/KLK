@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'splash_page.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  _SignUpPageState createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool _obscureText = true; // for the password's eye icon function
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class SignUpPage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Hello, Mare!',
+                    'Kumusta ka?',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -75,6 +82,9 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -106,6 +116,9 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
+                style: TextStyle(
+                  color: const Color(0xFF276A7B),
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -115,17 +128,18 @@ class SignUpPage extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Password',
+                  filled: true,
+                  fillColor: Colors.white,
                   labelStyle: TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
-                  filled: true,
-                  fillColor: Colors.white,
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
-                      width: 1.0,
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -135,8 +149,22 @@ class SignUpPage extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: const Color(0xFF276A7B),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
+                style: TextStyle(
+                  color: const Color(0xFF276A7B),
+                ),
+                obscureText: _obscureText,
               ),
             ),
             const SizedBox(height: 40),
@@ -147,10 +175,10 @@ class SignUpPage extends StatelessWidget {
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SignUpPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const SignUpPage()),
+                // );
               },
             ),
           ],

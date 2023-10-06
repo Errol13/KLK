@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload. 
-       
+        fontFamily: 'Raleway',
         primarySwatch: Colors.blue,
         colorScheme: const ColorScheme.light(background:Color(0xFFE6E7E8)),
         useMaterial3: true,

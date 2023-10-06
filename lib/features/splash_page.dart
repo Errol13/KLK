@@ -72,7 +72,7 @@ class SplashPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
             ),
@@ -116,7 +116,7 @@ class RegButton extends StatelessWidget {
           padding: padding, // Apply padding to the button
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
-            side: const BorderSide(color: Color(0xFF276A7B), width: 2.0),
+            side: const BorderSide(color: Color(0xFF276A7B), width: 1.0),
           ),
         ),
         child: Text(

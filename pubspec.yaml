@@ -54,6 +54,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/Logo.png
+    
   fonts:
     - family: Raleway
       fonts:

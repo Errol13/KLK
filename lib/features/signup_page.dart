@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'splash_page.dart';
+import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -45,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              height: 100,
+              height: 200,
               width: 100,
               child: Center(
                 child: Image.asset(
@@ -62,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 decoration: InputDecoration(
                   labelText: 'Full Name',
                   labelStyle: TextStyle(
-                    color: Color(0xFFA7C7E7),
+                    color: Color(0xff276A7B),
                     fontSize: 16,
                   ),
                   filled: true,
@@ -77,7 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Color(0xFF276A7B),
+                      color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
                   ),
@@ -95,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(
-                    color: Color(0xFFA7C7E7),
+                    color: Color(0xff276A7B),
                     fontSize: 16,
                   ),
                   filled: true,
@@ -103,14 +104,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Color(0xff688ba8),
+                      color: Color(0xff659d66),
                       width: 1.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Color(0xFF276A7B),
+                      color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
                   ),
@@ -131,7 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: TextStyle(
-                    color: Color(0xFFA7C7E7),
+                    color: Color(0xff276A7B),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
@@ -145,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide(
-                      color: Color(0xFF276A7B),
+                      color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
                   ),
@@ -180,6 +181,36 @@ class _SignUpPageState extends State<SignUpPage> {
                 //   MaterialPageRoute(builder: (context) => const SignUpPage()),
                 // );
               },
+            ),
+            SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account?",
+                  style: TextStyle(
+                    color: Color(0xFFA7C7E7),
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                    );
+                  },
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(
+                      color: Color(0xFF276A7B),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

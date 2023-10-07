@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'signup_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,11 +14,12 @@ class HomePage extends StatelessWidget {
             color: Color(0xFF276A7B),
           ),
         ),
+        automaticallyImplyLeading: false,
       ),
-      body: Container(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
             Row(
               children: <Widget>[
                 Container(
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   child: Center(
                     child: Image.asset(
                       'assets/wave.png',
-                      // fit: BoxFit.cover,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -53,40 +53,24 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15),
-                    height: 200,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+            Container(
+              margin: const EdgeInsets.all(15),
+              height: 200,
+              color: Colors.white,
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15),
-                    height: 200,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+            Container(
+              margin: const EdgeInsets.all(15),
+              height: 200,
+              color: Colors.white,
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.all(15),
-                    height: 200,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+            Container(
+              margin: const EdgeInsets.all(15),
+              height: 200,
+              color: Colors.white,
             ),
-          ])),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

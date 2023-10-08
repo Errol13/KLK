@@ -161,10 +161,10 @@ class _LoginPageState extends State<LoginPage> {
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => HomePage()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
               },
             ),
             SizedBox(height: 15),

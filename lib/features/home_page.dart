@@ -44,14 +44,21 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: ImageIcon(
-                    AssetImage("assets/user.png"),
-                    color: null,
+                InkWell(
+                  customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  onPressed: () {},
-                  iconSize: 40,
+                  onTap: () {},
+                  splashColor: Colors.white10,
+                  child: Ink.image(
+                      fit: BoxFit.cover,
+                      width: 45,
+                      height: 45,
+                      image: AssetImage('user.png')),
                 ),
+                SizedBox(
+                  width: 15,
+                )
               ],
             ),
             Container(

@@ -17,11 +17,11 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+        padding: const EdgeInsets.all(16.0), //padding is 16
+        child: Column( //create elements vertically
+          mainAxisAlignment: MainAxisAlignment.center, //children will be aligned center in y-axis
+          crossAxisAlignment: CrossAxisAlignment.center, //children will be aligned center in x-axis
+          children: [ 
             const Align(
               alignment: Alignment.topCenter,
               child: Column(
@@ -45,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 20), //used as margin-like between widgets with the height 20
             SizedBox(
               height: 200,
               width: 100,
@@ -57,7 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 100),
-            Container(
+            Container( //group things and make style properties
               height: 50,
               width: 400,
               child: TextField(

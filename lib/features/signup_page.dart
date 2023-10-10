@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/features/home_page.dart';
+import 'package:klinikonek_project/features/home_page.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  const SignUpPage({super.key}); // Create a StatefulWidget for the Sign-Up page.
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscureText = true; // for the password's eye icon function
+  bool _obscureText = true; // Initialize a boolean variable for password visibility toggle.
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( // Create a Scaffold for the page structure.
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0), // Add padding to the content.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,42 +27,42 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 children: [
                   Text(
-                    'Kumusta ka?',
+                    'Kumusta ka?', // Display a welcoming message.
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF276A7B),
+                      color: Color(0xFF276A7B), // Define text styles.
                     ),
                   ),
                   Text(
-                    'Sign Up',
+                    'Sign Up', // Display a sign-up heading.
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF276A7B),
+                      color: Color(0xFF276A7B), // Define text styles.
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 20), // Add spacing.
             SizedBox(
               height: 200,
               width: 100,
               child: Center(
                 child: Image.asset(
-                  'assets/Logo.png',
+                  'assets/Logo.png', // Display an image (logo).
                   // fit: BoxFit.cover,
                 ),
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 100), // Add spacing.
             Container(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Full Name',
+                  labelText: 'Full Name', // Create a text input field for the user's full name.
                   labelStyle: TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
@@ -89,13 +89,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10), // Add spacing.
             Container(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText: 'Email', // Create a text input field for the user's email.
                   labelStyle: TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
@@ -117,19 +117,19 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.emailAddress, // Set keyboard type for email.
                 style: TextStyle(
                   color: const Color(0xFF276A7B),
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10), // Add spacing.
             Container(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  labelText: 'Password', // Create a text input field for the user's password.
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: TextStyle(
@@ -158,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _obscureText = !_obscureText;
+                        _obscureText = !_obscureText; // Implement password visibility toggle.
                       });
                     },
                   ),
@@ -166,29 +166,29 @@ class _SignUpPageState extends State<SignUpPage> {
                 style: TextStyle(
                   color: const Color(0xFF276A7B),
                 ),
-                obscureText: _obscureText,
+                obscureText: _obscureText, // Hide the password text.
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 40), // Add spacing.
             RegButton(
               width: 400,
               height: 40,
-              text: 'Sign Up',
+              text: 'Sign Up', // Display a Sign-Up button.
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
               onPressed: () {
                  Navigator.push(
                  context,
-                 MaterialPageRoute(builder: (context) => HomePage()),
+                 MaterialPageRoute(builder: (context) => HomePage()), // Navigate to the Home page.
                  );
               },
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 15), // Add spacing.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already have an account?",
+                  "Already have an account?", // Display a message.
                   style: TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
@@ -199,11 +199,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   onTap: () {
                      Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(builder: (context) => const LoginPage()), // Navigate to the Login page.
                     );
                   },
                   child: Text(
-                    'Log In',
+                    'Log In', // Display a Log In button.
                     style: TextStyle(
                       color: Color(0xFF276A7B),
                       fontSize: 16,

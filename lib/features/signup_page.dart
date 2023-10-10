@@ -24,7 +24,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold( // Create a Scaffold for the page structure.
       body: Padding(
-        padding: const EdgeInsets.all(16.0), //padding is 16 // Add padding to the content.
+        padding: const EdgeInsets.all(16.0), // Add padding to the content.
         child: Column( //create elements vertically
           mainAxisAlignment: MainAxisAlignment.center, //children will be aligned center in y-axis
           crossAxisAlignment: CrossAxisAlignment.center, //children will be aligned center in x-axis
@@ -59,7 +59,6 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Center(
                 child: Image.asset(
                   'assets/Logo.png', // Display an image (logo).
-                  // fit: BoxFit.cover,
                 ),
               ),
             ),

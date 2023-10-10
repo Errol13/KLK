@@ -1,3 +1,10 @@
+/* Authored by: Phoebe Marion B. Castro
+Company: Lockey Inc.
+Project: KLINIKONEK
+Feature: [KLK-002] Registration Page(Sign Up)
+Description: This is the page where the users will need to register or sign up.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:klinikonek_project/features/home_page.dart'; // Import necessary packages.
 import 'splash_page.dart';
@@ -11,7 +18,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscureText = true; // Initialize a boolean variable for password visibility toggle.
+  bool _obscureText = false; // Initialize a boolean variable for password visibility toggle.
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
                       color: const Color(0xFF276A7B),
                     ),
                     onPressed: () {

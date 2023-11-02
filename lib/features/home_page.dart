@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              height: 230,
+              height: 250,
               margin: const EdgeInsets.all(15),
               child: Container(
                 child: Column(
@@ -170,7 +170,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              height: 175,
+              height: 190,
               margin: const EdgeInsets.all(15),
               child: Container(
                 child: Column(
@@ -271,7 +271,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              height: 175,
+              height: 190,
               margin: const EdgeInsets.all(15),
               child: Container(
                 child: Column(
@@ -372,7 +372,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              height: 200,
+              height: 220,
               margin: const EdgeInsets.all(15),
               child: Container(
                 child: Column(
@@ -473,7 +473,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              height: 175,
+              height: 190,
               margin: const EdgeInsets.all(15),
               child: Container(
                 child: Column(

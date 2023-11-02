@@ -11,24 +11,30 @@ import 'splash_page.dart';
 import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key}); // Create a StatefulWidget for the Sign-Up page.
+  const SignUpPage(
+      {super.key}); // Create a StatefulWidget for the Sign-Up page.
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscureText = true; // Initialize a boolean variable for password visibility toggle.
+  bool _obscureText =
+      true; // Initialize a boolean variable for password visibility toggle.
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Create a Scaffold for the page structure.
+    return Scaffold(
+      // Create a Scaffold for the page structure.
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Add padding to the content.
-        child: Column( //create elements vertically
-          mainAxisAlignment: MainAxisAlignment.center, //children will be aligned center in y-axis
-          crossAxisAlignment: CrossAxisAlignment.center, //children will be aligned center in x-axis
-          children: [ 
+        child: Column(
+          //create elements vertically
+          mainAxisAlignment: MainAxisAlignment
+              .center, //children will be aligned center in y-axis
+          crossAxisAlignment: CrossAxisAlignment
+              .center, //children will be aligned center in x-axis
+          children: [
             const Align(
               alignment: Alignment.topCenter,
               child: Column(
@@ -52,7 +58,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 20), //used as margin-like between widgets with the height 20 // Add spacing.
+            const SizedBox(
+                height:
+                    20), //used as margin-like between widgets with the height 20 // Add spacing.
             SizedBox(
               height: 200,
               width: 100,
@@ -63,45 +71,120 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 100),
+
+            //sign up fields
             SizedBox(
               height: 50,
               width: 400,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Full Name', // Create a text input field for the user's full name.
-                  labelStyle: const TextStyle(
-                    color: Color(0xff276A7B),
-                    fontSize: 16,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      color: Color(0xff659d66),
-                      width: 1.0,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Last Name',
+                        labelStyle: const TextStyle(
+                          color: Color(0xff276A7B),
+                          fontSize: 16,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xff659d66),
+                            width: 1.0,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFA7C7E7),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: Color(0xFF276A7B),
+                      ),
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFA7C7E7),
-                      width: 1.0,
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'First Name',
+                        labelStyle: const TextStyle(
+                          color: Color(0xff276A7B),
+                          fontSize: 16,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xff659d66),
+                            width: 1.0,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFA7C7E7),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: Color(0xFF276A7B),
+                      ),
                     ),
                   ),
-                ),
-                style: const TextStyle(
-                  color: Color(0xFF276A7B),
-                ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'M.I.',
+                        labelStyle: const TextStyle(
+                          color: Color(0xff276A7B),
+                          fontSize: 16,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xff659d66),
+                            width: 1.0,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFA7C7E7),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: Color(0xFF276A7B),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+            
+            //Birthdate
+
+            //Email Field
             const SizedBox(height: 10), // Add spacing.
             SizedBox(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email', // Create a text input field for the user's email.
+                  labelText:
+                      'Email', // Create a text input field for the user's email.
                   labelStyle: const TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
@@ -123,19 +206,22 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress, // Set keyboard type for email.
+                keyboardType:
+                    TextInputType.emailAddress, // Set keyboard type for email.
                 style: const TextStyle(
                   color: Color(0xFF276A7B),
                 ),
               ),
             ),
+
             const SizedBox(height: 10), // Add spacing.
             SizedBox(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Password', // Create a text input field for the user's password.
+                  labelText:
+                      'Password', // Create a text input field for the user's password.
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: const TextStyle(
@@ -164,7 +250,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _obscureText = !_obscureText; // Implement password visibility toggle.
+                        _obscureText =
+                            !_obscureText; // Implement password visibility toggle.
                       });
                     },
                   ),
@@ -175,6 +262,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 obscureText: _obscureText, // Hide the password text.
               ),
             ),
+
+            //Confirm Password
+
+            
             const SizedBox(height: 40), // Add spacing.
             RegButton(
               width: 400,
@@ -183,10 +274,12 @@ class _SignUpPageState extends State<SignUpPage> {
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
               onPressed: () {
-                 Navigator.push(
-                 context,
-                 MaterialPageRoute(builder: (context) => const FirstPage()), // Navigate to the Home page.
-                 );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const FirstPage()), // Navigate to the Home page.
+                );
               },
             ),
             const SizedBox(height: 15), // Add spacing.
@@ -203,9 +296,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(width: 5),
                 GestureDetector(
                   onTap: () {
-                     Navigator.push(
+                    Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()), // Navigate to the Login page.
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const LoginPage()), // Navigate to the Login page.
                     );
                   },
                   child: const Text(

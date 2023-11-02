@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import 'call_page.dart';
 import 'services_page.dart';
+import 'profile_page.dart';
+
 
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -21,8 +24,8 @@ class _FirstPageState extends State<FirstPage> {
   final List<Widget> _pages = [
     HomePage(),
     ServicePage(),
-    HomePage(),
-    ServicePage(),
+    CallPage(),
+    ProfilePage(),
   ];
 
   @override

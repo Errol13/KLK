@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottomnavbar.dart';
+import 'first_page.dart';
 
 class ServicePage extends StatefulWidget {
   const ServicePage({super.key});
@@ -178,7 +178,6 @@ class _ServicePageState extends State<ServicePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

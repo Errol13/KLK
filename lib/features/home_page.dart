@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
-import 'bottomnavbar.dart';
+import 'first_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -673,7 +673,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

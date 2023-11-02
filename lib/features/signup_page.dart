@@ -6,7 +6,7 @@ Description: This is the page where the users will need to register or sign up.
  */
 
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/features/home_page.dart'; // Import necessary packages.
+import 'first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
 
@@ -185,7 +185,7 @@ class _SignUpPageState extends State<SignUpPage> {
               onPressed: () {
                  Navigator.push(
                  context,
-                 MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to the Home page.
+                 MaterialPageRoute(builder: (context) => const FirstPage()), // Navigate to the Home page.
                  );
               },
             ),

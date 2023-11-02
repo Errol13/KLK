@@ -8,7 +8,7 @@ Description: This is the page where users will log in to their account.
 import 'package:flutter/material.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'signup_page.dart';
-import 'home_page.dart';
+import 'first_page.dart';
 
 class LoginPage extends StatefulWidget {
   // Create a StatefulWidget for the Sign-Up page.
@@ -175,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => const FirstPage()),
                 );
               },
             ),

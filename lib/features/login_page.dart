@@ -1,11 +1,17 @@
-//import 'dart:html';
+/* Authored by: Xavier D. Santiago
+Company: Lockey
+Project: Klinikonek
+Feature: [KLKE-003] Feature title
+Description: This is the page where users will log in to their account.
+ */
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'signup_page.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
+  // Create a StatefulWidget for the Sign-Up page.
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -13,13 +19,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true; // for the password's eye icon function
+  bool _obscureText =
+      true; // Initialize a boolean variable for password visibility toggle.
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Create a Scaffold for the page structure.
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0), // Add padding to the content.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Text(
-                    'Welcome Back',
+                    'Welcome Back', // Display a welcoming message.
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -66,7 +74,8 @@ class _LoginPageState extends State<LoginPage> {
               height: 42,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText:
+                      'Email', // Create a text input field for the user's email.
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: const TextStyle(
@@ -90,7 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType:
+                    TextInputType.emailAddress, // Set keyboard type for email.
                 style: const TextStyle(
                   color: Color(0xFF276A7B),
                 ),
@@ -102,7 +112,8 @@ class _LoginPageState extends State<LoginPage> {
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  labelText:
+                      'Password', // Create a text input field for the user's password.
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: const TextStyle(
@@ -131,7 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _obscureText = !_obscureText;
+                        _obscureText =
+                            !_obscureText; // Implement password visibility toggle.
                       });
                     },
                   ),
@@ -139,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: const TextStyle(
                   color: Color(0xFF276A7B),
                 ),
-                obscureText: _obscureText,
+                obscureText: _obscureText, // Hide the password text.
               ),
             ),
             const SizedBox(height: 10),

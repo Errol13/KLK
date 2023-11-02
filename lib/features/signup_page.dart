@@ -18,7 +18,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscureText = false; // Initialize a boolean variable for password visibility toggle.
+  bool _obscureText = true; // Initialize a boolean variable for password visibility toggle.
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +63,13 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 100),
-            Container(
+            SizedBox(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Full Name', // Create a text input field for the user's full name.
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
                   ),
@@ -84,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
@@ -96,13 +96,13 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 10), // Add spacing.
-            Container(
+            SizedBox(
               height: 50,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Email', // Create a text input field for the user's email.
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
                   ),
@@ -117,20 +117,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress, // Set keyboard type for email.
-                style: TextStyle(
-                  color: const Color(0xFF276A7B),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
                 ),
               ),
             ),
             const SizedBox(height: 10), // Add spacing.
-            Container(
+            SizedBox(
               height: 50,
               width: 400,
               child: TextField(
@@ -138,21 +138,21 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Password', // Create a text input field for the user's password.
                   filled: true,
                   fillColor: Colors.white,
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.blue,
                       width: 2.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFFA7C7E7),
                       width: 1.0,
                     ),
@@ -169,8 +169,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                   ),
                 ),
-                style: TextStyle(
-                  color: const Color(0xFF276A7B),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
                 ),
                 obscureText: _obscureText, // Hide the password text.
               ),
@@ -185,22 +185,22 @@ class _SignUpPageState extends State<SignUpPage> {
               onPressed: () {
                  Navigator.push(
                  context,
-                 MaterialPageRoute(builder: (context) => HomePage()), // Navigate to the Home page.
+                 MaterialPageRoute(builder: (context) => const HomePage()), // Navigate to the Home page.
                  );
               },
             ),
-            SizedBox(height: 15), // Add spacing.
+            const SizedBox(height: 15), // Add spacing.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Already have an account?", // Display a message.
                   style: TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 GestureDetector(
                   onTap: () {
                      Navigator.push(
@@ -208,7 +208,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       MaterialPageRoute(builder: (context) => const LoginPage()), // Navigate to the Login page.
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'Log In', // Display a Log In button.
                     style: TextStyle(
                       color: Color(0xFF276A7B),

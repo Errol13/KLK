@@ -57,6 +57,9 @@ flutter:
     - assets/Logo.png
     - assets/wave.png
     - assets/user.png
+    - assets/calendar.png
+    - assets/pill.png
+    - assets/ambulance.png
     
   fonts:
     - family: Raleway

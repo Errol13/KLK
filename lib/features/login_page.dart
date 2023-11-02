@@ -19,12 +19,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Align(
+            const Align(
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               height: 250,
               width: 100,
@@ -60,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               width: 400,
               height: 42,
               child: TextField(
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Email',
                   filled: true,
                   fillColor: Colors.white,
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -77,27 +77,27 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.blue, // Change the border color here
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFFEDECF4), // Change the border color here
                       width: 1.0, // Adjust the border width as needed
                     ),
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                style: TextStyle(
-                  color: const Color(0xFF276A7B),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Container(
+            const SizedBox(height: 10),
+            SizedBox(
               height: 50,
               width: 400,
               child: TextField(
@@ -105,21 +105,21 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Password',
                   filled: true,
                   fillColor: Colors.white,
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.blue,
                       width: 2.0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFFEDECF4),
                       width: 1.0,
                     ),
@@ -136,14 +136,14 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xFF276A7B),
                 ),
                 obscureText: _obscureText,
               ),
             ),
-            SizedBox(height: 10),
-            Align(
+            const SizedBox(height: 10),
+            const Align(
               alignment: Alignment.centerRight,
               child: Text(
                 'Forgot Password?',
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             RegButton(
               width: 400,
               height: 40,
@@ -163,30 +163,30 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Don't have an account?",
                   style: TextStyle(
                     color: Color(0xFFA7C7E7),
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                      MaterialPageRoute(builder: (context) => const SignUpPage()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'Sign Up',
                     style: TextStyle(
                       color: Color(0xFF276A7B),

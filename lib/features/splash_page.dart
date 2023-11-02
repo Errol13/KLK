@@ -44,7 +44,7 @@ class SplashPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 200),
+            const SizedBox(height: 200),
             SizedBox(
               height: 100,
               width: 100,
@@ -54,7 +54,7 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             RegButton( //call the class RegButton 
               width: 400,
               height: 40,
@@ -64,11 +64,11 @@ class SplashPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push( //move to the next page or different screen
                   context,
-                  MaterialPageRoute(builder: (context) => SignUpPage()), //the route it should follow when clicked
+                  MaterialPageRoute(builder: (context) => const SignUpPage()), //the route it should follow when clicked
                 );
               },
             ),
-            SizedBox(height: 20),//used as margin-like between widgets with the height 20
+            const SizedBox(height: 20),//used as margin-like between widgets with the height 20
             RegButton( //call the class RegButton 
               width: 400,
               height: 40,

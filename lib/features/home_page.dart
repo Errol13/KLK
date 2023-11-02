@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
+import 'bottomnavbar.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(230, 231, 232, 1),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Klinikonek",
           style: TextStyle(
             fontSize: 24,
@@ -34,7 +37,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Text(
                     "Hi Julia!",
                     style: TextStyle(
@@ -54,9 +57,9 @@ class HomePage extends StatelessWidget {
                       fit: BoxFit.cover,
                       width: 45,
                       height: 45,
-                      image: AssetImage('user.png')),
+                      image: const AssetImage('user.png')),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 15,
                 )
               ],
@@ -71,7 +74,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -80,7 +83,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -90,10 +93,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Hana Jane",
                             style: TextStyle(
@@ -105,10 +108,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -129,7 +132,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -142,18 +145,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -172,7 +175,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -181,7 +184,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -191,10 +194,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Phoebe Castro",
                             style: TextStyle(
@@ -206,10 +209,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -230,7 +233,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -243,18 +246,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -273,7 +276,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -282,7 +285,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -292,10 +295,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Errol Celis",
                             style: TextStyle(
@@ -307,10 +310,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -331,7 +334,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -344,18 +347,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -374,7 +377,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -383,7 +386,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -393,10 +396,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Xavier Santiago",
                             style: TextStyle(
@@ -408,10 +411,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -432,7 +435,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -445,18 +448,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -475,7 +478,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -484,7 +487,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -494,10 +497,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Miguel Toledana",
                             style: TextStyle(
@@ -509,10 +512,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -533,7 +536,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -546,18 +549,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -576,7 +579,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -585,7 +588,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                           height: 10,
                         ),
@@ -595,10 +598,10 @@ class HomePage extends StatelessWidget {
                           height: 50,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text(
                             "Hana Jane",
                             style: TextStyle(
@@ -610,10 +613,10 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: <Widget>[
                         SizedBox(
                           width: 30,
@@ -634,7 +637,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -647,18 +650,18 @@ class HomePage extends StatelessWidget {
                             margin: const EdgeInsets.all(15),
                           ),
                         ),
-                        LikeButton(
+                        const LikeButton(
                           size: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         IconButton(
-                          icon: Icon(Icons.add_comment_rounded),
+                          icon: const Icon(Icons.add_comment_rounded),
                           onPressed: () {},
                           iconSize: 35,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                       ],
@@ -670,40 +673,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.medical_services,
-              color: Color.fromRGBO(167, 199, 231, 1),
-            ),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.call,
-              color: Color.fromRGBO(167, 199, 231, 1),
-            ),
-            label: 'Call',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: Color.fromRGBO(167, 199, 231, 1),
-            ),
-            label: 'Account',
-          ),
-        ],
-        selectedItemColor: const Color.fromRGBO(39, 106, 123, 1),
-        selectedFontSize: 15,
-        onTap: (int i) => debugPrint("Button $i Tapped"),
-      ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

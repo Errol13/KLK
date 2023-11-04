@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         automaticallyImplyLeading: false,
-      ),
+      ),   
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

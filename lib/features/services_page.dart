@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'first_page.dart';
+import 'medicines(services)_page.dart';
 
 class ServicePage extends StatefulWidget {
   const ServicePage({super.key});
@@ -93,39 +94,58 @@ class _ServicePageState extends State<ServicePage> {
               ),
             ),
 
-            SizedBox(height: 30),
+           GestureDetector(
+  onTap: () {
+    // Add the code to navigate to the medicine page here.
+    // For example, you can use Navigator to push the medicine page:
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => MedicinePage(), // Replace with the actual MedicinePage.
+    ));
+  },
+  child: SizedBox(
+    height: 30,
+  ),
+),
 
-            // Medicine
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Medicines",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF276A7B),
-                      ),
-                    ),
-                    SizedBox(width: 60),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('pill.png'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+Expanded(
+  child: GestureDetector(
+    onTap: () {
+      // Add the code to navigate to the medicine page here.
+      // For example, you can use Navigator to push the medicine page:
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => MedicinePage(), // Replace with the actual MedicinePage.
+      ));
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "Medicines",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF276A7B),
             ),
+          ),
+          SizedBox(width: 60),
+          SizedBox(
+            width: 100,
+            height: 120,
+            child: Center(
+              child: Image.asset('pill.png'),
+            ),
+          ),
+        ],
+      ),
+    ),
+  ),
+),
 
             SizedBox(height: 30),
 

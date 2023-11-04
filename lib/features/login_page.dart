@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20),
             SizedBox(
               width: 400,
-              height: 42,
+              height: 50,
               child: TextField(
                 decoration: InputDecoration(
                   labelText:
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: const TextStyle(
-                    color: Color(0xFFA7C7E7),
+                    color: Color(0xff276A7B),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Raleway',
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
                     borderSide: const BorderSide(
-                      color: Colors.blue, // Change the border color here
+                      color:Color(0xff659d66), // Change the border color here
                       width: 2.0, // Adjust the border width as needed
                     ),
                   ),
@@ -117,14 +117,14 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true,
                   fillColor: Colors.white,
                   labelStyle: const TextStyle(
-                    color: Color(0xFFA7C7E7),
+                    color: Color(0xff276A7B),
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Color(0xff659d66),
                       width: 2.0,
                     ),
                   ),

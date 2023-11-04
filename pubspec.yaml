@@ -62,6 +62,15 @@ flutter:
     - assets/pill.png
     - assets/ambulance.png
     - assets/call.png
+    - assets/biogesic.png
+    - assets/bioflu.jpg
+    - assets/dedcolgen.jpg
+    - assets/neozep.jpg
+    - assets/tuseran.jpg
+    - assets/dolfenal.jpg
+    - assets/tempra.png
+    - assets/medicol.jpg
+    - assets/diatabs.jpg
     
   fonts:
     - family: Raleway

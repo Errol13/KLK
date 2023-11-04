@@ -232,7 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
+                      color: Color(0xff659d66),
                       width: 2.0,
                     ),
                   ),
@@ -264,6 +264,54 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
 
             //Confirm Password
+const SizedBox(height: 10), // Add spacing.
+            SizedBox(
+              height: 50,
+              width: 400,
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText:
+                      'Confirm Password', // Create a text input field for the user's password.
+                  filled: true,
+                  fillColor: Colors.white,
+                  labelStyle: const TextStyle(
+                    color: Color(0xff276A7B),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color(0xff659d66),
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: Color(0xFFA7C7E7),
+                      width: 1.0,
+                    ),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                      color: const Color(0xFF276A7B),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText =
+                            !_obscureText; // Implement password visibility toggle.
+                      });
+                    },
+                  ),
+                ),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
+                ),
+                obscureText: _obscureText, // Hide the password text.
+              ),
+            ),
 
             
             const SizedBox(height: 40), // Add spacing.
@@ -278,7 +326,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const FirstPage()), // Navigate to the Home page.
+                          const LoginPage()), // Navigate to the Home page.
                 );
               },
             ),

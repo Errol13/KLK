@@ -1,0 +1,188 @@
+import 'package:flutter/material.dart';
+import 'first_page.dart';
+
+class VehiclePage extends StatefulWidget {
+  const VehiclePage(
+      {super.key}); // Create a StatefulWidget for the Sign-Up page.
+
+  @override
+  _VehiclePageState createState() => _VehiclePageState();
+}
+
+class Vehicle {
+  final String name;
+  final int quantity;
+  final String imageUrl;
+
+  Vehicle(this.name, this.quantity, this.imageUrl);
+}
+
+List<Vehicle> vehicles = [
+  Vehicle("Ambulance", 8, 'ambulance_services.png'),
+  Vehicle("Fire Truck", 7, 'fire_truck.png'),
+  Vehicle("Police Mobile", 14, 'police_car.png'),
+];
+
+class _VehiclePageState extends State<VehiclePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset('assets/Logo.png', height: 30, width: 30),
+            SizedBox(width: 10),
+            const Text(
+              "Klinikonek",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF276A7B),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment:
+              CrossAxisAlignment.stretch, // Make children fill the width
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFC6DBDC),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Available Vehicles",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF276A7B),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    SizedBox(
+                      width: 100,
+                      height: 120,
+                      child: Center(
+                        child: Image.asset('ambulance.png'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFC6DBDC),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "graph WIP",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF276A7B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Scrollbar(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // Display two boxes per row
+                    ),
+                    itemCount: vehicles.length,
+                    itemBuilder: (context, index) {
+                      Vehicle vehicle = vehicles[index];
+                      bool isAvailable = vehicle.quantity >
+                          0; // Check if medicine is available
+
+                      return Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: Text(vehicle.name),
+                            ),
+                            Image.asset(vehicle.imageUrl,
+                                width: 60, height: 60),
+                            SizedBox(height: 20),
+                            if (isAvailable)
+                              Column(
+                                children: [
+                                  Text("Available:"),
+                                  Text(
+                                    "${vehicle.quantity}",
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                ],
+                              )
+                            else
+                              Text(
+                                "Not Available",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

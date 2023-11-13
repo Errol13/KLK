@@ -8,18 +8,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(230, 231, 232, 1),
       appBar: AppBar(
-        title: const Text(
-          "Klinikonek",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF276A7B),
-          ),
+        title: Row(
+          children: [
+            Image.asset('assets/Logo.png', height: 30, width: 30),
+            SizedBox(width: 10),
+            const Text(
+              "Klinikonek",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF276A7B),
+              ),
+            ),
+          ],
         ),
         automaticallyImplyLeading: false,
-      ),   
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

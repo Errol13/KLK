@@ -6,6 +6,7 @@ Description: This is the page where the users will need to register or sign up.
  */
 
 import 'package:flutter/material.dart';
+
 import 'first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
@@ -21,6 +22,27 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText =
       true; // Initialize a boolean variable for password visibility toggle.
+
+  TextEditingController _birthdateController = TextEditingController();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null) {
+      _handleDateSelection(picked);
+    }
+  }
+
+  void _handleDateSelection(DateTime pickedDate) {
+    setState(() {
+      _birthdateController.text =
+          pickedDate.toString(); // You can format the date as needed
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +61,9 @@ class _SignUpPageState extends State<SignUpPage> {
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
+                  const SizedBox(
+                height:
+                   50),
                   Text(
                     'Kumusta ka?', // Display a welcoming message.
                     style: TextStyle(
@@ -60,9 +85,9 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(
                 height:
-                    20), //used as margin-like between widgets with the height 20 // Add spacing.
+                   50), //used as margin-like between widgets with the height 20 // Add spacing.
             SizedBox(
-              height: 200,
+              height: 100,
               width: 100,
               child: Center(
                 child: Image.asset(
@@ -70,11 +95,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 150),
 
             //sign up fields
             SizedBox(
-              height: 50,
+              height: 40,
               width: 400,
               child: Row(
                 children: [
@@ -89,16 +114,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         filled: true,
                         fillColor: Colors.white,
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12),
                           borderSide: const BorderSide(
                             color: Color(0xff659d66),
-                            width: 1.0,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFA7C7E7),
                             width: 1.0,
                           ),
                         ),
@@ -120,19 +138,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         filled: true,
                         fillColor: Colors.white,
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12),
                           borderSide: const BorderSide(
                             color: Color(0xff659d66),
                             width: 1.0,
                           ),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFA7C7E7),
-                            width: 1.0,
-                          ),
-                        ),
+                      
                       ),
                       style: const TextStyle(
                         color: Color(0xFF276A7B),
@@ -151,19 +163,13 @@ class _SignUpPageState extends State<SignUpPage> {
                         filled: true,
                         fillColor: Colors.white,
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12),
                           borderSide: const BorderSide(
                             color: Color(0xff659d66),
                             width: 1.0,
                           ),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFA7C7E7),
-                            width: 1.0,
-                          ),
-                        ),
+                       
                       ),
                       style: const TextStyle(
                         color: Color(0xFF276A7B),
@@ -173,13 +179,57 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-            
+
             //Birthdate
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 40,
+              width: 400,
+              child: Row(
+                children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  _selectDate(context); // Display the date picker on tap
+                },
+                child: AbsorbPointer(
+                  child: TextField(
+                    controller: _birthdateController,
+                    decoration: InputDecoration(
+                      labelText: 'Birth Date',
+                      labelStyle: const TextStyle(
+                        color: Color(0xff276A7B),
+                        fontSize: 16,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: Color(0xff659d66),
+                          width: 1.0,
+                        ),
+                      ),
+                     
+                    ),
+                    style: const TextStyle(
+                      color: Color(0xFF276A7B),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+                ],
+              ),
+            ),
+              
 
             //Email Field
-            const SizedBox(height: 10), // Add spacing.
+            SizedBox(height: 10), // Add spacing.
             SizedBox(
-              height: 50,
+              height: 40,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
@@ -198,13 +248,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: 1.0,
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFA7C7E7),
-                      width: 1.0,
-                    ),
-                  ),
+                  
                 ),
                 keyboardType:
                     TextInputType.emailAddress, // Set keyboard type for email.
@@ -213,10 +257,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-
+            
             const SizedBox(height: 10), // Add spacing.
             SizedBox(
-              height: 50,
+              height: 40,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
@@ -230,19 +274,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     fontWeight: FontWeight.w500,
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
                       color: Color(0xff659d66),
                       width: 2.0,
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFA7C7E7),
-                      width: 1.0,
-                    ),
-                  ),
+                  
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -264,9 +302,9 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
 
             //Confirm Password
-const SizedBox(height: 10), // Add spacing.
+            const SizedBox(height: 10), // Add spacing.
             SizedBox(
-              height: 50,
+              height: 40,
               width: 400,
               child: TextField(
                 decoration: InputDecoration(
@@ -280,19 +318,13 @@ const SizedBox(height: 10), // Add spacing.
                     fontWeight: FontWeight.w500,
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
                       color: Color(0xff659d66),
                       width: 2.0,
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFA7C7E7),
-                      width: 1.0,
-                    ),
-                  ),
+                  
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -313,12 +345,11 @@ const SizedBox(height: 10), // Add spacing.
               ),
             ),
 
-            
             const SizedBox(height: 40), // Add spacing.
             RegButton(
               width: 400,
               height: 40,
-              text: 'Sign Up', // Display a Sign-Up button.
+              text: 'Create account', // Display a Sign-Up button.
               textColor: Colors.white,
               bgColor: const Color(0xFF276A7B),
               onPressed: () {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/features/login_page.dart';
 import 'first_page.dart';
+import 'notif_page.dart';
+import 'login_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -161,16 +164,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 35,
-                    height: 35,
-                    child: Center(
-                      child: Icon(
-                        Icons.navigate_next,
-                        color: const Color.fromRGBO(167, 199, 231, 1),
+                  GestureDetector(
+                    onTap: () {
+                      // Add your button's click logic here
+                      // For example, you can navigate to another screen or perform an action
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            NotificationPage(), // Replace with the actual MedicinePage.
+                      ));
+                    },
+                    child: SizedBox(
+                      width: 35,
+                      height: 35,
+                      child: Center(
+                        child: Icon(
+                          Icons.navigate_next,
+                          color: Color.fromRGBO(167, 199, 231, 1),
+                        ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -213,23 +226,35 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
             ),
-            SizedBox(height: 50),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Logout",
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromRGBO(123, 39, 39, 1),
-                    ),
-                  )
-                ],
+            GestureDetector(
+              onTap: () {
+                // Add your navigation logic here
+                // For instance, navigate back to the login page
+                 Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            LoginPage(), // Replace with the actual MedicinePage.
+                      ));
+              },
+              child: SizedBox(
+                height: 100,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(123, 39, 39, 1),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),

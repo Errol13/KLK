@@ -48,6 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // Create a Scaffold for the page structure.
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Add padding to the content.
         child: Column(

@@ -108,7 +108,7 @@ class RegButton extends StatelessWidget {
     required this.bgColor,
     required this.onPressed,
     this.padding =
-        const EdgeInsets.all(12), // Default padding is 12 on all sides
+        const EdgeInsets.all(1), // Default padding is 1 on all sides
   }) : super(key: key);
 
   @override

@@ -87,7 +87,7 @@ class _ServicePageState extends State<ServicePage> {
                       width: 100,
                       height: 120,
                       child: Center(
-                        child: Image.asset('calendar.png'),
+                        child: Image.asset('assets/calendar.png'),
                       ),
                     ),
                   ],
@@ -141,7 +141,7 @@ class _ServicePageState extends State<ServicePage> {
                         width: 100,
                         height: 120,
                         child: Center(
-                          child: Image.asset('pill.png'),
+                          child: Image.asset('assets/pill.png'),
                         ),
                       ),
                     ],
@@ -200,7 +200,7 @@ class _ServicePageState extends State<ServicePage> {
                         width: 100,
                         height: 120,
                         child: Center(
-                          child: Image.asset('ambulance.png'),
+                          child: Image.asset('assets/ambulance.png'),
                         ),
                       ),
                     ],

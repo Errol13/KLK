@@ -18,9 +18,9 @@ class Vehicle {
 }
 
 List<Vehicle> vehicles = [
-  Vehicle("Ambulance", 8, 'ambulance_services.png'),
-  Vehicle("Fire Truck", 7, 'fire_truck.png'),
-  Vehicle("Police Mobile", 14, 'police_car.png'),
+  Vehicle("Ambulance", 8, 'assets/ambulance_services.png'),
+  Vehicle("Fire Truck", 7, 'assets/fire_truck.png'),
+  Vehicle("Police Mobile", 14, 'assets/police_car.png'),
 ];
 
 class _VehiclePageState extends State<VehiclePage> {
@@ -78,7 +78,7 @@ class _VehiclePageState extends State<VehiclePage> {
                       width: 100,
                       height: 120,
                       child: Center(
-                        child: Image.asset('ambulance.png'),
+                        child: Image.asset('assets/ambulance.png'),
                       ),
                     ),
                   ],

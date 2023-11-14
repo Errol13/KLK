@@ -18,15 +18,15 @@ class Medicine {
 }
 
 List<Medicine> medicines = [
-  Medicine("Paracetamol Biogesic", 10, 'biogesic.png'),
-  Medicine("Bioflu", 5, 'bioflu.jpg'),
-  Medicine("Decolgen Forte", 15, 'dedcolgen.jpg'),
-  Medicine("Neozep Forte", 10, 'neozep.jpg'),
-  Medicine("TEMPRA Paracetamol", 5, 'tempra.png'),
-  Medicine("Medicol Advance", 15, 'medicol.jpg'),
-  Medicine("Dolfenal", 10, 'dolfenal.jpg'),
-  Medicine("Diatabs", 0, 'diatabs.jpg'),
-  Medicine("Tuseran Forte", 15, 'tuseran.jpg'),
+  Medicine("Paracetamol Biogesic", 10, 'assets/biogesic.png'),
+  Medicine("Bioflu", 5, 'assets/bioflu.jpg'),
+  Medicine("Decolgen Forte", 15, 'assets/dedcolgen.jpg'),
+  Medicine("Neozep Forte", 10, 'assets/neozep.jpg'),
+  Medicine("TEMPRA Paracetamol", 5, 'assets/tempra.png'),
+  Medicine("Medicol Advance", 15, 'assets/medicol.jpg'),
+  Medicine("Dolfenal", 10, 'assets/dolfenal.jpg'),
+  Medicine("Diatabs", 0, 'assets/diatabs.jpg'),
+  Medicine("Tuseran Forte", 15, 'assets/tuseran.jpg'),
   // Add more medicines with different information
 ];
 
@@ -85,7 +85,7 @@ class _MedicinePageState extends State<MedicinePage> {
                       width: 100,
                       height: 120,
                       child: Center(
-                        child: Image.asset('pill.png'),
+                        child: Image.asset('assets/pill.png'),
                       ),
                     ),
                   ],

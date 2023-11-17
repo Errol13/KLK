@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Text(
-                    'Welcome Back', // Display a welcoming message.
+                    'Welcome Back!', // Display a welcoming message.
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,

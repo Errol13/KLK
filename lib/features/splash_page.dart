@@ -19,12 +19,13 @@ class SplashPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0), //padding is 16
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center, //children will be aligned center in y-axis
-          crossAxisAlignment: CrossAxisAlignment.center,  //children will be aligned center in x-axis
+          crossAxisAlignment: CrossAxisAlignment.stretch,  // elements will be stretched to occupy the remaining space in x-axis
           children: [
             const Align( //align the elements both in vertical and horizontal axes
               alignment: Alignment.topCenter, //align at the topcenter
               child: Column( //create elements vertically
                 children: [
+                  const SizedBox(height: 30),
                   Text(
                     'Mabuhay! Welcome to',
                     style: TextStyle(
@@ -44,43 +45,61 @@ class SplashPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 200),
-            SizedBox(
-              height: 100,
-              width: 100,
-              child: Center(
-                child: Image.asset(
-                  'assets/Logo.png', // the directory where the image is placed
+
+            //Place a space between
+            const SizedBox(height: 150),
+
+            //Logo in the Center
+            Expanded(
+              flex: 4,
+              child: SizedBox(
+                height: 200,
+                width: 200,
+                child: Center(
+                  child: Image.asset(
+                    'assets/Logo.png', // the directory where the image is placed
+                  ),
                 ),
               ),
             ),
+
+            //Place a space between
             const SizedBox(height: 100),
-            RegButton( //call the class RegButton 
-              width: 400,
-              height: 40,
-              text: 'Sign Up',
-              textColor: Colors.white,
-              bgColor: const Color(0xFF276A7B),
-              onPressed: () {
-                Navigator.push( //move to the next page or different screen
-                  context,
-                  MaterialPageRoute(builder: (context) => const SignUpPage()), //the route it should follow when clicked
-                );
-              },
+
+            //Sign Up Button
+            Expanded(
+              child: RegButton( //call the class RegButton 
+                width: 400,
+                height: 40,
+                text: 'Sign Up',
+                textColor: Colors.white,
+                bgColor: const Color(0xFF276A7B),
+                onPressed: () {
+                  Navigator.push( //move to the next page or different screen
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUpPage()), //the route it should follow when clicked
+                  );
+                },
+              ),
             ),
+
             const SizedBox(height: 20),//used as margin-like between widgets with the height 20
-            RegButton( //call the class RegButton 
-              width: 400,
-              height: 40,
-              text: 'Login',
-              textColor: const Color(0xFF276A7B),
-              bgColor: Colors.white,
-              onPressed: () {
-                Navigator.push(//move to the next page or different screen
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()), //the route it should follow when clicked
-                );
-              },
+
+            //Login Button
+            Expanded(
+              child: RegButton( //call the class RegButton 
+                width: 400,
+                height: 40,
+                text: 'Login',
+                textColor: const Color(0xFF276A7B),
+                bgColor: Colors.white,
+                onPressed: () {
+                  Navigator.push(//move to the next page or different screen
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()), //the route it should follow when clicked
+                  );
+                },
+              ),
             ),
           ],
         ),

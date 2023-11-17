@@ -211,7 +211,7 @@ class _ServicePageState extends State<ServicePage> {
 
             SizedBox(height: 30),
 
-            // Emergency Vehicles
+            // Medical Records
           ],
         ),
       ),

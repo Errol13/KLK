@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "572869714577",
+    "project_id": "klinikonek-bb5f7",
+    "storage_bucket": "klinikonek-bb5f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572869714577:android:001c3bf09919c4db959530",
+        "android_client_info": {
+          "package_name": "com.example.klinikonek_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6oEm_P2tODKREj4p6ypOWzDBW0ocl_FA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

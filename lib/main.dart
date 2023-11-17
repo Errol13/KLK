@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'features/splash_page.dart';
+//import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -37,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToNextScreen() {
     Future.delayed(
-      Duration(seconds: 2), // duration of the splash
+      Duration(seconds: 2),
       () {
         Navigator.pushReplacement(
           context,
@@ -63,15 +67,12 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                    'assets/Logo.png'),
+                Image.asset('assets/Logo.png'),
               ],
             ),
           ),
-
-          //precise positioning of the text "Klinikonek"
           Positioned(
-            bottom: 16, 
+            bottom: 16,
             left: 0,
             right: 0,
             child: Center(

@@ -171,10 +171,13 @@ class _CallPageState extends State<CallPage> {
                         child: Image.asset('assets/call.png'),
                       ),
                     ),
+
                   ],
                 ),
               ),
             ),
+
+            SizedBox(height: 30),
           ],
         ),
       ),

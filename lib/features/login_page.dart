@@ -70,89 +70,98 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: 400,
-              height: 50,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText:
-                      'Email', // Create a text input field for the user's email.
-                  filled: true,
-                  fillColor: Colors.white,
-                  labelStyle: const TextStyle(
-                    color: Color(0xff276A7B),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Raleway',
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color:Color(0xff659d66), // Change the border color here
-                      width: 2.0, // Adjust the border width as needed
+            Expanded(
+              child: SizedBox(
+                width: 400,
+                height: 50,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText:
+                        'Email', // Create a text input field for the user's email.
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelStyle: const TextStyle(
+                      color: Color(0xff276A7B),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Raleway',
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color:
+                            Color(0xff659d66), // Change the border color here
+                        width: 2.0, // Adjust the border width as needed
+                      ),
+                    ),
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFEDECF4), // Change the border color here
-                      width: 1.0, // Adjust the border width as needed
-                    ),
+                  keyboardType: TextInputType
+                      .emailAddress, // Set keyboard type for email.
+                  style: const TextStyle(
+                    color: Color(0xFF276A7B),
                   ),
-                ),
-                keyboardType:
-                    TextInputType.emailAddress, // Set keyboard type for email.
-                style: const TextStyle(
-                  color: Color(0xFF276A7B),
                 ),
               ),
             ),
             const SizedBox(height: 10),
-            SizedBox(
-              height: 50,
-              width: 400,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText:
-                      'Password', // Create a text input field for the user's password.
-                  filled: true,
-                  fillColor: Colors.white,
-                  labelStyle: const TextStyle(
-                    color: Color(0xff276A7B),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color(0xff659d66),
-                      width: 2.0,
+            Expanded(
+              child: SizedBox(
+                height: 50,
+                width: 400,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText:
+                        'Password', // Create a text input field for the user's password.
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelStyle: const TextStyle(
+                      color: Color(0xff276A7B),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color(0xff659d66),
+                        width: 2.0,
+                      ),
+                    ),
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                        color: const Color(0xFF276A7B),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText =
+                              !_obscureText; // Implement password visibility toggle.
+                        });
+                      },
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color(0xFFEDECF4),
-                      width: 1.0,
-                    ),
+                  style: const TextStyle(
+                    color: Color(0xFF276A7B),
                   ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: const Color(0xFF276A7B),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscureText =
-                            !_obscureText; // Implement password visibility toggle.
-                      });
-                    },
-                  ),
+                  obscureText: _obscureText, // Hide the password text.
                 ),
-                style: const TextStyle(
-                  color: Color(0xFF276A7B),
-                ),
-                obscureText: _obscureText, // Hide the password text.
               ),
             ),
             const SizedBox(height: 10),
@@ -167,18 +176,20 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 20),
-            RegButton(
-              width: 400,
-              height: 40,
-              text: 'Login',
-              textColor: Colors.white,
-              bgColor: const Color(0xFF276A7B),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const FirstPage()),
-                );
-              },
+            Expanded(
+              child: RegButton(
+                width: 400,
+                height: 40,
+                text: 'Login',
+                textColor: Colors.white,
+                bgColor: const Color(0xFF276A7B),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FirstPage()),
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 15),
             Row(
@@ -196,7 +207,8 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SignUpPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpPage()),
                     );
                   },
                   child: const Text(
@@ -210,6 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
+            Expanded(child: const SizedBox(height: 10)),
           ],
         ),
       ),

@@ -85,6 +85,9 @@ flutter:
     - assets/tempra.png
     - assets/medicol.jpg
     - assets/diatabs.jpg
+    - assets/ambulance_services.png
+    - assets/fire_truck.png
+    - assets/police_car.png
     
   fonts:
     - family: Raleway

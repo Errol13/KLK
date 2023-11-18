@@ -84,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(
                 height:
-                    50), //used as margin-like between widgets with the height 20 // Add spacing.
+                    30), //used as margin-like between widgets with the height 20 // Add spacing.
             SizedBox(
               height: 100,
               width: 100,
@@ -120,6 +120,16 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 1.0,
                             ),
                           ),
+
+                          //enabled border styling
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 156, 156,
+                                  158), // Change the border color here
+                              width: 1.0, // Adjust the border width as needed
+                            ),
+                          ),
                         ),
                         style: const TextStyle(
                           color: Color(0xFF276A7B),
@@ -142,6 +152,15 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderSide: const BorderSide(
                               color: Color(0xff659d66),
                               width: 1.0,
+                            ),
+                          ),
+                          //enabled border styling
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 156, 156,
+                                  158), // Change the border color here
+                              width: 1.0, // Adjust the border width as needed
                             ),
                           ),
                         ),
@@ -168,6 +187,15 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 1.0,
                             ),
                           ),
+                          //enabled border styling
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 156, 156,
+                                  158), // Change the border color here
+                              width: 1.0, // Adjust the border width as needed
+                            ),
+                          ),
                         ),
                         style: const TextStyle(
                           color: Color(0xFF276A7B),
@@ -192,7 +220,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          _selectDate(context); // Display the date picker on tap
+                          _selectDate(
+                              context); // Display the date picker on tap
                         },
                         child: AbsorbPointer(
                           child: TextField(
@@ -210,6 +239,16 @@ class _SignUpPageState extends State<SignUpPage> {
                                 borderSide: const BorderSide(
                                   color: Color(0xff659d66),
                                   width: 1.0,
+                                ),
+                              ),
+                              //enabled border styling
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 156, 156,
+                                      158), // Change the border color here
+                                  width:
+                                      1.0, // Adjust the border width as needed
                                 ),
                               ),
                             ),
@@ -248,9 +287,18 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 1.0,
                       ),
                     ),
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
+                    ),
                   ),
-                  keyboardType:
-                      TextInputType.emailAddress, // Set keyboard type for email.
+                  keyboardType: TextInputType
+                      .emailAddress, // Set keyboard type for email.
                   style: const TextStyle(
                     color: Color(0xFF276A7B),
                   ),
@@ -281,7 +329,16 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 2.0,
                       ),
                     ),
-            
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
+                    ),
+
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -327,7 +384,16 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 2.0,
                       ),
                     ),
-            
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
+                    ),
+
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,

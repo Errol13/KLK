@@ -31,14 +31,14 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.stretch, // Make children fill the width
-            children: [
-              Align(
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment:
+              CrossAxisAlignment.stretch, // Make children fill the width
+          children: [
+            Expanded(
+              child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Profile",
@@ -49,10 +49,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
+            ),
       
-              SizedBox(height: 30),
-              //edit profile pic (needs to be a button WIP)
-              CircleAvatar(
+            SizedBox(height: 30),
+            //edit profile pic (needs to be a button WIP)
+            Expanded(
+              child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 100,
                 child: CircleAvatar(
@@ -60,11 +62,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   backgroundImage: AssetImage('assets/user.png'),
                 ),
               ),
+            ),
       
-              SizedBox(
-                height: 20,
-              ),
-              Container(
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,28 +84,30 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+            ),
       
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "juliamario@mail.com",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                        color: Color(0xFF276A7B),
-                      ),
-                    )
-                  ],
-                ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "juliamario@mail.com",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Color(0xFF276A7B),
+                    ),
+                  )
+                ],
               ),
-              //account (needs to be a button WIP)
-              SizedBox(
-                height: 80,
-              ),
-              Container(
+            ),
+            //account (needs to be a button WIP)
+            SizedBox(
+              height: 80,
+            ),
+            Expanded(
+              child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -137,12 +143,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+            ),
       
-              //Notification (needs to be a button WIP)
-              SizedBox(
-                height: 30,
-              ),
-              Container(
+            //Notification (needs to be a button WIP)
+            SizedBox(
+              height: 30,
+            ),
+            Expanded(
+              child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -188,10 +196,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-              //Privacy  & Security (needs to be a button WIP)
-              SizedBox(height: 30),
+            ),
+            //Privacy  & Security (needs to be a button WIP)
+            SizedBox(height: 30),
       
-              Container(
+            Expanded(
+              child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -227,15 +237,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  // Add your navigation logic here
-                  // For instance, navigate back to the login page
-                   Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              LoginPage(), // Replace with the actual MedicinePage.
-                        ));
-                },
+            ),
+            GestureDetector(
+              onTap: () {
+                // Add your navigation logic here
+                // For instance, navigate back to the login page
+                 Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            LoginPage(), // Replace with the actual MedicinePage.
+                      ));
+              },
+              child: Expanded(
                 child: SizedBox(
                   height: 100,
                   child: Container(
@@ -255,9 +267,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

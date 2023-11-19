@@ -31,6 +31,9 @@ List<Medicine> medicines = [
 ];
 
 class _MedicinePageState extends State<MedicinePage> {
+  // This controller will store the value of the search bar
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +58,7 @@ class _MedicinePageState extends State<MedicinePage> {
           crossAxisAlignment:
               CrossAxisAlignment.stretch, // Make children fill the width
           children: [
+            //Available Medicine Banner
             Align(
               alignment: Alignment.topCenter,
               child: Container(
@@ -92,6 +96,50 @@ class _MedicinePageState extends State<MedicinePage> {
                 ),
               ),
             ),
+
+            SizedBox(height:5,),
+            
+            //searchbar
+            Container(
+              // Add padding around the search bar
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              // Use a Material design search bar
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  // Add a clear button to the search bar
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () => _searchController.clear(),
+                  ),
+                  // Add a search icon or button to the search bar
+                  prefixIcon: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      // Perform the search here
+                    },
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color(0xffA7C7E7),
+                        width: 2.0,
+                      ),
+                    ),
+                    //enabled border styling
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(
+                            255, 156, 156, 158), // Change the border color here
+                        width: 1.0, // Adjust the border width as needed
+                      ),
+                    ),
+                ),
+              ),
+            ),
+
             SizedBox(height: 20),
             Expanded(
               child: Container(

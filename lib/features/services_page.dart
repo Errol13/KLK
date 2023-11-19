@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'first_page.dart';
 import 'medicines(services)_page.dart';
 import 'vehicles(services)_page.dart';
+import 'checkup_page.dart';
 
 class ServicePage extends StatefulWidget {
   const ServicePage({super.key});
@@ -51,64 +51,62 @@ class _ServicePageState extends State<ServicePage> {
 
             // Appointment
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Check-up",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+              child: GestureDetector(
+                onTap: () {
+                  // Add the code to navigate to the medicine page here.
+                  // For example, you can use Navigator to push the medicine page:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CheckUpPage(), // Replace with the actual MedicinePage.
+                  ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Check-up",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF276A7B),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Schedule",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+                          Text(
+                            "Schedule",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF276A7B),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 60),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('assets/calendar.png'),
+                        ],
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 60),
+                      SizedBox(
+                        width: 100,
+                        height: 120,
+                        child: Center(
+                          child: Image.asset('assets/calendar.png'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
 
-            GestureDetector(
-              onTap: () {
-                // Add the code to navigate to the medicine page here.
-                // For example, you can use Navigator to push the medicine page:
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      MedicinePage(), // Replace with the actual MedicinePage.
-                ));
-              },
-              child: SizedBox(
-                height: 30,
-              ),
-            ),
-
+            SizedBox(height: 30),
+            
             Expanded(
               child: GestureDetector(
                 onTap: () {

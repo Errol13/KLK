@@ -50,10 +50,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-      
+
             SizedBox(height: 30),
             //edit profile pic (needs to be a button WIP)
-            Expanded(
+             Expanded(
+              flex:5,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 100,
@@ -63,29 +64,27 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-      
+            
             SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Julia Mario",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF276A7B),
-                      ),
-                    )
-                  ],
-                ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Julia Mario",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF276A7B),
+                    ),
+                  )
+                ],
               ),
             ),
-      
+
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             //account (needs to be a button WIP)
             SizedBox(
-              height: 80,
+              height: 50,
             ),
             Expanded(
               child: Container(
@@ -113,8 +112,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       child: Center(
                         child: Image.asset('account_icon.png'),
                       ),
@@ -124,15 +123,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Text(
                         "Account",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.normal,
                           color: Color(0xFF276A7B),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       child: Center(
                         child: Icon(
                           Icons.navigate_next,
@@ -144,10 +143,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-      
+
             //Notification (needs to be a button WIP)
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Expanded(
               child: Container(
@@ -156,8 +155,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       child: Center(
                         child: Image.asset('Bell.png'),
                       ),
@@ -167,7 +166,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Text(
                         "Notification",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.normal,
                           color: Color(0xFF276A7B),
                         ),
@@ -183,8 +182,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ));
                       },
                       child: SizedBox(
-                        width: 35,
-                        height: 35,
+                        width: 30,
+                        height: 30,
                         child: Center(
                           child: Icon(
                             Icons.navigate_next,
@@ -198,8 +197,8 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             //Privacy  & Security (needs to be a button WIP)
-            SizedBox(height: 30),
-      
+            SizedBox(height: 10),
+
             Expanded(
               child: Container(
                 child: Row(
@@ -207,8 +206,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       child: Center(
                         child: Image.asset('Security.png'),
                       ),
@@ -218,15 +217,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Text(
                         "Privacy & Security",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.normal,
                           color: Color(0xFF276A7B),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       child: Center(
                         child: Icon(
                           Icons.navigate_next,
@@ -242,10 +241,10 @@ class _ProfilePageState extends State<ProfilePage> {
               onTap: () {
                 // Add your navigation logic here
                 // For instance, navigate back to the login page
-                 Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            LoginPage(), // Replace with the actual MedicinePage.
-                      ));
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      LoginPage(), // Replace with the actual MedicinePage.
+                ));
               },
               child: Expanded(
                 child: SizedBox(
@@ -258,7 +257,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Text(
                           "Logout",
                           style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(123, 39, 39, 1),
                           ),

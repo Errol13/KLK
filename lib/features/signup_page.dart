@@ -6,6 +6,7 @@ Description: This is the page where the users will need to register or sign up.
  */
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
@@ -38,9 +39,9 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _handleDateSelection(DateTime pickedDate) {
+    final formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
     setState(() {
-      _birthdateController.text =
-          pickedDate.toString(); // You can format the date as needed
+      _birthdateController.text = formattedDate;
     });
   }
 
@@ -130,6 +131,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 1.0, // Adjust the border width as needed
                             ),
                           ),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
                         style: const TextStyle(
                           color: Color(0xFF276A7B),
@@ -163,6 +166,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 1.0, // Adjust the border width as needed
                             ),
                           ),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
                         style: const TextStyle(
                           color: Color(0xFF276A7B),
@@ -196,6 +201,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 1.0, // Adjust the border width as needed
                             ),
                           ),
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 16.0),
                         ),
                         style: const TextStyle(
                           color: Color(0xFF276A7B),
@@ -251,6 +258,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                       1.0, // Adjust the border width as needed
                                 ),
                               ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 12.0, horizontal: 16.0),
                             ),
                             style: const TextStyle(
                               color: Color(0xFF276A7B),
@@ -296,6 +305,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 1.0, // Adjust the border width as needed
                       ),
                     ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType
                       .emailAddress, // Set keyboard type for email.
@@ -351,6 +362,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         });
                       },
                     ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   style: const TextStyle(
                     color: Color(0xFF276A7B),
@@ -406,6 +419,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         });
                       },
                     ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   style: const TextStyle(
                     color: Color(0xFF276A7B),

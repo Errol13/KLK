@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'first_page.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class CallPage extends StatefulWidget {
   const CallPage({super.key});
@@ -81,11 +82,17 @@ class _CallPageState extends State<CallPage> {
                       ],
                     ),
                     SizedBox(width: 40),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('assets/call.png'),
+                    GestureDetector(
+                      onTap: () async {
+                        await FlutterPhoneDirectCaller.callNumber(
+                            '+639123456789');
+                      },
+                      child: SizedBox(
+                        width: 100,
+                        height: 120,
+                        child: Center(
+                          child: Image.asset('assets/call.png'),
+                        ),
                       ),
                     ),
                   ],
@@ -114,12 +121,18 @@ class _CallPageState extends State<CallPage> {
                         color: Color(0xFF276A7B),
                       ),
                     ),
-                    SizedBox(width: 80),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('assets/call.png'),
+                    SizedBox(width: 90),
+                    GestureDetector(
+                      onTap: () async {
+                        await FlutterPhoneDirectCaller.callNumber(
+                            '+639123456789');
+                      },
+                      child: SizedBox(
+                        width: 100,
+                        height: 120,
+                        child: Center(
+                          child: Image.asset('assets/call.png'),
+                        ),
                       ),
                     ),
                   ],
@@ -142,7 +155,7 @@ class _CallPageState extends State<CallPage> {
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Bureau",
@@ -163,15 +176,20 @@ class _CallPageState extends State<CallPage> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 80),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('assets/call.png'),
+                    SizedBox(width: 90),
+                    GestureDetector(
+                      onTap: () async {
+                        await FlutterPhoneDirectCaller.callNumber(
+                            '+639123456789');
+                      },
+                      child: SizedBox(
+                        width: 100,
+                        height: 120,
+                        child: Center(
+                          child: Image.asset('assets/call.png'),
+                        ),
                       ),
                     ),
-
                   ],
                 ),
               ),

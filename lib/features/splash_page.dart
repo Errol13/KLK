@@ -53,8 +53,8 @@ class SplashPage extends StatelessWidget {
             Expanded(
               flex: 4,
               child: SizedBox(
-                height: 200,
-                width: 200,
+                height: 400,
+                width: 400,
                 child: Center(
                   child: Image.asset(
                     'assets/Logo.png', // the directory where the image is placed
@@ -64,10 +64,13 @@ class SplashPage extends StatelessWidget {
             ),
 
             //Place a space between
-            const SizedBox(height: 100),
+            Expanded(
+              flex: 2,
+              child: const SizedBox(height: 100)),
 
             //Sign Up Button
             Expanded(
+              flex: 0,
               child: RegButton( //call the class RegButton 
                 width: 400,
                 height: 40,
@@ -83,10 +86,11 @@ class SplashPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20),//used as margin-like between widgets with the height 20
+            const SizedBox(height: 20), //used as margin-like between widgets with the height 20
 
             //Login Button
             Expanded(
+              flex: 0,
               child: RegButton( //call the class RegButton 
                 width: 400,
                 height: 40,

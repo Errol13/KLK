@@ -70,10 +70,12 @@ class _MedicinePageState extends State<MedicinePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Expanded(child: SizedBox()),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(width: 10,),
                         Text(
                           "Available Medicines",
                           style: TextStyle(
@@ -86,12 +88,13 @@ class _MedicinePageState extends State<MedicinePage> {
                     ),
                     SizedBox(width: 20),
                     SizedBox(
-                      width: 100,
-                      height: 120,
+                      width: 80,
+                      height: 100,
                       child: Center(
                         child: Image.asset('assets/pill.png'),
                       ),
                     ),
+                    Expanded(child: SizedBox()),
                   ],
                 ),
               ),
@@ -123,7 +126,8 @@ class _MedicinePageState extends State<MedicinePage> {
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: const BorderSide(
-                        color: Color(0xffA7C7E7),
+                        color: Color.fromARGB(
+                            255, 156, 156, 158),
                         width: 2.0,
                       ),
                     ),
@@ -132,7 +136,7 @@ class _MedicinePageState extends State<MedicinePage> {
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: const BorderSide(
                         color: Color.fromARGB(
-                            255, 156, 156, 158), // Change the border color here
+                            255, 156, 156, 158),
                         width: 1.0, // Adjust the border width as needed
                       ),
                     ),
@@ -140,6 +144,7 @@ class _MedicinePageState extends State<MedicinePage> {
               ),
             ),
 
+        //List of Medicines
             SizedBox(height: 20),
             Expanded(
               child: Container(
@@ -179,24 +184,39 @@ class _MedicinePageState extends State<MedicinePage> {
                             Center(
                               child: Text(medicine.name),
                             ),
-                            Image.asset(medicine.imageUrl,
-                                width: 60, height: 60),
-                            SizedBox(height: 20),
+                             SizedBox(height: 5),
+                            Expanded(
+                              flex: 2,
+                              child: Image.asset(medicine.imageUrl,
+                                  width: 60, height: 60),
+                            ),
+                          
                             if (isAvailable)
-                              Column(
-                                children: [
-                                  Text("Available:"),
-                                  Text(
-                                    "${medicine.quantity} pieces",
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
+                              Expanded(
+                                flex: 0,
+                                child: Column(
+                                  children: [
+                                    Text("Available:"),
+                                    Text(
+                                      "${medicine.quantity} pieces",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green),
+                                    ),
+                                  ],
+                                ),
                               )
                             else
-                              Text(
-                                "Not Available",
-                                style: TextStyle(color: Colors.red),
+                              Expanded(
+                                flex: 0,
+                                child: Text(
+                                  "Not Available",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red),
+                                ),
                               ),
+                            Expanded(child: SizedBox()),
                           ],
                         ),
                       );

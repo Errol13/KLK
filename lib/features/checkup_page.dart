@@ -15,13 +15,14 @@ class CheckUpForm {
   final String sex;
   final String address;
   final String phoneNumber;
-  final String? occupation ;
+  final String? occupation ; //nullable
   final String maritalStatus;
-  final String? primaryDoctor;
+  final String? primaryDoctor; //nullable
   final List<String> symptoms;
   final List<String> medications;
   final List<String> allergies;
   final DateTime checkUpDate;
+  final String? approval;
 
   CheckUpForm({
     required this.name,
@@ -36,6 +37,7 @@ class CheckUpForm {
     required this.medications,
     required this.allergies,
     required this.checkUpDate,
+    this.approval,
   });
 }
 

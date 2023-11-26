@@ -37,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
+                  const SizedBox(height: 20),
                   Text(
                     'Welcome Back!', // Display a welcoming message.
                     style: TextStyle(

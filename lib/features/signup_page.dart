@@ -63,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
                   Text(
                     'Kumusta ka?', // Display a welcoming message.
                     style: TextStyle(

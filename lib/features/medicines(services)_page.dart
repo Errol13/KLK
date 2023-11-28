@@ -70,7 +70,7 @@ class _MedicinePageState extends State<MedicinePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(child: SizedBox()),
+                    Expanded(child: SizedBox(width:3)),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +182,9 @@ class _MedicinePageState extends State<MedicinePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Center(
-                              child: Text(medicine.name),
+                              child: Text(medicine.name, style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                              SizedBox(height: 5),
                             Expanded(

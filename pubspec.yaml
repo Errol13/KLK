@@ -92,6 +92,9 @@ flutter:
     - assets/ambulance_services.png
     - assets/fire_truck.png
     - assets/police_car.png
+    - assets/Bell.png
+    - assets/Security.png
+    - assets/account_icon.png
     
   fonts:
     - family: Raleway

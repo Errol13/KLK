@@ -169,23 +169,32 @@ class _VehiclePageState extends State<VehiclePage> {
                             Center(
                               child: Text(vehicle.name),
                             ),
-                            Image.asset(vehicle.imageUrl,
-                                width: 60, height: 60),
-                            SizedBox(height: 20),
+                            Expanded(
+                              flex: 2,
+                              child: Image.asset(vehicle.imageUrl,
+                                  width: 60, height: 60),
+                            ),
+                            SizedBox(height: 10),
                             if (isAvailable)
-                              Column(
-                                children: [
-                                  Text("Available:"),
-                                  Text(
-                                    "${vehicle.quantity}",
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
+                              Expanded(
+                                flex: 0,
+                                child: Column(
+                                  children: [
+                                    Text("Available:"),
+                                    Text(
+                                      "${vehicle.quantity}",
+                                      style: TextStyle(color: Colors.green),
+                                    ),
+                                  ],
+                                ),
                               )
                             else
-                              Text(
-                                "Not Available",
-                                style: TextStyle(color: Colors.red),
+                              Expanded(
+                                flex: 0,
+                                child: Text(
+                                  "Not Available",
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ),
                           ],
                         ),

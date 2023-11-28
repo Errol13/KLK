@@ -115,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('account_icon.png'),
+                        child: Image.asset('assets/account_icon.png'),
                       ),
                     ),
                     SizedBox(width: 20),
@@ -158,7 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('Bell.png'),
+                        child: Image.asset('assets/Bell.png'),
                       ),
                     ),
                     SizedBox(width: 20),
@@ -209,7 +209,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('Security.png'),
+                        child: Image.asset('assets/Security.png'),
                       ),
                     ),
                     SizedBox(width: 20),

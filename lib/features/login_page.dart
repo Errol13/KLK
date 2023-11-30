@@ -9,6 +9,7 @@ import 'package:flutter/material.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'signup_page.dart';
 import 'first_page.dart';
+import 'package:klinikonek_project/auth.dart';
 
 class LoginPage extends StatefulWidget {
   // Create a StatefulWidget for the Sign-Up page.
@@ -21,6 +22,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _obscureText =
       true; // Initialize a boolean variable for password visibility toggle.
+
+  //authentication
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  Auth auth = Auth(); // Create an instance of the Auth class
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 400,
                 height: 50,
                 child: TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     labelText:
                         'Email', // Create a text input field for the user's email.
@@ -119,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 width: 400,
                 child: TextField(
+                   controller: _passwordController,
                   decoration: InputDecoration(
                     labelText:
                         'Password', // Create a text input field for the user's password.
@@ -184,11 +192,23 @@ class _LoginPageState extends State<LoginPage> {
                 text: 'Login',
                 textColor: Colors.white,
                 bgColor: const Color(0xFF276A7B),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const FirstPage()),
-                  );
+                onPressed: () async {
+                  try {
+                    // Use Firebase Authentication for login
+                    await auth.signInWithEmailAndPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
+                    // Navigate to the next screen on successful login
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirstPage()),
+                    );
+                  } catch (e) {
+                    // Handle login failure, show error message or feedback
+                    print('Login Error: $e');
+                  }
                 },
               ),
             ),

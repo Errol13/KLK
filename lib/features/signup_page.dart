@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
+import 'package:klinikonek_project/auth.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage(
@@ -22,6 +23,11 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText =
       true; // Initialize a boolean variable for password visibility toggle.
+
+  //email and password auth
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  Auth auth = Auth(); // Create an instance of the Auth class
 
   TextEditingController _birthdateController = TextEditingController();
 
@@ -280,6 +286,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 40,
                 width: 400,
                 child: TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     labelText:
                         'Email', // Create a text input field for the user's email.
@@ -323,6 +330,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 40,
                 width: 400,
                 child: TextField(
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     labelText:
                         'Password', // Create a text input field for the user's password.
@@ -431,6 +439,8 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
 
             const SizedBox(height: 30), // Add spacing.
+
+            //Handles Authentication
             Expanded(
               child: RegButton(
                 width: 400,
@@ -438,13 +448,23 @@ class _SignUpPageState extends State<SignUpPage> {
                 text: 'Create account', // Display a Sign-Up button.
                 textColor: Colors.white,
                 bgColor: const Color(0xFF276A7B),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const FirstPage()), // Navigate to the Home page.
-                  );
+                onPressed: () async {
+                  try {
+                    // Use Firebase Authentication for sign up
+                    await auth.createUserWithEmailAndPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
+                    // Navigate to the next screen on successful sign up
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirstPage()),
+                    );
+                  } catch (e) {
+                    // Handle sign up failure, show error message or feedback
+                    print('Sign Up Error: $e');
+                  }
                 },
               ),
             ),

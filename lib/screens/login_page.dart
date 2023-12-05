@@ -111,6 +111,9 @@ class _LoginPageState extends State<LoginPage> {
                         width: 1.0, // Adjust the border width as needed
                       ),
                     ),
+
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType
                       .emailAddress, // Set keyboard type for email.
@@ -126,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 width: 400,
                 child: TextField(
-                   controller: _passwordController,
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     labelText:
                         'Password', // Create a text input field for the user's password.
@@ -165,6 +168,8 @@ class _LoginPageState extends State<LoginPage> {
                         });
                       },
                     ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   style: const TextStyle(
                     color: Color(0xFF276A7B),

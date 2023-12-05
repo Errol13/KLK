@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/features/login_page.dart';
+import 'package:klinikonek_project/screens/login_page.dart';
 import 'first_page.dart';
 import 'notif_page.dart';
 import 'login_page.dart';

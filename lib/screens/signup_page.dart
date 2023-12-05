@@ -5,12 +5,16 @@ Feature: [KLK-002] Registration Page(Sign Up)
 Description: This is the page where the users will need to register or sign up.
  */
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
 import 'package:klinikonek_project/auth.dart';
+import 'package:klinikonek_project/model/user_model.dart';
+
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage(
@@ -27,9 +31,50 @@ class _SignUpPageState extends State<SignUpPage> {
   //email and password auth
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _middleNameController = TextEditingController();
+
   Auth auth = Auth(); // Create an instance of the Auth class
 
   TextEditingController _birthdateController = TextEditingController();
+
+  bool _isPasswordMatched() {
+    // Check if either password or confirm password has changed
+    if (_passwordController.text != _confirmPasswordController.text) {
+      setState(() {
+        _confirmPasswordError = 'Passwords do not match';
+      });
+      return false;
+    } else {
+      setState(() {
+        _confirmPasswordError = null;
+      });
+      return true;
+    }
+  }
+
+// form validation
+  bool _validateForm() {
+    if (_lastNameController.text.isEmpty ||
+        _firstNameController.text.isEmpty ||
+        _middleNameController.text.isEmpty ||
+        _birthdateController.text.isEmpty ||
+        _emailController.text.isEmpty ||
+        _passwordController.text.isEmpty ||
+        _confirmPasswordController.text.isEmpty) {
+      return false;
+    }
+
+    if (!_isPasswordMatched()) {
+      return false;
+    }
+
+    return true;
+  }
+
+  String? _confirmPasswordError;
 
 //Birthdate Field Show DateTime
   Future<void> _selectDate(BuildContext context) async {
@@ -101,121 +146,114 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 40),
 
             //sign up fields
             Expanded(
-              child: SizedBox(
-                height: 40,
-                width: 400,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Last Name',
-                          labelStyle: const TextStyle(
-                            color: Color(0xff276A7B),
-                            fontSize: 16,
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                              color: Color(0xff659d66),
-                              width: 1.0,
-                            ),
-                          ),
+              child: TextField(
+                controller: _lastNameController,
+                decoration: InputDecoration(
+                  labelText: 'Last Name',
+                  labelStyle: const TextStyle(
+                    color: Color(0xff276A7B),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xff659d66),
+                      width: 1.0,
+                    ),
+                  ),
 
-                          //enabled border styling
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 156, 156,
-                                  158), // Change the border color here
-                              width: 1.0, // Adjust the border width as needed
-                            ),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 16.0),
-                        ),
-                        style: const TextStyle(
-                          color: Color(0xFF276A7B),
-                        ),
-                      ),
+                  //enabled border styling
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(
+                          255, 156, 156, 158), // Change the border color here
+                      width: 1.0, // Adjust the border width as needed
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'First Name',
-                          labelStyle: const TextStyle(
-                            color: Color(0xff276A7B),
-                            fontSize: 16,
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                              color: Color(0xff659d66),
-                              width: 1.0,
-                            ),
-                          ),
-                          //enabled border styling
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 156, 156,
-                                  158), // Change the border color here
-                              width: 1.0, // Adjust the border width as needed
-                            ),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 16.0),
-                        ),
-                        style: const TextStyle(
-                          color: Color(0xFF276A7B),
-                        ),
-                      ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
+                ),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: TextField(
+                controller: _firstNameController,
+                decoration: InputDecoration(
+                  labelText: 'First Name',
+                  labelStyle: const TextStyle(
+                    color: Color(0xff276A7B),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xff659d66),
+                      width: 1.0,
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'M.I.',
-                          labelStyle: const TextStyle(
-                            color: Color(0xff276A7B),
-                            fontSize: 16,
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                              color: Color(0xff659d66),
-                              width: 1.0,
-                            ),
-                          ),
-                          //enabled border styling
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 156, 156,
-                                  158), // Change the border color here
-                              width: 1.0, // Adjust the border width as needed
-                            ),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 16.0),
-                        ),
-                        style: const TextStyle(
-                          color: Color(0xFF276A7B),
-                        ),
-                      ),
+                  ),
+                  //enabled border styling
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(
+                          255, 156, 156, 158), // Change the border color here
+                      width: 1.0, // Adjust the border width as needed
                     ),
-                  ],
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
+                ),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: TextField(
+                controller: _middleNameController,
+                decoration: InputDecoration(
+                  labelText: 'Middle Name',
+                  labelStyle: const TextStyle(
+                    color: Color(0xff276A7B),
+                    fontSize: 16,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      color: Color(0xff659d66),
+                      width: 1.0,
+                    ),
+                  ),
+                  //enabled border styling
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(
+                          255, 156, 156, 158), // Change the border color here
+                      width: 1.0, // Adjust the border width as needed
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
+                ),
+                style: const TextStyle(
+                  color: Color(0xFF276A7B),
                 ),
               ),
             ),
@@ -331,6 +369,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 width: 400,
                 child: TextField(
                   controller: _passwordController,
+                  onChanged: (password) {
+                    // Check if passwords match in real-time
+                    _isPasswordMatched();
+                  },
                   decoration: InputDecoration(
                     labelText:
                         'Password', // Create a text input field for the user's password.
@@ -381,90 +423,138 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
 
-            //Confirm Password
+            // Confirm Password
             const SizedBox(height: 10), // Add spacing.
             Expanded(
-              child: SizedBox(
-                height: 40,
-                width: 400,
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText:
-                        'Confirm Password', // Create a text input field for the user's password.
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelStyle: const TextStyle(
-                      color: Color(0xff276A7B),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(
-                        color: Color(0xff659d66),
-                        width: 2.0,
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: 40,
+                      width: 400,
+                      child: TextField(
+                        controller: _confirmPasswordController,
+                        onChanged: (password) {
+                          // Check if passwords match in real-time
+                          _isPasswordMatched();
+                        },
+                        decoration: InputDecoration(
+                          labelText: 'Confirm Password',
+                          filled: true,
+                          fillColor: Colors.white,
+                          labelStyle: const TextStyle(
+                            color: Color(0xff276A7B),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color(0xff659d66),
+                              width: 2.0,
+                            ),
+                          ),
+                          // enabled border styling
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 156, 156, 158),
+                              width: 1.0,
+                            ),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: const Color(0xFF276A7B),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 12.0,
+                            horizontal: 16.0,
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Color(0xFF276A7B),
+                        ),
+                        obscureText: _obscureText,
                       ),
                     ),
-                    //enabled border styling
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(
-                        color: Color.fromARGB(
-                            255, 156, 156, 158), // Change the border color here
-                        width: 1.0, // Adjust the border width as needed
-                      ),
-                    ),
-
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
-                        color: const Color(0xFF276A7B),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _obscureText =
-                              !_obscureText; // Implement password visibility toggle.
-                        });
-                      },
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 12.0, horizontal: 16.0),
                   ),
-                  style: const TextStyle(
-                    color: Color(0xFF276A7B),
-                  ),
-                  obscureText: _obscureText, // Hide the password text.
-                ),
+                  if (_confirmPasswordError != null)
+                    Expanded(
+                      child: Text(
+                        _confirmPasswordError!,
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
 
-            const SizedBox(height: 30), // Add spacing.
+            const SizedBox(height: 20), // Add spacing.
 
             //Handles Authentication
             Expanded(
               child: RegButton(
                 width: 400,
                 height: 40,
-                text: 'Create account', // Display a Sign-Up button.
+                text: 'Sign up', // Display a Sign-Up button.
                 textColor: Colors.white,
                 bgColor: const Color(0xFF276A7B),
                 onPressed: () async {
-                  try {
-                    // Use Firebase Authentication for sign up
-                    await auth.createUserWithEmailAndPassword(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                    );
-                    // Navigate to the next screen on successful sign up
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FirstPage()),
-                    );
-                  } catch (e) {
-                    // Handle sign up failure, show error message or feedback
-                    print('Sign Up Error: $e');
+                  if (_validateForm()) {
+                    try {
+                      // Use Firebase Authentication for sign up
+                      UserCredential authResult =
+                          await auth.createUserWithEmailAndPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      );
+
+                      final user = UserModel(
+                          lastName: _lastNameController.text,
+                          firstName: _firstNameController.text,
+                          middleName: _middleNameController.text,
+                          birthDate: DateTime.parse(_birthdateController.text),
+                          email: _emailController.text);
+
+                      // Get the Firebase Authentication User ID
+                      String firebaseUserId = authResult.user?.uid ?? "";
+
+                      // Store additional user data in Firestore using the Firebase Authentication User ID
+                      final docUser = FirebaseFirestore.instance
+                          .collection('Users')
+                          .doc(firebaseUserId);
+                      final json = user.toJson();
+                      await docUser.set(json);
+
+                     
+                      // Navigate to the next screen on successful sign up
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FirstPage()),
+                      );
+                    } catch (e) {
+                      // Handle sign up failure, show error message or feedback
+                      print('Sign Up Error: $e');
+                    }
                   }
+                  ;
                 },
               ),
             ),

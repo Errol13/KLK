@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/features/checkup_page.dart';
+import 'package:klinikonek_project/screens/checkup_page.dart';
 
 class AddAppointmentPage extends StatefulWidget {
   @override

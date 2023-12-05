@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/features/add_appointment.dart';
+import 'package:klinikonek_project/screens/add_appointment.dart';
 
 class CheckUpPage extends StatefulWidget {
   const CheckUpPage({super.key});

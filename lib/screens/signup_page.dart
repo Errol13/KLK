@@ -40,6 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   TextEditingController _birthdateController = TextEditingController();
 
+  //password validation
   bool _isPasswordMatched() {
     // Check if either password or confirm password has changed
     if (_passwordController.text != _confirmPasswordController.text) {
@@ -96,6 +97,9 @@ class _SignUpPageState extends State<SignUpPage> {
     });
   }
 
+  //loading before sign in and exception handling for email and pass
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,7 +151,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 40),
-
+        
             //sign up fields
             Expanded(
               child: TextField(
@@ -167,7 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: 1.0,
                     ),
                   ),
-
+        
                   //enabled border styling
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -257,7 +261,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-
+        
             //Birthdate
             const SizedBox(
               height: 10,
@@ -316,7 +320,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-
+        
             //Email Field
             SizedBox(height: 10), // Add spacing.
             Expanded(
@@ -361,7 +365,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-
+        
             const SizedBox(height: 10), // Add spacing.
             Expanded(
               child: SizedBox(
@@ -399,7 +403,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 1.0, // Adjust the border width as needed
                       ),
                     ),
-
+        
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -422,7 +426,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-
+        
             // Confirm Password
             const SizedBox(height: 10), // Add spacing.
             Expanded(
@@ -504,9 +508,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-
+        
             const SizedBox(height: 20), // Add spacing.
-
+        
             //Handles Authentication
             Expanded(
               child: RegButton(
@@ -524,24 +528,24 @@ class _SignUpPageState extends State<SignUpPage> {
                         email: _emailController.text,
                         password: _passwordController.text,
                       );
-
+        
                       final user = UserModel(
                           lastName: _lastNameController.text,
                           firstName: _firstNameController.text,
                           middleName: _middleNameController.text,
                           birthDate: DateTime.parse(_birthdateController.text),
                           email: _emailController.text);
-
+        
                       // Get the Firebase Authentication User ID
                       String firebaseUserId = authResult.user?.uid ?? "";
-
+        
                       // Store additional user data in Firestore using the Firebase Authentication User ID
                       final docUser = FirebaseFirestore.instance
                           .collection('Users')
                           .doc(firebaseUserId);
                       final json = user.toJson();
                       await docUser.set(json);
-
+        
                      
                       // Navigate to the next screen on successful sign up
                       Navigator.push(

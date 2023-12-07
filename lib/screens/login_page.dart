@@ -5,6 +5,7 @@ Feature: [KLKE-003] Feature title
 Description: This is the page where users will log in to their account.
  */
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'signup_page.dart';
@@ -27,6 +28,79 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   Auth auth = Auth(); // Create an instance of the Auth class
+
+  //validate form
+  bool _validateForm() {
+    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+      return false;
+    }
+
+    return true;
+  }
+
+  //Login Loading and Exception Handling
+  void _logInUser() async {
+    //show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    //try to log in
+    try {
+      // Use Firebase Authentication for login
+      await auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      // Navigate to the next screen on successful login
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const FirstPage()),
+      );
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //pop the loading circle
+      Navigator.pop(context);
+
+      //wrong email
+      if (e.code=='user-not-found') {
+        _errorNotice('Invalid Email');
+      }
+      //wrong password
+      else if (e.code =='wrong-password') {
+        _errorNotice('Incorrect Password');
+      }
+    }
+  }
+
+  //wrong password and email notice method
+  void _errorNotice(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
+          ),
+          backgroundColor: Color(0xFF276A7B),
+          title: Center(
+            child: Text(
+              message,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -198,21 +272,8 @@ class _LoginPageState extends State<LoginPage> {
                 textColor: Colors.white,
                 bgColor: const Color(0xFF276A7B),
                 onPressed: () async {
-                  try {
-                    // Use Firebase Authentication for login
-                    await auth.signInWithEmailAndPassword(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                    );
-                    // Navigate to the next screen on successful login
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FirstPage()),
-                    );
-                  } catch (e) {
-                    // Handle login failure, show error message or feedback
-                    print('Login Error: $e');
+                  if (_validateForm()) {
+                    _logInUser();
                   }
                 },
               ),

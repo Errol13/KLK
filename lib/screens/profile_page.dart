@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:klinikonek_project/screens/login_page.dart';
-import 'first_page.dart';
 import 'notif_page.dart';
 import 'login_page.dart';
+import 'package:provider/provider.dart';
+import 'package:klinikonek_project/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,6 +14,62 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  //confirmation
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Logout Confirmation',
+          style: TextStyle(
+            color: Color(0xFF276A7B),
+          ),
+        ),
+        content: Text('Are you sure you want to logout?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(dialogContext).pop(); // Close the dialog
+            },
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color:
+                    Color.fromARGB(255, 156, 156, 158), // Define text styles.
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              try {
+                await FirebaseAuth.instance
+                    .signOut(); // Perform logout using FirebaseAuth
+                Navigator.of(dialogContext).pop(); // Close the dialog
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              } catch (e) {
+                print('Error signing out: $e');
+                // Handle error if needed
+              }
+            },
+            child: Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF276A7B), // Define text styles.
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +111,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
             SizedBox(height: 30),
             //edit profile pic (needs to be a button WIP)
-             Expanded(
-              flex:5,
+            Expanded(
+              flex: 5,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 100,
@@ -64,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            
+
             SizedBox(
               height: 20,
             ),
@@ -254,12 +312,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "Logout",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(123, 39, 39, 1),
+                        GestureDetector(
+                          onTap: () {
+                            _showLogoutConfirmationDialog(context);
+                          },
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(123, 39, 39, 1),
+                            ),
                           ),
                         )
                       ],

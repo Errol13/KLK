@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
@@ -28,6 +29,7 @@ class Post {
   final List<String> images;
   final DateTime timestamp;
   int likes;
+  int commentCount;
   List<Comment> comments;
 
   Post({
@@ -38,13 +40,16 @@ class Post {
     required this.images,
     required this.timestamp,
     this.likes = 0,
+    this.commentCount = 0,
     this.comments = const [],
   });
+
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
+  final user = FirebaseAuth.instance.currentUser;
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -182,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                         fit: BoxFit.cover,
                         width: 45,
                         height: 45,
-                        image: const AssetImage('assets/user.png')),
+                        image: const AssetImage('assets/Logo.png')),
                   ),
                   const SizedBox(
                     width: 15,

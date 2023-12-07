@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/splash_page.dart';
+import 'package:klinikonek_project/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget decideScreen() {
     //other logic when the database is set
     //return the splashpage
-    return SplashPage();
+    return AuthPage();
   }
 
   @override

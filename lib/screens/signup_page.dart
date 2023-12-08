@@ -525,7 +525,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       // Use Firebase Authentication for sign up
                       UserCredential authResult =
                           await auth.createUserWithEmailAndPassword(
-                        email: _emailController.text,
+                        email: _emailController.text.trim(),
                         password: _passwordController.text,
                       );
         
@@ -534,7 +534,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           firstName: _firstNameController.text,
                           middleName: _middleNameController.text,
                           birthDate: DateTime.parse(_birthdateController.text),
-                          email: _emailController.text);
+                          email: _emailController.text.trim());
         
                       // Get the Firebase Authentication User ID
                       String firebaseUserId = authResult.user?.uid ?? "";

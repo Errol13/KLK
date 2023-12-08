@@ -11,6 +11,7 @@ import 'splash_page.dart';
 import 'signup_page.dart';
 import 'first_page.dart';
 import 'package:klinikonek_project/auth.dart';
+import 'forgot_password.dart';
 
 class LoginPage extends StatefulWidget {
   // Create a StatefulWidget for the Sign-Up page.
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   //Login Loading and Exception Handling
-  void _logInUser() async {
+  void _logInUser(BuildContext context) async {
     //show loading circle
     showDialog(
       context: context,
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       // Use Firebase Authentication for login
       await auth.signInWithEmailAndPassword(
-        email: _emailController.text,
+        email: _emailController.text.trim(),
         password: _passwordController.text,
       );
       // Navigate to the next screen on successful login
@@ -67,13 +68,14 @@ class _LoginPageState extends State<LoginPage> {
       //pop the loading circle
       Navigator.pop(context);
 
-      //wrong email
-      if (e.code=='user-not-found') {
+      //print('Firebase Auth Exception: $e');
+
+      if (e.code == 'invalid-email') {
         _errorNotice('Invalid Email');
-      }
-      //wrong password
-      else if (e.code =='wrong-password') {
+      } else if (e.code == 'invalid-login-credentials') {
         _errorNotice('Incorrect Password');
+      } else if (e.code == 'too-many-requests') {
+        _errorNotice('Too many attempts ! Try later');
       }
     }
   }
@@ -85,22 +87,40 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
+            borderRadius: BorderRadius.circular(10.0),
           ),
           backgroundColor: Color(0xFF276A7B),
-          title: Center(
-            child: Text(
-              message,
-              style: TextStyle(
-                color: Colors.white,
-              ),
+          contentPadding: EdgeInsets.zero,
+          content: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 50,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  message,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
         );
       },
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -253,13 +273,21 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 10),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: Color(0xFF276A7B),
-                  fontSize: 16,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                );
+              },
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    color: Color(0xFF276A7B),
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -273,7 +301,7 @@ class _LoginPageState extends State<LoginPage> {
                 bgColor: const Color(0xFF276A7B),
                 onPressed: () async {
                   if (_validateForm()) {
-                    _logInUser();
+                    _logInUser(context);
                   }
                 },
               ),

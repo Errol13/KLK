@@ -11,28 +11,14 @@ class CheckUpPage extends StatefulWidget {
 //Check Up Form
 
 class CheckUpForm {
-  final String name;
-  final int age;
-  final String sex;
-  final String address;
-  final String phoneNumber;
-  final String? occupation; //nullable
-  final String maritalStatus;
   final String? primaryDoctor; //nullable
   final List<String> symptoms;
   final List<String> medications;
   final List<String> allergies;
-  final DateTime checkUpDate;
+   DateTime checkUpDate;
   final String? approval;
 
   CheckUpForm({
-    required this.name,
-    required this.age,
-    required this.sex,
-    required this.address,
-    required this.phoneNumber,
-    this.occupation,
-    required this.maritalStatus,
     this.primaryDoctor,
     required this.symptoms,
     required this.medications,

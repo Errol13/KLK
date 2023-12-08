@@ -54,6 +54,10 @@ class _CallPageState extends State<CallPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/police.jpg'),
+                    fit: BoxFit.cover, 
+                  ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

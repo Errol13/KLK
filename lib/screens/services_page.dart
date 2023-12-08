@@ -93,8 +93,8 @@ class _ServicePageState extends State<ServicePage> {
                       ),
                       SizedBox(width: 60),
                       SizedBox(
-                        width: 100,
-                        height: 120,
+                        width: 90,
+                        height: 110,
                         child: Center(
                           child: Image.asset('assets/calendar.png'),
                         ),
@@ -106,7 +106,7 @@ class _ServicePageState extends State<ServicePage> {
             ),
 
             SizedBox(height: 30),
-            
+
             Expanded(
               child: GestureDetector(
                 onTap: () {
@@ -136,8 +136,8 @@ class _ServicePageState extends State<ServicePage> {
                       ),
                       SizedBox(width: 60),
                       SizedBox(
-                        width: 100,
-                        height: 120,
+                        width: 90,
+                        height: 100,
                         child: Center(
                           child: Image.asset('assets/pill.png'),
                         ),
@@ -210,6 +210,61 @@ class _ServicePageState extends State<ServicePage> {
             SizedBox(height: 30),
 
             // Medical Records
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  // Add the code to navigate to the medicine page here.
+                  // For example, you can use Navigator to push the medicine page:
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        VehiclePage(), // Replace with the actual MedicinePage.
+                  ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                        SizedBox(width: 20),
+                      const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Medical",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF276A7B),
+                            ),
+                          ),
+                          Text(
+                            "Records",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF276A7B),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 60),
+                      SizedBox(
+                        width: 160,
+                        height: 180,
+                        child: Center(
+                          child: Image.asset('assets/records.png'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

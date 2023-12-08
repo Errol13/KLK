@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Color(0xFF276A7B),),
         );
       },
     );

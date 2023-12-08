@@ -49,6 +49,7 @@ dependencies:
   sliver_tools: ^0.2.5
   provider: ^6.1.1
   email_validator: ^2.1.17
+  humanitarian_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -100,6 +101,8 @@ flutter:
     - assets/Bell.png
     - assets/Security.png
     - assets/account_icon.png
+    - assets/records.png
+    - assets/police.jpg
     
   fonts:
     - family: Raleway

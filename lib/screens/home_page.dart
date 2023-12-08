@@ -185,19 +185,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                   InkWell(
                     customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     onTap: () {},
                     splashColor: Colors.white10,
                     child: Ink.image(
                         fit: BoxFit.cover,
-                        width: 45,
-                        height: 45,
-                        image: const AssetImage('assets/Logo.png')),
+                        width: 20,
+                        height: 20,
+                        image:  AssetImage('assets/user.png')),
                   ),
-                  const SizedBox(
-                    width: 15,
-                  )
+                  // const SizedBox(
+                  //   width: 15,
+                  // )
                 ],
               ),
             ),

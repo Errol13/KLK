@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/screens/actualnotif_page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -43,7 +44,6 @@ class Post {
     this.commentCount = 0,
     this.comments = const [],
   });
-
 }
 
 class HomePage extends StatefulWidget {
@@ -169,10 +169,16 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     width: 5,
                   ),
-                  Icon(
-                    Icons.notifications,
-                    size: 30,
-                    color: Color(0xFF276A7B),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                        new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                new ActualNotificationPage())),
+                    child: const Icon(
+                      Icons.notifications,
+                      size: 30,
+                      color: Color(0xFF276A7B),
+                    ),
                   ),
                   SizedBox(
                     width: 10,

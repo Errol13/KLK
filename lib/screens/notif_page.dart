@@ -11,7 +11,7 @@ class NotificationPage extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPage> {
   bool notificationsOn = true;
-  bool reactionsOn= true; // To track if notifications are on or off
+  bool reactionsOn = true; // To track if notifications are on or off
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _NotificationPageState extends State<NotificationPage> {
         title: Row(
           children: [
             const Text(
-              "Notification",
+              "Notification Settings",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF276A7B),
@@ -29,7 +29,7 @@ class _NotificationPageState extends State<NotificationPage> {
           ],
         ),
       ),
-       body: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [

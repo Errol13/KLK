@@ -180,6 +180,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                 controller: allergiesController,
                 decoration: InputDecoration(
                   labelText: 'Allergies',
+                  hintText: 'e.g., peanuts, chicken',
                   labelStyle: TextStyle(
                     color: Color(0xff276A7B),
                     fontSize: 16,
@@ -322,12 +323,22 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
   }
 
   Future<void> _selectDate(BuildContext context) async {
+    final DateTime currentDate = DateTime.now();
+    final DateTime lastSelectableDate =
+        currentDate.add(Duration(days: 30)); // Limit to one month
+
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
+      initialDate: currentDate,
+      firstDate: currentDate,
+      lastDate: lastSelectableDate,
+      selectableDayPredicate: (DateTime date) {
+        // Disable yesterday's dates and allow only succeeding dates within one month
+        return date.isAfter(currentDate.subtract(Duration(days: 1))) &&
+            date.isBefore(lastSelectableDate);
+      },
     );
+
     if (picked != null) {
       _handleDateSelection(picked);
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:klinikonek_project/screens/add_appointment.dart';
 
 class CheckUpPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class CheckUpForm {
   final List<String> symptoms;
   final List<String> medications;
   final List<String> allergies;
-   DateTime checkUpDate;
+  DateTime checkUpDate;
   final String? approval;
 
   CheckUpForm({
@@ -29,7 +30,17 @@ class CheckUpForm {
 }
 
 class _CheckUpPageState extends State<CheckUpPage> {
-  List<String> appointments = []; // List to store appointments
+  List<CheckUpForm> appointments = [
+    CheckUpForm(
+      primaryDoctor: "Doctor Lewis",
+      symptoms: ['cough', 'phlegm'],
+      medications: ['Ambroxol', 'Symdex-D'],
+      allergies: ['None'],
+      checkUpDate: DateTime(2023, 12, 12),
+      approval: 'approved',
+    ),
+  ];
+
   List<String> days = [
     "Monday",
     "Tuesday",
@@ -38,7 +49,7 @@ class _CheckUpPageState extends State<CheckUpPage> {
     "Friday",
     "Saturday"
   ];
-   List<String> agenda = [
+  List<String> agenda = [
     "Senior Citizen Check-up",
     "Immunization",
     "General Check-up",
@@ -47,8 +58,7 @@ class _CheckUpPageState extends State<CheckUpPage> {
     "General Check-up"
   ];
 
-  // Index to track the current page (Agenda or Appointments)
-  int _selectedColumn = 0; // 0 for Agenda, 1 for Appointments
+  bool showAgenda = true;
 
   @override
   Widget build(BuildContext context) {
@@ -71,20 +81,19 @@ class _CheckUpPageState extends State<CheckUpPage> {
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFC6DBDC),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFC6DBDC),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -98,35 +107,30 @@ class _CheckUpPageState extends State<CheckUpPage> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 20),
-                    SizedBox(
-                      width: 100,
-                      height: 120,
-                      child: Center(
-                        child: Image.asset('assets/calendar.png'),
-                      ),
+                  ),
+                  SizedBox(width: 20),
+                  SizedBox(
+                    width: 100,
+                    height: 120,
+                    child: Center(
+                      child: Image.asset('assets/calendar.png'),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),
-
-            //Use IndexedStack for 2 columns
             Row(
               children: [
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        _selectedColumn = 0; //agenda
+                        showAgenda = true;
                       });
                     },
                     child: Container(
-                      color: _selectedColumn == 0
-                          ? Colors.blue
-                          : Colors
-                              .grey, //color selected and color when not selected
+                      color: showAgenda ? Colors.blue : Colors.grey,
                       padding: EdgeInsets.all(10),
                       child: Center(
                         child: Text(
@@ -144,14 +148,11 @@ class _CheckUpPageState extends State<CheckUpPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        _selectedColumn = 1;
+                        showAgenda = false;
                       });
                     },
                     child: Container(
-                      color: _selectedColumn == 1
-                          ? Colors.green
-                          : Colors
-                              .grey, //color selected and color when not selected
+                      color: !showAgenda ? Colors.green : Colors.grey,
                       padding: EdgeInsets.all(10),
                       child: Center(
                         child: Text(
@@ -168,103 +169,135 @@ class _CheckUpPageState extends State<CheckUpPage> {
               ],
             ),
             SizedBox(height: 20),
-
-            // Use IndexedStack to switch between columns
-            IndexedStack(
-              index: _selectedColumn,
-              children: [
-                // Agenda Column
-                Column(
-                  children: [
-                    SizedBox(height: 5),
-                
-                    // Add 6 containers for each day
-                    for (int i = 0; i < 6; i++)
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  days[i],
-                                  style: TextStyle(
-                                    color: Color(0xFF276A7B),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
+            Expanded(
+              child: ListView(
+                children: [
+                  // Display Agenda or Appointments based on the selected state
+                  showAgenda
+                      ? Column(
+                          children: [
+                            // Add 6 containers for each day
+                            for (int i = 0; i < 6; i++)
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                height: 100,
+                                margin: EdgeInsets.symmetric(vertical: 5),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          days[i],
+                                          style: TextStyle(
+                                            color: Color(0xFF276A7B),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3),
+                                      Expanded(
+                                        child: Text(
+                                          agenda[i],
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xFF276A7B),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 3),
+                                    ],
                                   ),
                                 ),
                               ),
-                          
-                              SizedBox(height: 3),
-                          
-                              Expanded(
-                                child: Text(
-                                  agenda[i],
-                                  style: TextStyle(
-                                    fontSize: 6,
-                                    color:Color(0xFF276A7B),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            // Display appointments
+                            for (CheckUpForm appointment in appointments)
+                              Container(
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                // height: 80,
+                                margin: EdgeInsets.all(3),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Center(
+                                    child: Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'Doctor: ${appointment.primaryDoctor}\n'
+                                                'Symptoms: ${appointment.symptoms.join(', ')}\n'
+                                                'Medications: ${appointment.medications.join(', ')}\n'
+                                                'Allergies: ${appointment.allergies.join(', ')}\n',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}\n',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${appointment.approval != null ? appointment.approval!.toUpperCase() : 'N/A'}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.green,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ), 
-                            SizedBox(height: 3),
-                            ],
-                          ),
+                              ),
+                          ],
                         ),
-                      ),
-                  ],
-                ),
-
-                // Appointments Column
-                Column(
-                  children: [
-                    SizedBox(height: 10),
-                    // Display appointments
-                    for (String appointment in appointments)
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        color: Colors.green,
-                        child: Center(
-                          child: Text(
-                            appointment,
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: _selectedColumn == 1
-          ? FloatingActionButton(
-              onPressed: () async {
-                // Navigate to the AddAppointmentPage and await the result
-                final CheckUpForm newAppointment = await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddAppointmentPage()),
-                );
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          // Navigate to the AddAppointmentPage and await the result
+          final CheckUpForm newAppointment = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddAppointmentPage()),
+          );
 
-                // Check if result is not null and update the appointments list
-                if (newAppointment != null && newAppointment is CheckUpForm) {
-                  setState(() {
-                    appointments.add(newAppointment as String);
-                  });
-                }
-              },
-              backgroundColor: Color(0xFF276A7B),
-              child: Icon(Icons.add),
-            )
-          : null, // set to null as to not display it in Agenda Column
+          // Check if result is not null and update the appointments list
+          if (newAppointment != null && newAppointment is CheckUpForm) {
+            setState(() {
+              appointments.add(newAppointment as CheckUpForm);
+            });
+          }
+        },
+        backgroundColor: Color(0xFF276A7B),
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

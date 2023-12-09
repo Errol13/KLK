@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         colorScheme: const ColorScheme.light(background: Color(0xFFE6E7E8)),
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+        )
       ),
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,

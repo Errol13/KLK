@@ -72,7 +72,7 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+                            color: Colors.white,
                           ),
                         ),
                         Text(
@@ -80,7 +80,7 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+                            color: Colors.white,
                           ),
                         ),
                       ],

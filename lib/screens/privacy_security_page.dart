@@ -338,7 +338,7 @@ class _PSPageState extends State<PSPage> {
                       ));
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF276A7B),
+                      backgroundColor: Color(0xFF276A7B),
                     ),
                     child: const Text('Save',
                         style: TextStyle(
@@ -346,15 +346,16 @@ class _PSPageState extends State<PSPage> {
                           color: Color.fromARGB(255, 255, 255, 255),
                         ))),
               ),
-              SizedBox(
-                height: 250,
+              Expanded(
+                child: SizedBox(
+                ),
               ),
               Align(
                 alignment: Alignment.center,
                 child: ElevatedButton(
                     onPressed: _show,
                     style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 199, 37, 32),
+                      backgroundColor: Color.fromARGB(255, 199, 37, 32),
                     ),
                     child: const Text('Delete',
                         style: TextStyle(

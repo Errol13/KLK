@@ -84,7 +84,7 @@ class _PSPageState extends State<PSPage> {
         title: Row(
           children: [
             const Text(
-              "Notification Settings",
+              "Privacy and Security",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF276A7B),
@@ -347,8 +347,7 @@ class _PSPageState extends State<PSPage> {
                         ))),
               ),
               Expanded(
-                child: SizedBox(
-                ),
+                child: SizedBox(),
               ),
               Align(
                 alignment: Alignment.center,
@@ -357,7 +356,7 @@ class _PSPageState extends State<PSPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 199, 37, 32),
                     ),
-                    child: const Text('Delete',
+                    child: const Text('Delete Account',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 255, 255, 255),

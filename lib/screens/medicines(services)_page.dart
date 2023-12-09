@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/screens/admin_medicine.dart';
 import 'first_page.dart';
 
 class MedicinePage extends StatefulWidget {
@@ -52,6 +53,18 @@ class _MedicinePageState extends State<MedicinePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your button's click logic here
+          // For example, you can navigate to another screen or perform an action
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                AdminMedicine(), // Replace with the actual MedicinePage.
+          ));
+        },
+        backgroundColor: Color(0xFF276A7B),
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -70,12 +83,14 @@ class _MedicinePageState extends State<MedicinePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(child: SizedBox(width:3)),
+                    Expanded(child: SizedBox(width: 3)),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text(
                           "Available Medicines",
                           style: TextStyle(
@@ -100,8 +115,10 @@ class _MedicinePageState extends State<MedicinePage> {
               ),
             ),
 
-            SizedBox(height:5,),
-            
+            SizedBox(
+              height: 5,
+            ),
+
             //searchbar
             Container(
               // Add padding around the search bar
@@ -124,27 +141,25 @@ class _MedicinePageState extends State<MedicinePage> {
                     },
                   ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(
-                        color: Color.fromARGB(
-                            255, 156, 156, 158),
-                        width: 2.0,
-                      ),
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 156, 156, 158),
+                      width: 2.0,
                     ),
-                    //enabled border styling
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(
-                        color: Color.fromARGB(
-                            255, 156, 156, 158),
-                        width: 1.0, // Adjust the border width as needed
-                      ),
+                  ),
+                  //enabled border styling
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 156, 156, 158),
+                      width: 1.0, // Adjust the border width as needed
                     ),
+                  ),
                 ),
               ),
             ),
 
-        //List of Medicines
+            //List of Medicines
             SizedBox(height: 20),
             Expanded(
               child: Container(
@@ -182,17 +197,17 @@ class _MedicinePageState extends State<MedicinePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Center(
-                              child: Text(medicine.name, style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              )),
+                              child: Text(medicine.name,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  )),
                             ),
-                             SizedBox(height: 5),
+                            SizedBox(height: 5),
                             Expanded(
                               flex: 2,
                               child: Image.asset(medicine.imageUrl,
                                   width: 60, height: 60),
                             ),
-                          
                             if (isAvailable)
                               Expanded(
                                 flex: 0,
@@ -202,8 +217,8 @@ class _MedicinePageState extends State<MedicinePage> {
                                     Text(
                                       "${medicine.quantity} pieces",
                                       style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.green),
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green),
                                     ),
                                   ],
                                 ),
@@ -214,8 +229,8 @@ class _MedicinePageState extends State<MedicinePage> {
                                 child: Text(
                                   "Not Available",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
                                 ),
                               ),
                             Expanded(child: SizedBox()),
@@ -226,7 +241,7 @@ class _MedicinePageState extends State<MedicinePage> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

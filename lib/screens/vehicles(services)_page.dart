@@ -93,41 +93,21 @@ class _VehiclePageState extends State<VehiclePage> {
               ),
             ),
             SizedBox(height: 20),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFC6DBDC),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SfCartesianChart(
-                          primaryXAxis: CategoryAxis(),
-                          series: <ColumnSeries<VehicleData, String>>[
-                            ColumnSeries<VehicleData, String>(
-                                dataSource: <VehicleData>[
-                                  VehicleData("Ambulance", 8),
-                                  VehicleData("Firetruck", 7),
-                                  VehicleData("Poilice Mobile", 14),
-                                ],
-                                xValueMapper: (VehicleData veh, _) => veh.name,
-                                yValueMapper: (VehicleData veh, _) =>
-                                    veh.quantity,
-                                dataLabelSettings:
-                                    DataLabelSettings(isVisible: true))
-                          ],
-                        )
+            Container(
+              height: 250,
+              child: SfCartesianChart(
+                primaryXAxis: CategoryAxis(),
+                series: <ColumnSeries<VehicleData, String>>[
+                  ColumnSeries<VehicleData, String>(
+                      dataSource: <VehicleData>[
+                        VehicleData("Ambulance", 8),
+                        VehicleData("Firetruck", 7),
+                        VehicleData("Poilice Mobile", 14),
                       ],
-                    ),
-                  ],
-                ),
+                      xValueMapper: (VehicleData veh, _) => veh.name,
+                      yValueMapper: (VehicleData veh, _) => veh.quantity,
+                      dataLabelSettings: DataLabelSettings(isVisible: true))
+                ],
               ),
             ),
             SizedBox(height: 20),
@@ -139,7 +119,7 @@ class _VehiclePageState extends State<VehiclePage> {
                 child: Scrollbar(
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Display two boxes per row
+                      crossAxisCount: 3, // Display two boxes per row
                     ),
                     itemCount: vehicles.length,
                     itemBuilder: (context, index) {

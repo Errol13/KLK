@@ -332,10 +332,7 @@ class _PSPageState extends State<PSPage> {
                     onPressed: () {
                       // Add your button's click logic here
                       // For example, you can navigate to another screen or perform an action
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            ProfilePage(), // Replace with the actual MedicinePage.
-                      ));
+                      Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF276A7B),

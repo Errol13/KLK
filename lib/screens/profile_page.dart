@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/screens/account_page.dart';
 import 'package:klinikonek_project/screens/login_page.dart';
 import 'package:klinikonek_project/screens/privacy_security_page.dart';
 import 'notif_page.dart';
@@ -194,7 +195,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         // For example, you can navigate to another screen or perform an action
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              PSPage(), // Replace with the actual MedicinePage.
+                              AccountPage(), // Replace with the actual MedicinePage.
                         ));
                       },
                       child: SizedBox(

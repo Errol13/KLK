@@ -58,12 +58,15 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
+
+      Navigator.pop(context);
+      
       // Navigate to the next screen on successful login
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const FirstPage()),
       );
-      Navigator.pop(context);
+      
     } on FirebaseAuthException catch (e) {
       //pop the loading circle
       Navigator.pop(context);

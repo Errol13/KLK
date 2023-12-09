@@ -56,7 +56,7 @@ class _CallPageState extends State<CallPage> {
                   borderRadius: BorderRadius.circular(12.0),
                   image: DecorationImage(
                     image: AssetImage('assets/police.jpg'),
-                    fit: BoxFit.cover, 
+                    fit: BoxFit.cover,
                   ),
                 ),
                 child: Row(
@@ -72,7 +72,14 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Color(0xFFE6E7E8),
+                            shadows: [
+                              Shadow(
+                                color: Colors.black, // Shadow color
+                                offset: Offset(1.0, 1.0), // Shadow offset
+                                blurRadius: 3.0, // Shadow blur radius
+                              ),
+                            ],
                           ),
                         ),
                         Text(
@@ -80,22 +87,29 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Color(0xFFE6E7E8),
+                            shadows: [
+                              Shadow(
+                                color: Colors.black, // Shadow color
+                                offset: Offset(1.0, 1.0), // Shadow offset
+                                blurRadius: 3.0, // Shadow blur radius
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 40),
+                    SizedBox(width: 60),
                     GestureDetector(
                       onTap: () async {
                         await FlutterPhoneDirectCaller.callNumber(
                             '+639123456789');
                       },
                       child: SizedBox(
-                        width: 100,
-                        height: 120,
+                        width: 80,
+                        height: 100,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/call3.png'),
                         ),
                       ),
                     ),
@@ -112,6 +126,10 @@ class _CallPageState extends State<CallPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/DSWD-Emblem.jpg'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -122,20 +140,27 @@ class _CallPageState extends State<CallPage> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF276A7B),
+                        color: Color(0xFFE6E7E8),
+                        shadows: [
+                          Shadow(
+                            color: Colors.black, // Shadow color
+                            offset: Offset(1.0, 1.0), // Shadow offset
+                            blurRadius: 3.0, // Shadow blur radius
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(width: 90),
+                    SizedBox(width: 110),
                     GestureDetector(
                       onTap: () async {
                         await FlutterPhoneDirectCaller.callNumber(
                             '+639123456789');
                       },
                       child: SizedBox(
-                        width: 100,
-                        height: 120,
+                        width: 80,
+                        height: 100,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/call3.png'),
                         ),
                       ),
                     ),
@@ -152,6 +177,10 @@ class _CallPageState extends State<CallPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/bfp.jpg'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +195,14 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+                            color: Color(0xFFE6E7E8),
+                            shadows: [
+                              Shadow(
+                                color: Colors.black, // Shadow color
+                                offset: Offset(1.0, 1.0), // Shadow offset
+                                blurRadius: 3.0, // Shadow blur radius
+                              ),
+                            ],
                           ),
                         ),
                         Text(
@@ -175,22 +211,29 @@ class _CallPageState extends State<CallPage> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
+                            color: Color(0xFFE6E7E8),
+                            shadows: [
+                              Shadow(
+                                color: Colors.black, // Shadow color
+                                offset: Offset(1.0, 1.0), // Shadow offset
+                                blurRadius: 3.0, // Shadow blur radius
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 90),
+                    SizedBox(width: 110),
                     GestureDetector(
                       onTap: () async {
                         await FlutterPhoneDirectCaller.callNumber(
                             '+639123456789');
                       },
                       child: SizedBox(
-                        width: 100,
-                        height: 120,
+                        width: 80,
+                        height: 100,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/call3.png'),
                         ),
                       ),
                     ),

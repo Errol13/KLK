@@ -3,7 +3,7 @@ import 'home_page.dart';
 import 'call_page.dart';
 import 'services_page.dart';
 import 'profile_page.dart';
-
+import 'package:flutter/services.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -30,47 +30,54 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        selectedFontSize: 15,
-        onTap: _navigatedBottomBar,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-                color: _selectedIndex == 0 ? Colors.blue : Color(0xFFA7C7E7),),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.medical_services,
-              color: _selectedIndex == 1
-                  ? Colors.blue
-                  : Color.fromRGBO(167, 199, 231, 1),
+    return WillPopScope(
+      onWillPop: () async {
+        //exit the app
+        SystemNavigator.pop();
+        return true;
+      },
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          selectedFontSize: 15,
+          onTap: _navigatedBottomBar,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home,
+                  color: _selectedIndex == 0 ? Colors.blue : Color(0xFFA7C7E7),),
+              label: 'Home',
             ),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.call,
-              color: _selectedIndex == 2
-                  ? Colors.blue
-                  : Color.fromRGBO(167, 199, 231, 1),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.medical_services,
+                color: _selectedIndex == 1
+                    ? Colors.blue
+                    : Color.fromRGBO(167, 199, 231, 1),
+              ),
+              label: 'Services',
             ),
-            label: 'Call',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: _selectedIndex == 3
-                  ? Colors.blue
-                  : Color.fromRGBO(167, 199, 231, 1),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.call,
+                color: _selectedIndex == 2
+                    ? Colors.blue
+                    : Color.fromRGBO(167, 199, 231, 1),
+              ),
+              label: 'Call',
             ),
-            label: 'Account',
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle,
+                color: _selectedIndex == 3
+                    ? Colors.blue
+                    : Color.fromRGBO(167, 199, 231, 1),
+              ),
+              label: 'Account',
+            ),
+          ],
+        ),
       ),
     );
   }

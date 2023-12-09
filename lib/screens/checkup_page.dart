@@ -130,7 +130,7 @@ class _CheckUpPageState extends State<CheckUpPage> {
                       });
                     },
                     child: Container(
-                      color: showAgenda ? Colors.blue : Colors.grey,
+                      color: showAgenda ? Color(0xFF276A7B) : Colors.grey,
                       padding: EdgeInsets.all(10),
                       child: Center(
                         child: Text(

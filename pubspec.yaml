@@ -103,6 +103,9 @@ flutter:
     - assets/account_icon.png
     - assets/records.png
     - assets/police.jpg
+    - assets/call3.png
+    - assets/DSWD-Emblem.jpg
+    - assets/bfp.jpg
     
   fonts:
     - family: Raleway

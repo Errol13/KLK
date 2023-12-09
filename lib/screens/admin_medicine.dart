@@ -222,6 +222,7 @@ class _AdminMedicineState extends State<AdminMedicine> {
                     Expanded(child: SizedBox()),
                     Expanded(
                       child: FloatingActionButton.small(
+                        heroTag: "btn1",
                         onPressed: _decrementCounter,
                         backgroundColor: Colors.white,
                         child: Icon(Icons.remove,
@@ -240,6 +241,7 @@ class _AdminMedicineState extends State<AdminMedicine> {
                     ),
                     Expanded(
                       child: FloatingActionButton.small(
+                        heroTag: "btn2",
                         onPressed: _incrementCounter,
                         backgroundColor: Colors.white,
                         child: Icon(

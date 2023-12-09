@@ -128,8 +128,8 @@ class _VehiclePageState extends State<VehiclePage> {
                           0; // Check if medicine is available
 
                       return Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10),
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),

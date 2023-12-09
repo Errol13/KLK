@@ -188,13 +188,23 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 30,
-                      height: 30,
-                      child: Center(
-                        child: Icon(
-                          Icons.navigate_next,
-                          color: const Color.fromRGBO(167, 199, 231, 1),
+                    GestureDetector(
+                      onTap: () {
+                        // Add your button's click logic here
+                        // For example, you can navigate to another screen or perform an action
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              PSPage(), // Replace with the actual MedicinePage.
+                        ));
+                      },
+                      child: SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: Center(
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color.fromRGBO(167, 199, 231, 1),
+                          ),
                         ),
                       ),
                     ),

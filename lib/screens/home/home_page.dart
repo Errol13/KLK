@@ -46,11 +46,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             content: SizedBox(
-              height: 170,
+              height: 350,
               child: Column(
                 children: [
                   ListTile(
-                    title: const Text('Freezes'),
+                    title: const Text('Spam'),
                     leading: Radio<int>(
                       value: 1,
                       groupValue: selectedOption,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   ListTile(
-                    title: const Text('Missing Elements'),
+                    title: const Text('False Information'),
                     leading: Radio<int>(
                       value: 2,
                       groupValue: selectedOption,
@@ -84,9 +84,60 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   ListTile(
-                    title: const Text('Crashes'),
+                    title: const Text('Hate Speech'),
                     leading: Radio<int>(
                       value: 3,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('Harrasment'),
+                    leading: Radio<int>(
+                      value: 4,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('Nudity'),
+                    leading: Radio<int>(
+                      value: 5,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('Suicide or self-injury'),
+                    leading: Radio<int>(
+                      value: 6,
                       groupValue: selectedOption,
                       activeColor: Color(
                           0xFF276A7B), // Change the active radio button color here

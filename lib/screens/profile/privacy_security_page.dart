@@ -72,65 +72,65 @@ class _PSPageState extends State<PSPage> {
   }
 
   void _show() {
-  showDialog(
-    context: context,
-    barrierColor: Colors.transparent,
-    builder: (BuildContext ctx) {
-      return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-        child: AlertDialog(
-          backgroundColor: Colors.black.withOpacity(0.9), // Adjust the opacity here
-          title: Text(
-            'Delete Confirmation',
-            style: TextStyle(
-              color: Color(0xFF276A7B),
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (BuildContext ctx) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: AlertDialog(
+            backgroundColor:
+                Colors.white.withOpacity(0.9), // Adjust the opacity here
+            title: Text(
+              'Delete Confirmation',
+              style: TextStyle(
+                color: Color(0xFF276A7B),
+              ),
             ),
+            content: Text('Are you sure you want to delete your account?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(); // Close the dialog
+                },
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(
+                      255,
+                      156,
+                      156,
+                      158,
+                    ), // Define text styles.
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  deleteAccount();
+                },
+                child: Text(
+                  'Delete',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(
+                      255,
+                      202,
+                      41,
+                      20,
+                    ), // Define text styles.
+                  ),
+                ),
+              ),
+            ],
           ),
-          content: Text('Are you sure you want to delete your account?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(ctx).pop(); // Close the dialog
-              },
-              child: Text(
-                'Cancel',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(
-                    255,
-                    156,
-                    156,
-                    158,
-                  ), // Define text styles.
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () async {
-                deleteAccount();
-              },
-              child: Text(
-                'Delete',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(
-                    255,
-                    202,
-                    41,
-                    20,
-                  ), // Define text styles.
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

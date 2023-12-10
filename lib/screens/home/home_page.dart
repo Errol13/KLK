@@ -11,6 +11,7 @@ import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
+import 'dart:ui';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -282,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                                   } else if (value == 'delete') {
                                     // Handle delete action
                                   } else if (value == 'report') {
-                                    // Handle report action
+                                    _show();
                                   }
                                 },
                                 itemBuilder: (BuildContext context) {

@@ -8,6 +8,7 @@ import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
+import 'dart:ui';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -18,6 +19,129 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String dropdownvalue = 'Home';
+  int selectedOption = 1;
+  var items = [
+    'Home',
+    'Services',
+    'Profile',
+    'Sign up / Log in',
+  ];
+
+  void _show() {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (BuildContext ctx) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: AlertDialog(
+            backgroundColor:
+                Colors.white.withOpacity(0.9), // Adjust the opacity here
+            title: Text(
+              'Select a problem ',
+              style: TextStyle(
+                fontSize: 20,
+                color: Color(0xFF276A7B),
+              ),
+            ),
+            content: SizedBox(
+              height: 170,
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text('Freezes'),
+                    leading: Radio<int>(
+                      value: 1,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('Missing Elements'),
+                    leading: Radio<int>(
+                      value: 2,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text('Crashes'),
+                    leading: Radio<int>(
+                      value: 3,
+                      groupValue: selectedOption,
+                      activeColor: Color(
+                          0xFF276A7B), // Change the active radio button color here
+                      fillColor: MaterialStateProperty.all(Color(
+                          0xFF276A7B)), // Change the fill color when selected
+                      splashRadius: 20, // Change the splash radius when clicked
+                      onChanged: (value) {
+                        setState(() {
+                          selectedOption = value!;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(); // Close the dialog
+                },
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(
+                      255,
+                      156,
+                      156,
+                      158,
+                    ), // Define text styles.
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                },
+                child: Text(
+                  'Send',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF276A7B), // Define text styles.
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   List<Post> posts = [
     Post(
       userId: '1',
@@ -231,7 +355,7 @@ class _HomePageState extends State<HomePage> {
                                   } else if (value == 'delete') {
                                     // Handle delete action
                                   } else if (value == 'report') {
-                                    // Handle report action
+                                    _show();
                                   }
                                 },
                                 itemBuilder: (BuildContext context) {

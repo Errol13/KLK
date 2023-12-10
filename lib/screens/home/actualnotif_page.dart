@@ -36,6 +36,11 @@ class _ActualNotificationPageState extends State<ActualNotificationPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(
+                        color: Color.fromARGB(255, 78, 76, 76)),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -54,6 +59,11 @@ class _ActualNotificationPageState extends State<ActualNotificationPage> {
                   ),
                 ),
                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(
+                        color: Color.fromARGB(255, 78, 76, 76)),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -72,6 +82,11 @@ class _ActualNotificationPageState extends State<ActualNotificationPage> {
                   ),
                 ),
                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(
+                        color: Color.fromARGB(255, 78, 76, 76)),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -90,13 +105,18 @@ class _ActualNotificationPageState extends State<ActualNotificationPage> {
                   ),
                 ),
                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(
+                        color: Color.fromARGB(255, 78, 76, 76)),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       const ListTile(
                         leading: Icon(Icons.comment_rounded),
                         title: Text(
-                          'Dr. Celis replied to your comment',
+                          'Dr. Strange replied to your comment',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF276A7B),

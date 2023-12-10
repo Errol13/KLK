@@ -131,16 +131,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Text(
-                          "Hi ${currentUser.firstName}!",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF276A7B),
-                          ),
+                      Text(
+                        "Hi ${currentUser.firstName}!",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF276A7B),
                         ),
                       ),
+                      Expanded(child: SizedBox()),
                       GestureDetector(
                         onTap: () => addPost(context),
                         child: const Icon(
@@ -166,25 +165,19 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         width: 10,
                       ),
-                      InkWell(
-                        customBorder: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        onTap: () {},
-                        splashColor: Colors.white10,
-                        child: Ink.image(
-                            fit: BoxFit.cover,
-                            width: 20,
-                            height: 20,
-                            image: AssetImage('assets/user.png')),
+                      Image.asset(
+                        'assets/user.png',
+                        width: 30,
+                        height: 30,
+                        fit: BoxFit.contain,
                       ),
-                      // const SizedBox(
-                      //   width: 15,
-                      // )
+                      SizedBox(width: 30),
                     ],
                   ),
                 ),
               ),
+
+              //Posts
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -230,8 +223,45 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
+                              PopupMenuButton<String>(
+                                onSelected: (value) {
+                                  // Handle menu item selection
+                                  if (value == 'edit') {
+                                    // Handle edit action
+                                  } else if (value == 'delete') {
+                                    // Handle delete action
+                                  } else if (value == 'report') {
+                                    // Handle report action
+                                  }
+                                },
+                                itemBuilder: (BuildContext context) {
+                                  return [
+                                    PopupMenuItem<String>(
+                                      value: 'edit',
+                                      child: Text('Edit'),
+                                    ),
+                                    PopupMenuItem<String>(
+                                      value: 'delete',
+                                      child: Text('Delete'),
+                                    ),
+                                    PopupMenuItem<String>(
+                                      value: 'report',
+                                      child: Text(
+                                        'Report',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ),
+                                  ];
+                                },
+                              ),
                             ],
                           ),
+
+                          //Content
                           const SizedBox(
                             height: 10,
                           ),
@@ -358,12 +388,12 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Color(0xff1E2F97),
+          backgroundColor: Colors.white,
           title: Text(
             'Create a New Post',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.white,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -375,8 +405,6 @@ class _HomePageState extends State<HomePage> {
                 maxLines: 3,
                 maxLength: 1000,
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
                   hintText: 'Enter your post here...',
                 ),
               ),
@@ -459,6 +487,13 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black, // Shadow color
+                      offset: Offset(1.0, 1.0), // Shadow offset
+                      blurRadius: 0.5, // Shadow blur radius
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -470,7 +505,14 @@ class _HomePageState extends State<HomePage> {
                 'Post',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: Color(0xFF276A7B),
+                  shadows: [
+                    Shadow(
+                      color: Colors.black, // Shadow color
+                      offset: Offset(1.0, 1.0), // Shadow offset
+                      blurRadius: 0.5, // Shadow blur radius
+                    ),
+                  ],
                   fontWeight: FontWeight.bold,
                 ),
               ),

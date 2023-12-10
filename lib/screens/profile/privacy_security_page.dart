@@ -13,66 +13,124 @@ class PSPage extends StatefulWidget {
 class _PSPageState extends State<PSPage> {
   bool _obscureText = true;
 
-  void _show() {
+  //delete account
+  void deleteAccount() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        await user.delete();
+        print('User account deleted.');
+      } else {
+        print('No user signed in.');
+      }
+    } catch (e) {
+      _errorNotice('$e');
+    }
+  }
+
+  //dialog
+  void _errorNotice(String message) {
     showDialog(
-        context: context,
-        barrierColor: Colors.transparent,
-        builder: (BuildContext ctx) {
-          return BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-            child: AlertDialog(
-              backgroundColor: Colors.white,
-              title: Text(
-                'Delete Confirmation',
-                style: TextStyle(
-                  color: Color(0xFF276A7B),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          backgroundColor: Color(0xFF276A7B),
+          contentPadding: EdgeInsets.zero,
+          content: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 50,
                 ),
-              ),
-              content: Text('Are you sure you want to delete your account?'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx).pop(); // Close the dialog
-                  },
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 156, 156, 158), // Define text styles.
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    try {
-                      await FirebaseAuth.instance
-                          .signOut(); // Perform logout using FirebaseAuth
-                      Navigator.of(ctx).pop(); // Close the dialog
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    } catch (e) {
-                      print('Error signing out: $e');
-                      // Handle error if needed
-                    }
-                  },
-                  child: Text(
-                    'Delete',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 202, 41, 20), // Define text styles.
-                    ),
+                SizedBox(height: 10),
+                Text(
+                  message,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
+
+  void _show() {
+  showDialog(
+    context: context,
+    barrierColor: Colors.transparent,
+    builder: (BuildContext ctx) {
+      return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+        child: AlertDialog(
+          backgroundColor: Colors.black.withOpacity(0.9), // Adjust the opacity here
+          title: Text(
+            'Delete Confirmation',
+            style: TextStyle(
+              color: Color(0xFF276A7B),
+            ),
+          ),
+          content: Text('Are you sure you want to delete your account?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop(); // Close the dialog
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(
+                    255,
+                    156,
+                    156,
+                    158,
+                  ), // Define text styles.
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                deleteAccount();
+              },
+              child: Text(
+                'Delete',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(
+                    255,
+                    202,
+                    41,
+                    20,
+                  ), // Define text styles.
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {

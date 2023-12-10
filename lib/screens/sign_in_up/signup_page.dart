@@ -9,12 +9,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'first_page.dart';
+import 'package:klinikonek_project/screens/home/first_page.dart';
 import 'splash_page.dart';
 import 'login_page.dart';
 import 'package:klinikonek_project/auth.dart';
 import 'package:klinikonek_project/model/user_model.dart';
-
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage(
@@ -97,8 +96,49 @@ class _SignUpPageState extends State<SignUpPage> {
     });
   }
 
-  //loading before sign in and exception handling for email and pass
-
+  //weak password and account already taken notice method
+  void _errorNotice(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          backgroundColor: Color(0xFF276A7B),
+          contentPadding: EdgeInsets.zero,
+          content: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 50,
+                ),
+                SizedBox(height: 10),
+                Center(
+                  child: Text(
+                    message,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 40),
-        
+
             //sign up fields
             Expanded(
               child: TextField(
@@ -171,7 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: 1.0,
                     ),
                   ),
-        
+
                   //enabled border styling
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -261,7 +301,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-        
+
             //Birthdate
             const SizedBox(
               height: 10,
@@ -320,7 +360,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-        
+
             //Email Field
             SizedBox(height: 10), // Add spacing.
             Expanded(
@@ -365,7 +405,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-        
+
             const SizedBox(height: 10), // Add spacing.
             Expanded(
               child: SizedBox(
@@ -403,7 +443,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: 1.0, // Adjust the border width as needed
                       ),
                     ),
-        
+
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -426,7 +466,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-        
+
             // Confirm Password
             const SizedBox(height: 10), // Add spacing.
             Expanded(
@@ -508,9 +548,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ),
-        
+
             const SizedBox(height: 20), // Add spacing.
-        
+
             //Handles Authentication
             Expanded(
               child: RegButton(
@@ -521,6 +561,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 bgColor: const Color(0xFF276A7B),
                 onPressed: () async {
                   if (_validateForm()) {
+                    //show loading circle
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF276A7B),
+                          ),
+                        );
+                      },
+                    );
+
                     try {
                       // Use Firebase Authentication for sign up
                       UserCredential authResult =
@@ -528,34 +580,39 @@ class _SignUpPageState extends State<SignUpPage> {
                         email: _emailController.text.trim(),
                         password: _passwordController.text,
                       );
-        
+
                       final user = UserModel(
                           lastName: _lastNameController.text,
                           firstName: _firstNameController.text,
                           middleName: _middleNameController.text,
                           birthDate: DateTime.parse(_birthdateController.text),
                           email: _emailController.text.trim());
-        
+
                       // Get the Firebase Authentication User ID
                       String firebaseUserId = authResult.user?.uid ?? "";
-        
+
                       // Store additional user data in Firestore using the Firebase Authentication User ID
                       final docUser = FirebaseFirestore.instance
                           .collection('Users')
                           .doc(firebaseUserId);
                       final json = user.toJson();
                       await docUser.set(json);
-        
-                     
+
+                      Navigator.pop(context);
                       // Navigate to the next screen on successful sign up
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const FirstPage()),
                       );
-                    } catch (e) {
-                      // Handle sign up failure, show error message or feedback
-                      print('Sign Up Error: $e');
+                    } on FirebaseAuthException catch (e) {
+                      Navigator.pop(context);
+                      if (e.code == 'weak-password') {
+                        _errorNotice('The password provided is too weak.');
+                      } else if (e.code == 'email-already-in-use') {
+                        _errorNotice(
+                            'The account already exists for that email.');
+                      }
                     }
                   }
                   ;

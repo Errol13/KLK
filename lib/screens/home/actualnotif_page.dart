@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'first_page.dart';
 import 'package:humanitarian_icons/humanitarian_icons.dart';
 
 class ActualNotificationPage extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'first_page.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage(

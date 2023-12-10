@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/medicines(services)_page.dart';
-import 'first_page.dart';
 
 class AdminMedicine extends StatefulWidget {
   const AdminMedicine(

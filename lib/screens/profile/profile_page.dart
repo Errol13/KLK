@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/account_page.dart';
-import 'package:klinikonek_project/screens/login_page.dart';
-import 'package:klinikonek_project/screens/privacy_security_page.dart';
+import 'package:klinikonek_project/screens/profile/account_page.dart';
+import 'package:klinikonek_project/screens/profile/privacy_security_page.dart';
 import 'notif_page.dart';
-import 'login_page.dart';
+import 'package:klinikonek_project/screens/sign_in_up/login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:klinikonek_project/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';

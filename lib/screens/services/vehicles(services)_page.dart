@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'first_page.dart';
 
 class VehiclePage extends StatefulWidget {
   const VehiclePage(

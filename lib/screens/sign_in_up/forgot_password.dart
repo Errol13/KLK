@@ -1,7 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/splash_page.dart';
+import 'package:klinikonek_project/screens/sign_in_up/splash_page.dart';
+
 
 class ForgotPasswordPage extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:klinikonek_project/screens/add_appointment.dart';
+import 'package:klinikonek_project/screens/services/add_appointment.dart';
 
 class CheckUpPage extends StatefulWidget {
   const CheckUpPage({super.key});
@@ -12,12 +12,12 @@ class CheckUpPage extends StatefulWidget {
 //Check Up Form
 
 class CheckUpForm {
-  final String? primaryDoctor; //nullable
-  final List<String> symptoms;
-  final List<String> medications;
-  final List<String> allergies;
+  String? primaryDoctor; //nullable
+  List<String> symptoms;
+  List<String> medications;
+  List<String> allergies;
   DateTime checkUpDate;
-  final String? approval;
+  bool approval = false;
 
   CheckUpForm({
     this.primaryDoctor,
@@ -25,7 +25,7 @@ class CheckUpForm {
     required this.medications,
     required this.allergies,
     required this.checkUpDate,
-    this.approval,
+    this.approval = false,
   });
 }
 
@@ -37,7 +37,7 @@ class _CheckUpPageState extends State<CheckUpPage> {
       medications: ['Ambroxol', 'Symdex-D'],
       allergies: ['None'],
       checkUpDate: DateTime(2023, 12, 12),
-      approval: 'approved',
+      approval: true,
     ),
   ];
 
@@ -228,46 +228,55 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                       const Color.fromARGB(255, 255, 255, 255),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
-                                // height: 80,
                                 margin: EdgeInsets.all(3),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Center(
-                                    child: Text.rich(
-                                      TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text:
-                                                'Doctor: ${appointment.primaryDoctor}\n'
-                                                'Symptoms: ${appointment.symptoms.join(', ')}\n'
-                                                'Medications: ${appointment.medications.join(', ')}\n'
-                                                'Allergies: ${appointment.allergies.join(', ')}\n',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              color: Color(0xFF276A7B),
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                child: Center(
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'Doctor: ${appointment.primaryDoctor}\n'
+                                              'Symptoms: ${appointment.symptoms.join(', ')}\n'
+                                              'Medications: ${appointment.medications.join(', ')}\n'
+                                              'Allergies: ${appointment.allergies.join(', ')}\n',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF276A7B),
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                          TextSpan(
-                                            text:
-                                                'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}\n',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              color: Color(0xFF276A7B),
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}\n',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF276A7B),
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                          TextSpan(
-                                            text:
-                                                '${appointment.approval != null ? appointment.approval!.toUpperCase() : 'N/A'}',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              '${appointment.approval != false ? 'Approved' : 'Pending'}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color:
+                                                appointment.approval != false
+                                                    ? Colors.green
+                                                    : Colors.yellow,
+                                            shadows: [
+                                              Shadow(
+                                                color: Colors
+                                                    .black, // Shadow color
+                                                offset: Offset(1.0,
+                                                    1.0), // Shadow offset
+                                                blurRadius:
+                                                    0.5, // Shadow blur radius
+                                              ),
+                                            ],
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -280,24 +289,26 @@ class _CheckUpPageState extends State<CheckUpPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          // Navigate to the AddAppointmentPage and await the result
-          final CheckUpForm newAppointment = await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddAppointmentPage()),
-          );
+      floatingActionButton: showAgenda
+          ? null
+          : FloatingActionButton(
+              onPressed: () async {
+                // Navigate to the AddAppointmentPage and await the result
+                final CheckUpForm newAppointment = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddAppointmentPage()),
+                );
 
-          // Check if result is not null and update the appointments list
-          if (newAppointment != null && newAppointment is CheckUpForm) {
-            setState(() {
-              appointments.add(newAppointment as CheckUpForm);
-            });
-          }
-        },
-        backgroundColor: Color(0xFF276A7B),
-        child: Icon(Icons.add),
-      ),
+                // Check if result is not null and update the appointments list
+                if (newAppointment != null && newAppointment is CheckUpForm) {
+                  setState(() {
+                    appointments.add(newAppointment as CheckUpForm);
+                  });
+                }
+              },
+              backgroundColor: Color(0xFF276A7B),
+              child: Icon(Icons.add),
+            ),
     );
   }
 }

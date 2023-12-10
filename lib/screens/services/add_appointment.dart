@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/checkup_page.dart';
+import 'package:klinikonek_project/screens/services/checkup_page.dart';
 import 'package:intl/intl.dart';
-import 'package:klinikonek_project/screens/splash_page.dart';
+import 'package:klinikonek_project/screens/sign_in_up/splash_page.dart';
 
 class AddAppointmentPage extends StatefulWidget {
   @override
@@ -14,7 +14,17 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
   TextEditingController medicationsController = TextEditingController();
   TextEditingController allergiesController = TextEditingController();
   TextEditingController _checkUpDateController = TextEditingController();
-  TextEditingController approvalController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Dispose of controllers when the widget is removed from the widget tree
+    primaryDoctorController.dispose();
+    symptomsController.dispose();
+    medicationsController.dispose();
+    allergiesController.dispose();
+    _checkUpDateController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +35,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
             symptomsController.text.isEmpty ||
             medicationsController.text.isEmpty ||
             allergiesController.text.isEmpty ||
-            _checkUpDateController.text.isEmpty ||
-            approvalController.text.isEmpty) {
+            _checkUpDateController.text.isEmpty) {
           // If any field is empty, allow the back navigation
           return true;
         } else {
@@ -246,39 +255,6 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
               ),
               SizedBox(height: 20),
 
-              //Approval
-              TextField(
-                controller: approvalController,
-                decoration: InputDecoration(
-                  labelText: 'Approval',
-                  labelStyle: TextStyle(
-                    color: Color(0xff276A7B),
-                    fontSize: 16,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Color(0xff659d66),
-                      width: 1.0,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 156, 156, 158),
-                      width: 1.0,
-                    ),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                ),
-                style: TextStyle(
-                  color: Color(0xFF276A7B),
-                ),
-              ),
-
               SizedBox(height: 20),
 
               //add appointment
@@ -295,10 +271,9 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                       symptomsController.text.isEmpty ||
                       medicationsController.text.isEmpty ||
                       allergiesController.text.isEmpty ||
-                      _checkUpDateController.text.isEmpty ||
-                      approvalController.text.isEmpty) {
-                    // If any field is empty, simply pop the screen without sending data
-                    Navigator.pop(context);
+                      _checkUpDateController.text.isEmpty) {
+                    // Show a dialog if any field is empty
+                    _errorNotice('Fill all the fields');
                   } else {
                     // If all fields are filled, send the CheckUpForm data back
                     CheckUpForm checkUpForm = CheckUpForm(
@@ -307,7 +282,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                       medications: medicationsController.text.split(','),
                       allergies: allergiesController.text.split(','),
                       checkUpDate: DateTime.parse(_checkUpDateController.text),
-                      approval: approvalController.text,
+                      approval: false,
                     );
 
                     // Pass the checkUpForm data back to CheckUpPage
@@ -319,6 +294,49 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // Method to show the dialog when fields are empty
+  //wrong password and email notice method
+  void _errorNotice(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          backgroundColor: Color(0xFF276A7B),
+          contentPadding: EdgeInsets.zero,
+          content: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 50,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  message,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

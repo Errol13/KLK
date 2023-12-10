@@ -9,7 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart'; // Import necessary packages.
 import 'splash_page.dart';
 import 'signup_page.dart';
-import 'first_page.dart';
+import 'package:klinikonek_project/screens/home/first_page.dart';
 import 'package:klinikonek_project/auth.dart';
 import 'forgot_password.dart';
 
@@ -73,9 +73,9 @@ class _LoginPageState extends State<LoginPage> {
 
       //print('Firebase Auth Exception: $e');
 
-      if (e.code == 'invalid-email') {
+      if (e.code == 'invalid-email' || e.code == 'user-not-found') {
         _errorNotice('Invalid Email');
-      } else if (e.code == 'invalid-login-credentials') {
+      } else if (e.code == 'invalid-login-credentials' || e.code =='wrong-password') {
         _errorNotice('Incorrect Password');
       } else if (e.code == 'too-many-requests') {
         _errorNotice('Too many attempts ! Try later');

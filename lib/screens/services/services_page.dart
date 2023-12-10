@@ -91,7 +91,7 @@ class _ServicePageState extends State<ServicePage> {
                           ),
                         ],
                       ),
-                      SizedBox(width: 60),
+                      SizedBox(width: 80),
                       SizedBox(
                         width: 90,
                         height: 110,
@@ -111,10 +111,9 @@ class _ServicePageState extends State<ServicePage> {
               child: GestureDetector(
                 onTap: () {
                   // Add the code to navigate to the medicine page here.
-                  // For example, you can use Navigator to push the medicine page:
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        MedicinePage(), // Replace with the actual MedicinePage.
+                        MedicinePage(), 
                   ));
                 },
                 child: Container(
@@ -134,10 +133,10 @@ class _ServicePageState extends State<ServicePage> {
                           color: Color(0xFF276A7B),
                         ),
                       ),
-                      SizedBox(width: 60),
+                      SizedBox(width: 80),
                       SizedBox(
                         width: 90,
-                        height: 100,
+                        height: 110,
                         child: Center(
                           child: Image.asset('assets/pill.png'),
                         ),

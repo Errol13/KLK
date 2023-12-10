@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/first_page.dart';
-import 'package:klinikonek_project/screens/splash_page.dart';
+import 'package:klinikonek_project/screens/home/first_page.dart';
+import 'package:klinikonek_project/screens/sign_in_up/splash_page.dart';
 
 class AuthPage extends StatelessWidget{
   const AuthPage({super.key});

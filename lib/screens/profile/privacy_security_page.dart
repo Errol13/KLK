@@ -1,10 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/home_page.dart';
-import 'package:klinikonek_project/screens/login_page.dart';
-import 'package:klinikonek_project/screens/profile_page.dart';
-import 'first_page.dart';
+import 'package:klinikonek_project/screens/sign_in_up/login_page.dart';
 
 class PSPage extends StatefulWidget {
   const PSPage({super.key}); // Create a StatefulWidget for the Sign-Up page.

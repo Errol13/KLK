@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klinikonek_project/screens/admin_medicine.dart';
-import 'first_page.dart';
+import 'package:klinikonek_project/screens/services/admin_medicine.dart';
 
 class MedicinePage extends StatefulWidget {
   const MedicinePage(

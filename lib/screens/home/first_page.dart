@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/screens/services/call_page.dart';
+import 'package:klinikonek_project/screens/services/services_page.dart';
 import 'home_page.dart';
-import 'call_page.dart';
-import 'services_page.dart';
-import 'profile_page.dart';
+import 'package:klinikonek_project/screens/profile/profile_page.dart';
 import 'package:flutter/services.dart';
 
 class FirstPage extends StatefulWidget {

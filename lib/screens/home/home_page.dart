@@ -19,14 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String dropdownvalue = 'Home';
   int selectedOption = 1;
-  var items = [
-    'Home',
-    'Services',
-    'Profile',
-    'Sign up / Log in',
-  ];
 
   void _show() {
     showDialog(

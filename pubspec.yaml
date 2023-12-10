@@ -106,6 +106,7 @@ flutter:
     - assets/call3.png
     - assets/DSWD-Emblem.jpg
     - assets/bfp.jpg
+    - assets/Error.png
     
   fonts:
     - family: Raleway

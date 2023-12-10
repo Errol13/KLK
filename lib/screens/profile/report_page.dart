@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ReportPage extends StatefulWidget {
-  const ReportPage(
-      {super.key}); // Create a StatefulWidget for the Sign-Up page.
+  const ReportPage({super.key});
 
   @override
   _ReportPageState createState() => _ReportPageState();
@@ -63,14 +62,11 @@ class _ReportPageState extends State<ReportPage> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-
-                //enabled border styling
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
                   borderSide: const BorderSide(
-                    color: Color.fromARGB(
-                        255, 156, 156, 158), // Change the border color here
-                    width: 1.0, // Adjust the border width as needed
+                    color: Color.fromARGB(255, 156, 156, 158),
+                    width: 1.0,
                   ),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
@@ -79,7 +75,6 @@ class _ReportPageState extends State<ReportPage> {
               // Initial Value
               value: dropdownvalue,
 
-              // Down Arrow Icon
               icon: const Icon(Icons.keyboard_arrow_down),
 
               // Array list of items
@@ -92,8 +87,7 @@ class _ReportPageState extends State<ReportPage> {
                   ),
                 );
               }).toList(),
-              // After selecting the desired option,it will
-              // change button value to selected value
+
               onChanged: (String? newValue) {
                 setState(() {
                   dropdownvalue = newValue!;
@@ -108,28 +102,9 @@ class _ReportPageState extends State<ReportPage> {
               leading: Radio<int>(
                 value: 1,
                 groupValue: selectedOption,
-                activeColor: Color(
-                    0xFF276A7B), // Change the active radio button color here
-                fillColor: MaterialStateProperty.all(
-                    Color(0xFF276A7B)), // Change the fill color when selected
-                splashRadius: 20, // Change the splash radius when clicked
-                onChanged: (value) {
-                  setState(() {
-                    selectedOption = value!;
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              title: const Text('Missing Elements'),
-              leading: Radio<int>(
-                value: 2,
-                groupValue: selectedOption,
-                activeColor: Color(
-                    0xFF276A7B), // Change the active radio button color here
-                fillColor: MaterialStateProperty.all(
-                    Color(0xFF276A7B)), // Change the fill color when selected
-                splashRadius: 20, // Change the splash radius when clicked
+                activeColor: Color(0xFF276A7B),
+                fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
+                splashRadius: 20,
                 onChanged: (value) {
                   setState(() {
                     selectedOption = value!;
@@ -140,13 +115,26 @@ class _ReportPageState extends State<ReportPage> {
             ListTile(
               title: const Text('Crashes'),
               leading: Radio<int>(
+                value: 2,
+                groupValue: selectedOption,
+                activeColor: Color(0xFF276A7B),
+                fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
+                splashRadius: 20,
+                onChanged: (value) {
+                  setState(() {
+                    selectedOption = value!;
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: const Text('Missing Elements'),
+              leading: Radio<int>(
                 value: 3,
                 groupValue: selectedOption,
-                activeColor: Color(
-                    0xFF276A7B), // Change the active radio button color here
-                fillColor: MaterialStateProperty.all(
-                    Color(0xFF276A7B)), // Change the fill color when selected
-                splashRadius: 20, // Change the splash radius when clicked
+                activeColor: Color(0xFF276A7B),
+                fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
+                splashRadius: 20,
                 onChanged: (value) {
                   setState(() {
                     selectedOption = value!;
@@ -178,14 +166,11 @@ class _ReportPageState extends State<ReportPage> {
                           width: 1.0,
                         ),
                       ),
-
-                      //enabled border styling
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 156, 156,
-                              158), // Change the border color here
-                          width: 1.0, // Adjust the border width as needed
+                          color: Color.fromARGB(255, 156, 156, 158),
+                          width: 1.0,
                         ),
                       ),
                       contentPadding: const EdgeInsets.symmetric(
@@ -205,8 +190,6 @@ class _ReportPageState extends State<ReportPage> {
               children: [
                 ElevatedButton(
                     onPressed: () {
-                      // Add your button's click logic here
-                      // For example, you can navigate to another screen or perform an action
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
@@ -219,8 +202,6 @@ class _ReportPageState extends State<ReportPage> {
                         ))),
                 ElevatedButton(
                     onPressed: () {
-                      // Add your button's click logic here
-                      // For example, you can navigate to another screen or perform an action
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(

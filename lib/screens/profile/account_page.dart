@@ -10,6 +10,7 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPage extends State<AccountPage> {
   String selectedMaritalStatus = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

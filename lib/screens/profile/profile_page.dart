@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:klinikonek_project/screens/profile/account_page.dart';
 import 'package:klinikonek_project/screens/profile/privacy_security_page.dart';
+import 'package:klinikonek_project/screens/profile/report_page.dart';
 import 'notif_page.dart';
 import 'package:klinikonek_project/screens/sign_in_up/login_page.dart';
 import 'package:provider/provider.dart';
@@ -299,6 +300,57 @@ class _ProfilePageState extends State<ProfilePage> {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
                               PSPage(), // Replace with the actual MedicinePage.
+                        ));
+                      },
+                      child: SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: Center(
+                          child: Icon(
+                            Icons.navigate_next,
+                            color: Color.fromRGBO(167, 199, 231, 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 10),
+
+            Expanded(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: Center(
+                        child: Image.asset('assets/Error.png'),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Text(
+                        "Report a problem",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xFF276A7B),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // Add your button's click logic here
+                        // For example, you can navigate to another screen or perform an action
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              ReportPage(), // Replace with the actual MedicinePage.
                         ));
                       },
                       child: SizedBox(

@@ -1,3 +1,5 @@
+
+
 class Comment {
   final String userId;
   String userName;
@@ -33,7 +35,6 @@ class Comment {
 }
 
 class Post {
-  final String userId;
   String userName;
   String userProfilePicture;
   String textContent;
@@ -44,7 +45,6 @@ class Post {
   List<Comment> comments;
 
   Post({
-    required this.userId,
     required this.userName,
     required this.userProfilePicture,
     required this.textContent,
@@ -56,7 +56,6 @@ class Post {
   });
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
         "userName": userName,
         "userProfilePicture": userProfilePicture,
         "textContent": textContent,
@@ -69,7 +68,6 @@ class Post {
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-      userId: json['userId'] ?? '',
       userName: json['userName'] ?? '',
       userProfilePicture: json['userProfilePicture'] ?? '',
       textContent: json['textContent'] ?? '',

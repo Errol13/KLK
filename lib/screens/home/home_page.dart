@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:klinikonek_project/model/post_model.dart';
@@ -18,9 +21,59 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Adding post with comments to Firestore
+  // Adding post with comments and images to Firestore
+  Future<void> addPostToFirestore(Post newPost) async {
+    try {
+      // Upload images to Firebase Storage and get download URLs
+      List<String> imageUrls = await uploadImages(newPost.images);
+
+      // Add download URLs to post map
+      newPost.images = imageUrls;
+
+      // Convert Post object to Map
+      Map<String, dynamic> postMap = newPost.toJson();
+
+      // Use the user's ID as the document ID for the post
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(widget.user!.uid)
+          .collection('posts')
+          .doc()
+          .set(postMap);
+
+      print('Post added to Firestore successfully!');
+    } catch (e) {
+      print('Error adding post to Firestore: $e');
+    }
+  }
+
+// Upload images to Firebase Storage and get download URLs
+  Future<List<String>> uploadImages(List<String> imagePaths) async {
+    List<String> imageUrls = [];
+
+    for (String imagePath in imagePaths) {
+      // Use Firebase Storage API to upload the image
+      // Replace 'your_storage_bucket' with your Firebase Storage bucket name
+      String storagePath =
+          'gs://klinikonek-bb5f7.appspot.com/${DateTime.now().millisecondsSinceEpoch}_${imagePath.split('/').last}';
+      final Reference storageReference =
+          FirebaseStorage.instance.ref().child(storagePath);
+      final UploadTask uploadTask = storageReference.putFile(File(imagePath));
+
+      // Wait for the upload to complete and get download URL
+      final TaskSnapshot downloadUrl = await uploadTask;
+      final String imageUrl = await downloadUrl.ref.getDownloadURL();
+
+      // Add download URL to the list
+      imageUrls.add(imageUrl);
+    }
+
+    return imageUrls;
+  }
+
   List<Post> posts = [
     Post(
-      userId: '1',
       userName: 'Elsa Arandelle',
       userProfilePicture: 'assets/user.png',
       textContent: 'The cold never bothered me anyway.',
@@ -45,7 +98,6 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     Post(
-      userId: '4',
       userName: 'Ana Ana',
       userProfilePicture: 'assets/user.png',
       textContent: 'Prinsesa?',
@@ -63,7 +115,6 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     Post(
-      userId: '6',
       userName: 'Red Horse',
       userProfilePicture: 'assets/user.png',
       textContent: 'Okay pa ba? Kaya pa?',
@@ -366,13 +417,15 @@ class _HomePageState extends State<HomePage> {
 
     if (postContent != null) {
       Post newPost = Post(
-        userId: 'userId',
         userName: 'Admin', //temporary
         userProfilePicture: 'assets/user.png', //temporary
         textContent: postContent,
         images: [],
         timestamp: DateTime.now(),
       );
+
+      // Add the post to Firestore
+      await addPostToFirestore(newPost);
 
       setState(() {
         posts.add(newPost);

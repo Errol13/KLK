@@ -40,20 +40,20 @@ class _FirstPageState extends State<FirstPage> {
         body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Color(0xFF276A7B),
           selectedFontSize: 15,
           onTap: _navigatedBottomBar,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home,
-                  color: _selectedIndex == 0 ? Colors.blue : Color(0xFFA7C7E7),),
+                  color: _selectedIndex == 0 ? Color(0xFF276A7B): Color(0xFFA7C7E7),),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.medical_services,
                 color: _selectedIndex == 1
-                    ? Colors.blue
+                    ? Color(0xFF276A7B)
                     : Color.fromRGBO(167, 199, 231, 1),
               ),
               label: 'Services',
@@ -62,7 +62,7 @@ class _FirstPageState extends State<FirstPage> {
               icon: Icon(
                 Icons.call,
                 color: _selectedIndex == 2
-                    ? Colors.blue
+                    ? Color(0xFF276A7B)
                     : Color.fromRGBO(167, 199, 231, 1),
               ),
               label: 'Call',
@@ -71,7 +71,7 @@ class _FirstPageState extends State<FirstPage> {
               icon: Icon(
                 Icons.account_circle,
                 color: _selectedIndex == 3
-                    ? Colors.blue
+                    ? Color(0xFF276A7B)
                     : Color.fromRGBO(167, 199, 231, 1),
               ),
               label: 'Account',

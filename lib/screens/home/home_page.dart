@@ -11,7 +11,6 @@ import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
-import 'dart:ui';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
     Post(
       userName: 'Ana Ana',
       userProfilePicture: 'assets/user.png',
-      textContent: 'Prinsesa?',
+      textContent: 'Ano pong gamot sa ubo?',
       images: [],
       timestamp: DateTime.now().subtract(Duration(days: 1)),
       likes: 8,
@@ -116,9 +115,9 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
     Post(
-      userName: 'Red Horse',
+      userName: 'Lily Cruz',
       userProfilePicture: 'assets/user.png',
-      textContent: 'Okay pa ba? Kaya pa?',
+      textContent: 'Okay lang po ba gamitin Ambroxol para sa bata?',
       images: [],
       timestamp: DateTime.now().subtract(Duration(days: 2)),
       likes: 5,
@@ -283,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                                   } else if (value == 'delete') {
                                     // Handle delete action
                                   } else if (value == 'report') {
-                                    _show();
+                                    // Handle report action
                                   }
                                 },
                                 itemBuilder: (BuildContext context) {

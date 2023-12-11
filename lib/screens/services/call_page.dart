@@ -12,7 +12,9 @@ class _CallPageState extends State<CallPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: const Color(0xFFE6E7E8),
         title: Row(
           children: [
             Image.asset('assets/Logo.png', height: 30, width: 30),
@@ -108,7 +110,7 @@ class _CallPageState extends State<CallPage> {
                         width: 80,
                         height: 100,
                         child: Center(
-                          child: Image.asset('assets/call3.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),
@@ -159,7 +161,7 @@ class _CallPageState extends State<CallPage> {
                         width: 80,
                         height: 100,
                         child: Center(
-                          child: Image.asset('assets/call3.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),
@@ -232,7 +234,7 @@ class _CallPageState extends State<CallPage> {
                         width: 80,
                         height: 100,
                         child: Center(
-                          child: Image.asset('assets/call3.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),

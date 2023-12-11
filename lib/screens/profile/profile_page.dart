@@ -204,7 +204,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Center(
                           child: Icon(
                             Icons.navigate_next,
-                            color:Color(0xFF276A7B),
+                            color: Color(0xFF276A7B),
                           ),
                         ),
                       ),
@@ -359,7 +359,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Center(
                           child: Icon(
                             Icons.navigate_next,
-                            color: Color.fromRGBO(167, 199, 231, 1),
+                            color: Color(0xFF276A7B),
                           ),
                         ),
                       ),

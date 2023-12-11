@@ -86,7 +86,6 @@ flutter:
     - assets/calendar.png
     - assets/pill.png
     - assets/ambulance.png
-    - assets/call.png
     - assets/biogesic.png
     - assets/bioflu.jpg
     - assets/dedcolgen.jpg
@@ -108,6 +107,8 @@ flutter:
     - assets/DSWD-Emblem.jpg
     - assets/bfp.jpg
     - assets/Error.png
+    - assets/call1.png
+    - assets/Call.png
     
   fonts:
     - family: Raleway

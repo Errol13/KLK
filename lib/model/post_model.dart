@@ -43,6 +43,7 @@ class Post {
   int likes;
   int commentCount;
   List<Comment> comments;
+  bool isLiked;
 
   Post({
     required this.userName,
@@ -53,6 +54,7 @@ class Post {
     this.likes = 0,
     this.commentCount = 0,
     this.comments = const [],
+    this.isLiked = false,
   });
 
   Map<String, dynamic> toJson() => {
@@ -81,4 +83,5 @@ class Post {
           [],
     );
   }
+
 }

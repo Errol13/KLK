@@ -52,6 +52,7 @@ dependencies:
   humanitarian_icons: ^1.0.2
   comment_box: ^0.0.18
   firebase_storage: ^11.5.5
+  adaptive_scrollbar: ^2.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -109,6 +110,12 @@ flutter:
     - assets/Error.png
     - assets/call1.png
     - assets/Call.png
+    - assets/form.png
+    - assets/senior.jpeg
+    - assets/general.jpg
+    - assets/immunization.jpg
+    - assets/dental.png
+    - assets/file.png
     
   fonts:
     - family: Raleway

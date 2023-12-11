@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:klinikonek_project/screens/services/admin_medicine.dart';
 
 class MedicinePage extends StatefulWidget {
-  const MedicinePage(
-      {super.key}); // Create a StatefulWidget for the Sign-Up page.
-
+  MedicinePage({super.key}); // Create a StatefulWidget for the Sign-Up page.
+  final user = FirebaseAuth.instance.currentUser;
   @override
   _MedicinePageState createState() => _MedicinePageState();
 }
@@ -33,6 +34,32 @@ List<Medicine> medicines = [
 class _MedicinePageState extends State<MedicinePage> {
   // This controller will store the value of the search bar
   final TextEditingController _searchController = TextEditingController();
+  bool isAdmin = false; // Default value, assuming the user is not admin
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  Future<void> fetchUserData() async {
+    // Fetch user data from Firestore
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection('Users')
+        .doc(widget.user?.uid)
+        .get();
+
+    if (snapshot.exists) {
+      // Check if the 'isAdmin' field exists and is true
+      isAdmin = snapshot.data()?['isAdmin'] ?? false;
+
+      // Update the state to trigger a rebuild
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +79,18 @@ class _MedicinePageState extends State<MedicinePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your button's click logic here
-          // For example, you can navigate to another screen or perform an action
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                AdminMedicine(), // Replace with the actual MedicinePage.
-          ));
-        },
-        backgroundColor: Color(0xFF276A7B),
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: isAdmin
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      AdminMedicine(), 
+                ));
+              },
+              backgroundColor: Color(0xFF276A7B),
+              child: Icon(Icons.add),
+            )
+          : null,
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(

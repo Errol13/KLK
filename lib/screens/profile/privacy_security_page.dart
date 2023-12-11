@@ -80,7 +80,7 @@ class _PSPageState extends State<PSPage> {
           filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: AlertDialog(
             backgroundColor:
-                Colors.white.withOpacity(0.9), // Adjust the opacity here
+                Color(0xFFC6DBDC).withOpacity(0.9), // Adjust the opacity here
             title: Text(
               'Delete Confirmation',
               style: TextStyle(
@@ -98,12 +98,7 @@ class _PSPageState extends State<PSPage> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(
-                      255,
-                      156,
-                      156,
-                      158,
-                    ), // Define text styles.
+                    color:Color.fromARGB(255, 130, 130, 131), 
                   ),
                 ),
               ),

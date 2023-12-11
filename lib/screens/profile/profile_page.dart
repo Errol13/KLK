@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/model/user_model.dart';
 import 'package:klinikonek_project/screens/profile/account_page.dart';
 import 'package:klinikonek_project/screens/profile/privacy_security_page.dart';
 import 'package:klinikonek_project/screens/profile/report_page.dart';
@@ -9,13 +11,40 @@ import 'package:klinikonek_project/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
-
+  ProfilePage({super.key});
+  final user = FirebaseAuth.instance.currentUser;
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  UserModel? currentUser; // Variable to store the current user's data
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCurrentUserData();
+  }
+
+  Future<void> fetchCurrentUserData() async {
+    // Fetch data for the current user from Firestore
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection('Users')
+        .doc(widget.user?.uid)
+        .get();
+
+    if (snapshot.exists) {
+      // Convert the document data to UserData
+      currentUser = UserModel.fromJson(snapshot.data()!);
+
+      // Update the state to trigger a rebuild
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
+
   //confirmation
   void _showLogoutConfirmationDialog(BuildContext context) {
     showDialog(
@@ -100,12 +129,14 @@ class _ProfilePageState extends State<ProfilePage> {
             Expanded(
               child: Align(
                 alignment: Alignment.topLeft,
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF276A7B),
+                child: Expanded(
+                  child: Text(
+                    'Profile',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF276A7B),
+                    ),
                   ),
                 ),
               ),
@@ -134,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Julia Mario",
+                    currentUser!.firstName + " " + currentUser!.lastName,
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -151,7 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "juliamario@mail.com",
+                    currentUser!.email,
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.normal,

@@ -10,7 +10,6 @@ class CheckUpPage extends StatefulWidget {
 }
 
 //Check Up Form
-
 class CheckUpForm {
   String? primaryDoctor; //nullable
   List<String> symptoms;
@@ -18,6 +17,7 @@ class CheckUpForm {
   List<String> allergies;
   DateTime checkUpDate;
   bool approval = false;
+  bool isDone = false;
 
   CheckUpForm({
     this.primaryDoctor,
@@ -26,6 +26,7 @@ class CheckUpForm {
     required this.allergies,
     required this.checkUpDate,
     this.approval = false,
+    this.isDone = false,
   });
 }
 
@@ -36,8 +37,17 @@ class _CheckUpPageState extends State<CheckUpPage> {
       symptoms: ['cough', 'phlegm'],
       medications: ['Ambroxol', 'Symdex-D'],
       allergies: ['None'],
+      checkUpDate: DateTime(2023, 15, 12),
+      approval: true,
+    ),
+    CheckUpForm(
+      primaryDoctor: "Doctor Lewis",
+      symptoms: ['cough', 'phlegm'],
+      medications: ['Ambroxol', 'Symdex-D'],
+      allergies: ['None'],
       checkUpDate: DateTime(2023, 12, 12),
       approval: true,
+      isDone: true,
     ),
   ];
 
@@ -48,6 +58,14 @@ class _CheckUpPageState extends State<CheckUpPage> {
     "Thursday",
     "Friday",
     "Saturday"
+  ];
+  List<String> picURL = [
+    'assets/senior.jpeg',
+    'assets/immunization.jpg',
+    'assets/general.jpg',
+    'assets/immunization.jpg',
+    'assets/dental.png',
+    'assets/general.jpg'
   ];
   List<String> agenda = [
     "Senior Citizen Check-up",
@@ -183,35 +201,56 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
-                                height: 100,
+                                height: 110,
                                 margin: EdgeInsets.symmetric(vertical: 5),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
+
+                                  // row for agenda
+                                  child: Row(
                                     children: [
+                                      // column for texts
                                       Expanded(
-                                        child: Text(
-                                          days[i],
-                                          style: TextStyle(
-                                            color: Color(0xFF276A7B),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                days[i],
+                                                style: TextStyle(
+                                                  color: Color(0xFF276A7B),
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(height: 3),
+                                            Expanded(
+                                              child: Text(
+                                                agenda[i],
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Color(0xFF276A7B),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(height: 3),
+                                          ],
                                         ),
                                       ),
-                                      SizedBox(height: 3),
-                                      Expanded(
-                                        child: Text(
-                                          agenda[i],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Color(0xFF276A7B),
-                                          ),
-                                        ),
+
+                                      // Spacer to fill available space
+                                      Spacer(),
+
+                                      // picture
+                                      Image.asset(
+                                        picURL[i],
+                                        width: 70,
+                                        height: 70,
+                                        fit: BoxFit.contain,
                                       ),
-                                      SizedBox(height: 3),
+                                      
                                     ],
                                   ),
                                 ),
@@ -228,57 +267,129 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                       const Color.fromARGB(255, 255, 255, 255),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
-                                margin: EdgeInsets.all(3),
-                                child: Center(
-                                  child: Text.rich(
-                                    TextSpan(
+                                margin: EdgeInsets.all(6),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .spaceBetween, // Align to the end
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(width: 8), // Adjust the spacing
+
+                                    // Column for appointment details
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        TextSpan(
-                                          text:
-                                              'Doctor: ${appointment.primaryDoctor}\n'
-                                              'Symptoms: ${appointment.symptoms.join(', ')}\n'
-                                              'Medications: ${appointment.medications.join(', ')}\n'
-                                              'Allergies: ${appointment.allergies.join(', ')}\n',
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'Doctor: ${appointment.primaryDoctor}',
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Color(0xFF276A7B),
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        TextSpan(
-                                          text:
-                                              'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}\n',
+                                        Text(
+                                          'Symptoms: ${appointment.symptoms.join(', ')}',
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Color(0xFF276A7B),
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        TextSpan(
-                                          text:
-                                              '${appointment.approval != false ? 'Approved' : 'Pending'}',
+                                        Text(
+                                          'Medications: ${appointment.medications.join(', ')}',
                                           style: TextStyle(
                                             fontSize: 14,
-                                            color:
-                                                appointment.approval != false
+                                            color: Color(0xFF276A7B),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Allergies: ${appointment.allergies.join(', ')}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF276A7B),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF276A7B),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          appointment.isDone
+                                              ? 'Done'
+                                              : appointment.approval
+                                                  ? 'Approved'
+                                                  : 'Pending',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: appointment.isDone
+                                                ? Colors
+                                                    .grey // Change the color for 'Done'
+                                                : appointment.approval
                                                     ? Colors.green
                                                     : Colors.yellow,
                                             shadows: [
                                               Shadow(
-                                                color: Colors
-                                                    .black, // Shadow color
-                                                offset: Offset(1.0,
-                                                    1.0), // Shadow offset
-                                                blurRadius:
-                                                    0.5, // Shadow blur radius
+                                                color: Colors.black,
+                                                offset: Offset(1.0, 1.0),
+                                                blurRadius: 0.5,
                                               ),
                                             ],
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
                                       ],
                                     ),
-                                  ),
+                                    // PopupMenuButton for "Edit" and "Delete" options
+                                    PopupMenuButton<String>(
+                                      onSelected: (value) {
+                                        // Handle menu item selection
+                                        if (value == 'edit') {
+                                          // Handle edit action
+                                        } else if (value == 'delete') {
+                                          // Handle delete action
+                                        }
+                                      },
+                                      itemBuilder: (BuildContext context) {
+                                        // Conditionally include the "Edit" option based on isDone status
+                                        return appointment.isDone
+                                            ? [
+                                                PopupMenuItem<String>(
+                                                  value: 'delete',
+                                                  child: Text(
+                                                    'Delete',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ]
+                                            : [
+                                                PopupMenuItem<String>(
+                                                  value: 'edit',
+                                                  child: Text('Edit'),
+                                                ),
+                                                PopupMenuItem<String>(
+                                                  value: 'delete',
+                                                  child: Text('Delete'),
+                                                ),
+                                              ];
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
                           ],
@@ -302,7 +413,8 @@ class _CheckUpPageState extends State<CheckUpPage> {
                 // Check if result is not null and update the appointments list
                 if (newAppointment != null && newAppointment is CheckUpForm) {
                   setState(() {
-                    appointments.add(newAppointment as CheckUpForm);
+                    // Insert the new appointment at the beginning of the list
+                    appointments.insert(0, newAppointment);
                   });
                 }
               },

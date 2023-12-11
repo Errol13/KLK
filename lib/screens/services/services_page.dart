@@ -1,16 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/screens/services/records_page.dart';
 import 'medicines(services)_page.dart';
 import 'vehicles(services)_page.dart';
 import 'checkup_page.dart';
 
 class ServicePage extends StatefulWidget {
-  const ServicePage({super.key});
-
+  ServicePage({super.key});
+  final user = FirebaseAuth.instance.currentUser;
   @override
   _ServicePageState createState() => _ServicePageState();
 }
 
 class _ServicePageState extends State<ServicePage> {
+  bool isAdmin = false; // Default value
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  Future<void> fetchUserData() async {
+    // Fetch user data from Firestore
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection('Users')
+        .doc(widget.user?.uid)
+        .get();
+
+    if (snapshot.exists) {
+      // Check if the 'isAdmin' field exists and is true
+      isAdmin = snapshot.data()?['isAdmin'] ?? false;
+
+      // Update the state to trigger a rebuild
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +83,9 @@ class _ServicePageState extends State<ServicePage> {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  // Add the code to navigate to the medicine page here.
-                  // For example, you can use Navigator to push the medicine page:
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        CheckUpPage(), // Replace with the actual MedicinePage.
+                        CheckUpPage(), 
                   ));
                 },
                 child: Container(
@@ -112,8 +140,7 @@ class _ServicePageState extends State<ServicePage> {
                 onTap: () {
                   // Add the code to navigate to the medicine page here.
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        MedicinePage(), 
+                    builder: (context) => MedicinePage(),
                   ));
                 },
                 child: Container(
@@ -209,6 +236,7 @@ class _ServicePageState extends State<ServicePage> {
             SizedBox(height: 30),
 
             // Medical Records
+            if (isAdmin)
             Expanded(
               child: GestureDetector(
                 onTap: () {
@@ -216,7 +244,7 @@ class _ServicePageState extends State<ServicePage> {
                   // For example, you can use Navigator to push the medicine page:
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        VehiclePage(), // Replace with the actual MedicinePage.
+                        MedicalRecordPage(), // Replace with the actual MedicinePage.
                   ));
                 },
                 child: Container(
@@ -228,7 +256,7 @@ class _ServicePageState extends State<ServicePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                        SizedBox(width: 20),
+                      SizedBox(width: 20),
                       const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,

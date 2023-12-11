@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:klinikonek_project/model/liked.dart';
 import 'package:klinikonek_project/model/post_model.dart';
 import 'package:klinikonek_project/model/user_model.dart';
 import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
@@ -21,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Adding post with comments to Firestore
   // Adding post with comments and images to Firestore
   Future<void> addPostToFirestore(Post newPost) async {
     try {
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
     return imageUrls;
   }
 
-int selectedOption = 1;
+  int selectedOption = 1;
 
   void _show() {
     showDialog(
@@ -82,7 +83,7 @@ int selectedOption = 1;
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: AlertDialog(
-            backgroundColor: Colors.white.withOpacity(0.9),
+            backgroundColor: Color(0xFFC6DBDC).withOpacity(0.9),
             title: Text(
               'Select a problem ',
               style: TextStyle(
@@ -100,7 +101,9 @@ int selectedOption = 1;
                       value: 1,
                       groupValue: selectedOption,
                       activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
+                      fillColor: MaterialStateProperty.all(
+                        Color(0xFF276A7B),
+                      ),
                       splashRadius: 20,
                       onChanged: (value) {
                         setState(() {
@@ -197,12 +200,7 @@ int selectedOption = 1;
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(
-                      255,
-                      156,
-                      156,
-                      158,
-                    ),
+                    color: Color.fromARGB(255, 130, 130, 131),
                   ),
                 ),
               ),
@@ -226,7 +224,6 @@ int selectedOption = 1;
     );
   }
 
-  
   List<Post> posts = [
     Post(
       userName: 'Elsa Arandelle',
@@ -437,7 +434,7 @@ int selectedOption = 1;
                                   } else if (value == 'delete') {
                                     // Handle delete action
                                   } else if (value == 'report') {
-                                    // Handle report action
+                                    _show();
                                   }
                                 },
                                 itemBuilder: (BuildContext context) {
@@ -513,13 +510,20 @@ int selectedOption = 1;
                                   color: Color(0xFF276A7B),
                                 ),
                               ),
-                              GestureDetector(
+                              LikeButtonWidget(
+                                likes: post.likes,
+                                isLiked: post.isLiked,
                                 onTap: () {
-                                  //temporary
+                                  // Toggle the liked status and update the likes count
+                                  setState(() {
+                                    post.isLiked = !post.isLiked;
+                                    if (post.isLiked) {
+                                      post.likes++;
+                                    } else {
+                                      post.likes--;
+                                    }
+                                  });
                                 },
-                                child: LikeButton(
-                                  size: 35,
-                                ),
                               ),
                               const SizedBox(
                                 width: 5,

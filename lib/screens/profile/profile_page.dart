@@ -164,14 +164,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    currentUser!.firstName + " " + currentUser!.lastName,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF276A7B),
-                    ),
-                  )
+                  currentUser == null
+                    ? CircularProgressIndicator(color: Color(0xFF276A7B),) // Loading indicator
+                    : Text(
+                        currentUser!.firstName +
+                            " " +
+                            currentUser!.lastName,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF276A7B),
+                        ),
+                      ),
                 ],
               ),
             ),
@@ -181,14 +185,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    currentUser!.email,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF276A7B),
-                    ),
-                  )
+                 currentUser == null
+                    ? CircularProgressIndicator(color: Color(0xFF276A7B),) // Loading indicator
+                    : Text(
+                        currentUser!.email,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xFF276A7B),
+                        ),
+                      ),
                 ],
               ),
             ),

@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:klinikonek_project/screens/services/admin_medicine.dart';
 
 class MedicinePage extends StatefulWidget {
-  MedicinePage({super.key}); // Create a StatefulWidget for the Sign-Up page.
+  MedicinePage({super.key});
   final user = FirebaseAuth.instance.currentUser;
   @override
   _MedicinePageState createState() => _MedicinePageState();
@@ -28,13 +28,11 @@ List<Medicine> medicines = [
   Medicine("Dolfenal", 10, 'assets/dolfenal.jpg'),
   Medicine("Diatabs", 0, 'assets/diatabs.jpg'),
   Medicine("Tuseran Forte", 15, 'assets/tuseran.jpg'),
-  // Add more medicines with different information
 ];
 
 class _MedicinePageState extends State<MedicinePage> {
-  // This controller will store the value of the search bar
   final TextEditingController _searchController = TextEditingController();
-  bool isAdmin = false; // Default value, assuming the user is not admin
+  bool isAdmin = false;
 
   @override
   void initState() {
@@ -43,7 +41,6 @@ class _MedicinePageState extends State<MedicinePage> {
   }
 
   Future<void> fetchUserData() async {
-    // Fetch user data from Firestore
     DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
         .instance
         .collection('Users')
@@ -51,10 +48,8 @@ class _MedicinePageState extends State<MedicinePage> {
         .get();
 
     if (snapshot.exists) {
-      // Check if the 'isAdmin' field exists and is true
       isAdmin = snapshot.data()?['isAdmin'] ?? false;
 
-      // Update the state to trigger a rebuild
       if (mounted) {
         setState(() {});
       }
@@ -83,8 +78,7 @@ class _MedicinePageState extends State<MedicinePage> {
           ? FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      AdminMedicine(), 
+                  builder: (context) => AdminMedicine(),
                 ));
               },
               backgroundColor: Color(0xFF276A7B),
@@ -94,10 +88,8 @@ class _MedicinePageState extends State<MedicinePage> {
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.stretch, // Make children fill the width
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            //Available Medicine Banner
             Align(
               alignment: Alignment.topCenter,
               child: Container(
@@ -140,52 +132,46 @@ class _MedicinePageState extends State<MedicinePage> {
                 ),
               ),
             ),
-
             SizedBox(
               height: 5,
             ),
-
-            //searchbar
             Container(
-              // Add padding around the search bar
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              // Use a Material design search bar
-              child: TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search...',
-                  // Add a clear button to the search bar
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () => _searchController.clear(),
-                  ),
-                  // Add a search icon or button to the search bar
-                  prefixIcon: IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      // Perform the search here
-                    },
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 156, 156, 158),
-                      width: 2.0,
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextField(
+                  controller: _searchController,
+                  onChanged: (value) {
+                    filterMedicines(value);
+                  },
+                  onSubmitted: (value) {
+                    filterMedicines(value);
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        _searchController.clear();
+                        filterMedicines('');
+                      },
                     ),
-                  ),
-                  //enabled border styling
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 156, 156, 158),
-                      width: 1.0, // Adjust the border width as needed
+                    prefixIcon: Icon(Icons.search),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                         color: Color.fromARGB(255, 156, 156, 158),
+                      width: 2.0,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                         color: Color.fromARGB(255, 156, 156, 158),
+                      width: 1.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-
-            //List of Medicines
+                ),
             SizedBox(height: 20),
             Expanded(
               child: Container(
@@ -195,13 +181,12 @@ class _MedicinePageState extends State<MedicinePage> {
                 child: Scrollbar(
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Display two boxes per row
+                      crossAxisCount: 2,
                     ),
                     itemCount: medicines.length,
                     itemBuilder: (context, index) {
                       Medicine medicine = medicines[index];
-                      bool isAvailable = medicine.quantity >
-                          0; // Check if medicine is available
+                      bool isAvailable = medicine.quantity > 0;
 
                       return Container(
                         margin: EdgeInsets.all(10),
@@ -272,5 +257,20 @@ class _MedicinePageState extends State<MedicinePage> {
         ),
       ),
     );
+  }
+
+  void filterMedicines(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        // If the query is empty, show all medicines
+        medicines = [...medicines];
+      } else {
+        // Filter medicines based on the search query
+        medicines = medicines
+            .where((medicine) =>
+                medicine.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
   }
 }

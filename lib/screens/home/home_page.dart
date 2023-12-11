@@ -10,6 +10,7 @@ import 'package:klinikonek_project/model/liked.dart';
 import 'package:klinikonek_project/model/post_model.dart';
 import 'package:klinikonek_project/model/user_model.dart';
 import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
+import 'package:klinikonek_project/screens/home/comment_section.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -530,7 +531,14 @@ class _HomePageState extends State<HomePage> {
                               ),
                               IconButton(
                                 icon: const Icon(Icons.add_comment_rounded),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CommentSectionPage()),
+                                  );
+                                },
                                 iconSize: 35,
                               ),
                               const SizedBox(

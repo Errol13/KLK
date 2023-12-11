@@ -108,7 +108,6 @@ flutter:
     - assets/DSWD-Emblem.jpg
     - assets/bfp.jpg
     - assets/Error.png
-    - assets/call1.png
     - assets/Call.png
     - assets/form.png
     - assets/senior.jpeg
@@ -116,7 +115,7 @@ flutter:
     - assets/immunization.jpg
     - assets/dental.png
     - assets/file.png
-    
+    - assets/default_profile.png
   fonts:
     - family: Raleway
       fonts:

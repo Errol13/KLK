@@ -90,7 +90,7 @@ class _CallPageState extends State<CallPage> {
                         width: 100,
                         height: 120,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),
@@ -130,7 +130,7 @@ class _CallPageState extends State<CallPage> {
                         width: 100,
                         height: 120,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),
@@ -185,7 +185,7 @@ class _CallPageState extends State<CallPage> {
                         width: 100,
                         height: 120,
                         child: Center(
-                          child: Image.asset('assets/call.png'),
+                          child: Image.asset('assets/Call.png'),
                         ),
                       ),
                     ),

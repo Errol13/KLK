@@ -127,23 +127,22 @@ class _ProfilePageState extends State<ProfilePage> {
               CrossAxisAlignment.stretch, // Make children fill the width
           children: [
             Expanded(
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Expanded(
-                  child: Text(
-                    'Profile',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF276A7B),
-                    ),
+                child: Row(
+              children: [
+                Text(
+                  'Profile',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF276A7B),
                   ),
                 ),
-              ),
-            ),
+              ],
+            )),
 
             SizedBox(height: 30),
             //edit profile pic (needs to be a button WIP)
+
             Expanded(
               flex: 5,
               child: CircleAvatar(
@@ -159,34 +158,33 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  currentUser == null
-                    ? CircularProgressIndicator(color: Color(0xFF276A7B),) // Loading indicator
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                currentUser == null
+                    ? CircularProgressIndicator(
+                        color: Color(0xFF276A7B),
+                      ) // Loading indicator
                     : Text(
-                        currentUser!.firstName +
-                            " " +
-                            currentUser!.lastName,
+                        currentUser!.firstName + " " + currentUser!.lastName,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF276A7B),
                         ),
                       ),
-                ],
-              ),
+              ],
             ),
 
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                 currentUser == null
-                    ? CircularProgressIndicator(color: Color(0xFF276A7B),) // Loading indicator
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                currentUser == null
+                    ? CircularProgressIndicator(
+                        color: Color(0xFF276A7B),
+                      ) // Loading indicator
                     : Text(
                         currentUser!.email,
                         style: TextStyle(
@@ -195,9 +193,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Color(0xFF276A7B),
                         ),
                       ),
-                ],
-              ),
+              ],
             ),
+
             //account (needs to be a button WIP)
             SizedBox(
               height: 50,
@@ -228,11 +226,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Add your button's click logic here
-                        // For example, you can navigate to another screen or perform an action
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              AccountPage(), // Replace with the actual MedicinePage.
+                          builder: (context) => AccountPage(),
                         ));
                       },
                       child: SizedBox(
@@ -281,11 +276,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Add your button's click logic here
-                        // For example, you can navigate to another screen or perform an action
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              NotificationPage(), // Replace with the actual MedicinePage.
+                          builder: (context) => NotificationPage(),
                         ));
                       },
                       child: SizedBox(
@@ -332,11 +324,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Add your button's click logic here
-                        // For example, you can navigate to another screen or perform an action
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              PSPage(), // Replace with the actual MedicinePage.
+                          builder: (context) => PSPage(),
                         ));
                       },
                       child: SizedBox(
@@ -383,11 +372,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Add your button's click logic here
-                        // For example, you can navigate to another screen or perform an action
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              ReportPage(), // Replace with the actual MedicinePage.
+                          builder: (context) => ReportPage(),
                         ));
                       },
                       child: SizedBox(
@@ -405,42 +391,44 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                // Add your navigation logic here
-                // For instance, navigate back to the login page
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      LoginPage(), // Replace with the actual MedicinePage.
-                ));
-              },
-              child: Expanded(
-                child: SizedBox(
-                  height: 100,
-                  child: Container(
+            Expanded(child: SizedBox()),
+            Expanded(
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ));
+                    },
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            _showLogoutConfirmationDialog(context);
-                          },
-                          child: Text(
-                            "Logout",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(123, 39, 39, 1),
+                        Expanded(
+                          child: SizedBox(
+                            height: 100,
+                            child: Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      _showLogoutConfirmationDialog(context);
+                                    },
+                                    child: Text(
+                                      "Logout",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromRGBO(123, 39, 39, 1),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        )
+                        ),
                       ],
-                    ),
-                  ),
-                ),
-              ),
-            )
+                    )))
           ],
         ),
       ),

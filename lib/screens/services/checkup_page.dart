@@ -250,7 +250,6 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                         height: 70,
                                         fit: BoxFit.contain,
                                       ),
-                                      
                                     ],
                                   ),
                                 ),
@@ -273,83 +272,85 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                       .spaceBetween, // Align to the end
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(width: 8), // Adjust the spacing
+                                    SizedBox(width: 20), // Adjust the spacing
 
-                                    // Column for appointment details
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 20),
-                                        Text(
-                                          'Doctor: ${appointment.primaryDoctor}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF276A7B),
-                                            fontWeight: FontWeight.bold,
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 14),
+                                          Text(
+                                            'Doctor: ${appointment.primaryDoctor}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Symptoms: ${appointment.symptoms.join(', ')}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF276A7B),
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            'Symptoms: ${appointment.symptoms.join(', ')}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Medications: ${appointment.medications.join(', ')}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF276A7B),
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            'Medications: ${appointment.medications.join(', ')}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Allergies: ${appointment.allergies.join(', ')}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF276A7B),
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            'Allergies: ${appointment.allergies.join(', ')}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF276A7B),
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            'Date: ${DateFormat('MM/dd/yyyy').format(appointment.checkUpDate)}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF276A7B),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          appointment.isDone
-                                              ? 'Done'
-                                              : appointment.approval
-                                                  ? 'Approved'
-                                                  : 'Pending',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: appointment.isDone
-                                                ? Colors
-                                                    .grey // Change the color for 'Done'
+                                          Text(
+                                            appointment.isDone
+                                                ? 'Done'
                                                 : appointment.approval
-                                                    ? Colors.green
-                                                    : Colors.yellow,
-                                            shadows: [
-                                              Shadow(
-                                                color: Colors.black,
-                                                offset: Offset(1.0, 1.0),
-                                                blurRadius: 0.5,
-                                              ),
-                                            ],
-                                            fontWeight: FontWeight.bold,
+                                                    ? 'Approved'
+                                                    : 'Pending',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: appointment.isDone
+                                                  ? Colors
+                                                      .grey // Change the color for 'Done'
+                                                  : appointment.approval
+                                                      ? Colors.green
+                                                      : Colors.yellow,
+                                              shadows: [
+                                                Shadow(
+                                                  color: Colors.black,
+                                                  offset: Offset(1.0, 1.0),
+                                                  blurRadius: 0.5,
+                                                ),
+                                              ],
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                        ],
+                                      ),
+                                    ), // Column for appointment details
+
                                     // PopupMenuButton for "Edit" and "Delete" options
                                     PopupMenuButton<String>(
                                       onSelected: (value) {

@@ -72,7 +72,7 @@ class _VehiclePageState extends State<VehiclePage> {
                         Text(
                           "Available Vehicles",
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF276A7B),
                           ),
@@ -118,7 +118,7 @@ class _VehiclePageState extends State<VehiclePage> {
                 child: Scrollbar(
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // Display two boxes per row
+                      crossAxisCount: 2, // Display two boxes per row
                     ),
                     itemCount: vehicles.length,
                     itemBuilder: (context, index) {
@@ -145,13 +145,13 @@ class _VehiclePageState extends State<VehiclePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Center(
+                            Expanded(
                               child: Text(vehicle.name),
                             ),
                             Expanded(
                               flex: 2,
                               child: Image.asset(vehicle.imageUrl,
-                                  width: 60, height: 60),
+                                  width: 90, height: 90),
                             ),
                             SizedBox(height: 10),
                             if (isAvailable)

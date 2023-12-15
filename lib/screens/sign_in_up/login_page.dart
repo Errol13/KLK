@@ -80,6 +80,9 @@ class _LoginPageState extends State<LoginPage> {
       } else if (e.code == 'too-many-requests') {
         _errorNotice('Too many attempts ! Try later');
       }
+      else{
+        _errorNotice('Incorrect Password');
+      }
     }
   }
 

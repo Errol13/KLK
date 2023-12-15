@@ -43,14 +43,20 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _isPasswordMatched() {
     // Check if either password or confirm password has changed
     if (_passwordController.text != _confirmPasswordController.text) {
-      setState(() {
-        _confirmPasswordError = 'Passwords do not match';
-      });
+       ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text('Password does not match'),
+        ),
+      );
       return false;
     } else {
-      setState(() {
-        _confirmPasswordError = null;
-      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('Password matched'),
+        ),
+      );
       return true;
     }
   }
@@ -413,10 +419,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 width: 400,
                 child: TextField(
                   controller: _passwordController,
-                  onChanged: (password) {
-                    // Check if passwords match in real-time
-                    _isPasswordMatched();
-                  },
+                  // onChanged: (password) {
+                  //   // Check if passwords match in real-time
+                  //   _isPasswordMatched();
+                  // },
                   decoration: InputDecoration(
                     labelText:
                         'Password', // Create a text input field for the user's password.
@@ -534,17 +540,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                   ),
-                  if (_confirmPasswordError != null)
-                    Expanded(
-                      child: Text(
-                        _confirmPasswordError!,
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  // if (_confirmPasswordError != null)
+                  //   Expanded(
+                  //     child: Text(
+                  //       _confirmPasswordError!,
+                  //       style: TextStyle(
+                  //         color: Colors.red,
+                  //         fontSize: 10,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ),
                 ],
               ),
             ),

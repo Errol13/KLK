@@ -62,10 +62,10 @@ class _CheckUpPageState extends State<CheckUpPage> {
   List<String> picURL = [
     'assets/senior.jpeg',
     'assets/immunization.jpg',
-    'assets/general.jpg',
+    'assets/general.png',
     'assets/immunization.jpg',
     'assets/dental.png',
-    'assets/general.jpg'
+    'assets/general.png'
   ];
   List<String> agenda = [
     "Senior Citizen Check-up",

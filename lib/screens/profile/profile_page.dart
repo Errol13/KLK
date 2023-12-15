@@ -201,48 +201,46 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 50,
             ),
             Expanded(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: Center(
+                      child: Image.asset('assets/account_icon.png'),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Text(
+                      "Account",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFF276A7B),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AccountPage(),
+                      ));
+                    },
+                    child: SizedBox(
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('assets/account_icon.png'),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: Text(
-                        "Account",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                        child: Icon(
+                          Icons.navigate_next,
                           color: Color(0xFF276A7B),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AccountPage(),
-                        ));
-                      },
-                      child: SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Center(
-                          child: Icon(
-                            Icons.navigate_next,
-                            color: Color(0xFF276A7B),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -251,96 +249,92 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 10,
             ),
             Expanded(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: Center(
+                      child: Image.asset('assets/Bell.png'),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Text(
+                      "Notification",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFF276A7B),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => NotificationPage(),
+                      ));
+                    },
+                    child: SizedBox(
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('assets/Bell.png'),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: Text(
-                        "Notification",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                        child: Icon(
+                          Icons.navigate_next,
                           color: Color(0xFF276A7B),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NotificationPage(),
-                        ));
-                      },
-                      child: SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Center(
-                          child: Icon(
-                            Icons.navigate_next,
-                            color: Color(0xFF276A7B),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
             //Privacy  & Security (needs to be a button WIP)
             SizedBox(height: 10),
 
             Expanded(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: Center(
+                      child: Image.asset('assets/Security.png'),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Text(
+                      "Privacy & Security",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFF276A7B),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PSPage(),
+                      ));
+                    },
+                    child: SizedBox(
                       width: 30,
                       height: 30,
                       child: Center(
-                        child: Image.asset('assets/Security.png'),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: Text(
-                        "Privacy & Security",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
+                        child: Icon(
+                          Icons.navigate_next,
                           color: Color(0xFF276A7B),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => PSPage(),
-                        ));
-                      },
-                      child: SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Center(
-                          child: Icon(
-                            Icons.navigate_next,
-                            color: Color(0xFF276A7B),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 

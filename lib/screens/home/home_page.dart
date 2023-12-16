@@ -11,6 +11,7 @@ import 'package:klinikonek_project/model/post_model.dart';
 import 'package:klinikonek_project/model/user_model.dart';
 import 'package:klinikonek_project/screens/home/actualnotif_page.dart';
 import 'package:klinikonek_project/screens/home/comment_section.dart';
+import 'package:klinikonek_project/screens/home/report_post.dart';
 import 'package:like_button/like_button.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -74,157 +75,6 @@ class _HomePageState extends State<HomePage> {
     return imageUrls;
   }
 
-  int selectedOption = 1;
-
-  void _show() {
-    showDialog(
-      context: context,
-      barrierColor: Colors.transparent,
-      builder: (BuildContext ctx) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: AlertDialog(
-            backgroundColor: Color(0xFFC6DBDC).withOpacity(0.9),
-            title: Text(
-              'Select a problem ',
-              style: TextStyle(
-                fontSize: 20,
-                color: Color(0xFF276A7B),
-              ),
-            ),
-            content: SizedBox(
-              height: 350,
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text('Spam'),
-                    leading: Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(
-                        Color(0xFF276A7B),
-                      ),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('False Information'),
-                    leading: Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Hate Speech'),
-                    leading: Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Harrasment'),
-                    leading: Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Nudity'),
-                    leading: Radio<int>(
-                      value: 5,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text('Suicide or self-injury'),
-                    leading: Radio<int>(
-                      value: 6,
-                      groupValue: selectedOption,
-                      activeColor: Color(0xFF276A7B),
-                      fillColor: MaterialStateProperty.all(Color(0xFF276A7B)),
-                      splashRadius: 20,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 130, 130, 131),
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-                child: Text(
-                  'Send',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF276A7B),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
   List<Post> posts = [
     Post(
       userName: 'Elsa Arandelle',
@@ -276,6 +126,42 @@ class _HomePageState extends State<HomePage> {
       likes: 5,
       comments: [],
     ),
+     Post(
+    userName: 'Mickey Mouse',
+    userProfilePicture: 'assets/user.png',
+    textContent: 'Oh gosh! Anyone knows how to cure hiccups?',
+    images: [],
+    timestamp: DateTime.now().subtract(Duration(days: 3)),
+    likes: 12,
+    comments: [],
+  ),
+  Post(
+    userName: 'Donald Duck',
+    userProfilePicture: 'assets/user.png',
+    textContent: 'Quack quack! What to do for a sore throat?',
+    images: [],
+    timestamp: DateTime.now().subtract(Duration(days: 4)),
+    likes: 10,
+    comments: [],
+  ),
+  Post(
+    userName: 'Minnie Mouse',
+    userProfilePicture: 'assets/user.png',
+    textContent: 'Any home remedies for a fever?',
+    images: [],
+    timestamp: DateTime.now().subtract(Duration(days: 5)),
+    likes: 15,
+    comments: [],
+  ),
+  Post(
+    userName: 'Goofy Goof',
+    userProfilePicture: 'assets/user.png',
+    textContent: 'Yah-hoo-hooey! Tips for preventing the flu?',
+    images: [],
+    timestamp: DateTime.now().subtract(Duration(days: 6)),
+    likes: 18,
+    comments: [],
+  ),
   ];
 
   @override
@@ -435,7 +321,12 @@ class _HomePageState extends State<HomePage> {
                                   } else if (value == 'delete') {
                                     // Handle delete action
                                   } else if (value == 'report') {
-                                    _show();
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            ReportPostPage(),
+                                      ),
+                                    );
                                   }
                                 },
                                 itemBuilder: (BuildContext context) {

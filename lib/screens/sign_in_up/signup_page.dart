@@ -65,7 +65,6 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _validateForm() {
     if (_lastNameController.text.isEmpty ||
         _firstNameController.text.isEmpty ||
-        _middleNameController.text.isEmpty ||
         _birthdateController.text.isEmpty ||
         _emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||

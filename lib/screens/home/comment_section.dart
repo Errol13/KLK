@@ -236,7 +236,6 @@ class CommentInput extends StatelessWidget {
         trailing: IconButton(
           icon: Icon(Icons.send),
           onPressed: () {
-            // Handle sending the comment
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommentSectionPage(),));
           },
         ),

@@ -70,10 +70,10 @@ class _CheckUpPageState extends State<CheckUpPage> {
   List<String> agenda = [
     "Senior Citizen Check-up",
     "Immunization",
-    "General Check-up",
+    "General Medical Check-up",
     "Immunization",
     "Dental Care",
-    "General Check-up"
+    "General Medical Check-up"
   ];
 
   bool showAgenda = true;
@@ -334,13 +334,13 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                                   : appointment.approval
                                                       ? Colors.green
                                                       : Colors.yellow,
-                                              shadows: [
-                                                Shadow(
-                                                  color: Colors.black,
-                                                  offset: Offset(0.2, 0.2),
-                                                  blurRadius: 0.5,
-                                                ),
-                                              ],
+                                              // shadows: [
+                                              //   Shadow(
+                                              //     color: Colors.black,
+                                              //     offset: Offset(0.2, 0.2),
+                                              //     blurRadius: 0.5,
+                                              //   ),
+                                              // ],
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),

@@ -20,12 +20,21 @@ class _PSPageState extends State<PSPage> {
 
       if (user != null) {
         await user.delete();
-        print('User account deleted.');
+        
+        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
       } else {
         print('No user signed in.');
       }
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
+      if(e.code=='requires-recent-login'){
+        _errorNotice("requires re-login");
+      }
+      else{
       _errorNotice('$e');
+      }
     }
   }
 

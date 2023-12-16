@@ -51,12 +51,12 @@ class _SignUpPageState extends State<SignUpPage> {
       );
       return false;
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text('Password matched'),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     backgroundColor: Colors.green,
+      //     content: Text('Password matched'),
+      //   ),
+      // );
       return true;
     }
   }
@@ -80,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return true;
   }
 
-  String? _confirmPasswordError;
+
 
 //Birthdate Field Show DateTime
   Future<void> _selectDate(BuildContext context) async {

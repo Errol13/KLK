@@ -504,27 +504,8 @@ class _HomePageState extends State<HomePage> {
                                   margin: const EdgeInsets.all(15),
                                 ),
                               ),
-                              Text(
-                                '${post.likes}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF276A7B),
-                                ),
-                              ),
-                              LikeButtonWidget(
-                                likes: post.likes,
-                                isLiked: post.isLiked,
-                                onTap: () {
-                                  // Toggle the liked status and update the likes count
-                                  setState(() {
-                                    post.isLiked = !post.isLiked;
-                                    if (post.isLiked) {
-                                      post.likes++;
-                                    } else {
-                                      post.likes--;
-                                    }
-                                  });
-                                },
+                              LikeButton(
+                                likeCount: post.likes,
                               ),
                               const SizedBox(
                                 width: 5,

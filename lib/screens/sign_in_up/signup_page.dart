@@ -487,7 +487,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: 400,
                       child: TextField(
                         controller: _confirmPasswordController,
-                        onChanged: (password) {
+                        onSubmitted: (password) {
                           // Check if passwords match in real-time
                           _isPasswordMatched();
                         },
@@ -540,17 +540,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                   ),
-                  // if (_confirmPasswordError != null)
-                  //   Expanded(
-                  //     child: Text(
-                  //       _confirmPasswordError!,
-                  //       style: TextStyle(
-                  //         color: Colors.red,
-                  //         fontSize: 10,
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ),
-                  //   ),
                 ],
               ),
             ),

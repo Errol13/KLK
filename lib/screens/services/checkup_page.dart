@@ -337,7 +337,7 @@ class _CheckUpPageState extends State<CheckUpPage> {
                                               shadows: [
                                                 Shadow(
                                                   color: Colors.black,
-                                                  offset: Offset(1.0, 1.0),
+                                                  offset: Offset(0.2, 0.2),
                                                   blurRadius: 0.5,
                                                 ),
                                               ],
